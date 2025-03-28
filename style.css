@@ -1,0 +1,50 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    height: 100vh;
+}
+
+#background{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-image: url(images/backgrounds/randomTreeITookToTest.jpg);
+
+}
+
+#options{
+    top: 50%;
+    transform: translate(0, -50%);
+    position: absolute;
+    display: flex;
+    flex-flow: column nowrap;
+    width: 25%;
+    min-width: 500px
+}
+
+#options button{
+    margin: 20px 0;
+    padding: 1%;
+}
+
+#textInteract{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    border: solid black 1px;
+    height: 18vh;
+    width: 95%;
+    position: absolute;
+    bottom: 4%;
+    padding: 1% 10%;
+    background-color:rgba(255,255,255,0.7);
+    backdrop-filter: blur(1px);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
