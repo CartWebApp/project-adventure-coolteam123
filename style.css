@@ -14,8 +14,8 @@ body{
     width: 100%;
     height: 100%;
     background-size: cover;
-    background-image: url(images/backgrounds/randomTreeITookToTest.jpg);
-
+    background-position: center;
+    background-image: url(images/backgrounds/potential-front-view-supermaket.jpg);
 }
 
 #options{
@@ -25,7 +25,8 @@ body{
     display: flex;
     flex-flow: column nowrap;
     width: 25%;
-    min-width: 500px
+    min-width: 500px;
+    visibility: hidden;
 }
 
 #options button{
