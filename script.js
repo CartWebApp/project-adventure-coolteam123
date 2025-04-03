@@ -2,6 +2,8 @@ const text = document.getElementById('text');
 const background = document.getElementById('background');
 const options = document.getElementById('options');
 
+let timeoutID;
+
 const start = new Object();
 start.name = 'start';
 start.text = [
@@ -41,26 +43,50 @@ path1a.text = [
 path1a.textNum = 0;
 path1a.image = `url(images/backgrounds/Abandoned-supermarket.jpg)`;
 path1a.options = [
-    [`Look for supplies`, ``],
+    [`Look for supplies`, `path1aa`],
     [`Leave`, `path1`]
 ];
 
-let paths = [start, path1, path1a];
+const path1aa = new Object();
+path1aa.name = `path1aa`;
+path1aa.text = [
+    `You're looking for supplies.`,
+    `You don't see much.`,
+    `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+    `This is probalbly enough of a test for now.`
+];
+path1aa.textNum = 0;
+path1aa.image = `url(images/backgrounds/Abandoned-supermarket.jpg)`;
+path1aa.options = [
+    // [`Look for supplies`, ``],
+    // [`Leave`, `path1`]
+];
+
+let paths = [start, path1, path1a, path1aa];
 
 function startGame(){
-    text.innerText = story.text[story.textNum];
+    typeWriter(story.text[story.textNum], text, 40);
     background.style.backgroundImage = story.image;
 }
 
 function nextText(){
-    if(story.textNum <= 0){
-        background.style.backgroundImage = story.image;
+    if(story.textNum < 0){
+        story.textNum ++;
+        text.innerHTML = "";
+        startGame();
         hideOptions();
+    } else{
+        if(text.innerHTML.length < story.text[story.textNum].length){
+            clearTimeout(timeoutID);
+            text.innerText = story.text[story.textNum];
+        } else {
+            if(story.textNum < (story.text.length-1)){
+                story.textNum++;
+                text.innerText = "";
+                typeWriter(story.text[story.textNum], text, 40);
+            } 
+        }
     }
-    if(story.textNum < (story.text.length-1)){
-        story.textNum++;
-        text.innerText = story.text[story.textNum];
-    } 
     if (story.textNum == (story.text.length-1)) {
         makeOptions();
     }
@@ -102,5 +128,14 @@ function getPath(pathName){
         if (each.name == pathName) {
             return each;
         }
+    }
+}
+
+function typeWriter(messageToShow, targetElement, timeBetween, currentPos = 0) {
+    clearTimeout(timeoutID);
+    if (currentPos < messageToShow.length) {
+        targetElement.innerHTML += messageToShow.charAt(currentPos);
+        currentPos++;
+        timeoutID = setTimeout(function() { typeWriter(messageToShow, targetElement, timeBetween, currentPos); }, timeBetween);
     }
 }
