@@ -99,7 +99,6 @@ function titleSpread(){
     timeoutID2 = setTimeout(function() {
         flickerSpread += Math.sin(performance.now())*5;
         titleScreen.style.boxShadow = `inset black 0px 0px ${flickerBlur}px ${flickerSpread}px`
-        console.log('test');
         titleSpread();
     }, 5);
 }
