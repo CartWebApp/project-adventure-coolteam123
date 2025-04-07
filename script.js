@@ -1,8 +1,12 @@
 const text = document.getElementById('text');
 const background = document.getElementById('background');
 const options = document.getElementById('options');
+const titleScreen = document.getElementById('titleScreen');
+let flickerBlur = 300;
+let flickerSpread = 30;
 
 let timeoutID;
+let timeoutID2;
 
 function path(name, text, image, options) {
     this.name = name;
@@ -77,7 +81,39 @@ document.addEventListener('mousemove', (e) => {
     cursor.style.top = `${e.clientY}px`;
 });
 
+function titleShadow(){
+    titleSpread();
+    titleBlur();
+}
+
+function titleBlur(){
+    timeoutID = setTimeout(function() {
+        flickerBlur += Math.sin(performance.now())*5;
+        titleScreen.style.boxShadow = `inset black 0px 0px ${flickerBlur}px ${flickerSpread}px`
+        titleBlur();
+    }, 10);
+    
+}
+
+function titleSpread(){
+    timeoutID2 = setTimeout(function() {
+        flickerSpread += Math.sin(performance.now())*5;
+        titleScreen.style.boxShadow = `inset black 0px 0px ${flickerBlur}px ${flickerSpread}px`
+        console.log('test');
+        titleSpread();
+    }, 5);
+}
+
+function leaveMenu(){
+    titleScreen.className = "throughBlack";
+    setTimeout(function() {
+        startGame();
+      }, 2500);
+}
+
 function startGame(){
+    clearTimeout(timeoutID);
+    clearTimeout(timeoutID2);
     typeWriter(story.text[story.textNum], text, 40);
     background.style.backgroundImage = story.image;
 }

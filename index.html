@@ -6,7 +6,13 @@
     <link rel="stylesheet" href="style.css">
     <title>The Darkling</title>
 </head>
-<body onload="startGame()">
+<body onload="titleShadow()">
+    <section id="titleScreen">
+        <div id="buttonHolder">
+            <h1 id="title">The Darkling</h1>
+            <button id="startGame" class="hover" onclick="leaveMenu()">Play</button>
+        </div>
+    </section>
     <div id="cursor"></div>
     <div id="background"></div>
     <section id="options">
