@@ -399,9 +399,11 @@ function makeOptions() {
       changePath(this.id, each[0]);
     };
     const img = new Image();
-    img.backgroundImage = getPath(each[1]).image;
+    let txt = getPath('start').image.split('(')[1].split(')')[0]
+    img.src = txt;;
     options.append(link);
   }
+  console.log('loading complete');
   options.style.visibility = `visible`;
 }
 
