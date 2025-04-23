@@ -98,7 +98,7 @@ const char1Weapon = new path(
 const dead = new path(
   `dead`,
   [`You died.`],
-  `url(images/backgrounds/potential-character-facing-building.jpg)`,
+  `url(images/potential-character-facing-building.jpg)`,
   [[`Replay`, `start`]]
 );
 
@@ -398,7 +398,8 @@ function makeOptions() {
     link.onclick = function () {
       changePath(this.id, each[0]);
     };
-    getPath(this.id)
+    const img = new Image();
+    img.backgroundImage = getPath(each[1]).image;
     options.append(link);
   }
   options.style.visibility = `visible`;
@@ -467,15 +468,34 @@ function typeWriter(messageToShow, targetElement, timeBetween, currentPos = 0) {
   }
 }
 
-async function preloadImages(folderpath, imageNames) {
-  imageNames.forEach(name => {
-      const img = new Image();
-      img.src = `${folderPath}/${name}`;
-  });
-}
+// async function preloadImages(imageNames) {
+//   imageNames.forEach(name => {
+//       const img = new Image();
+//       img.src = `${name}`;
+//   });
+// }
 
+// let images = [
+//   `images/backgrounds/abandoned-building-forest.jpg`,
+//   `images/backgrounds/abandoned-cabin-2.0.jpg`, 
+//   `images/backgrounds/abandoned-cabin-in-woods.jpg`, 
+//   `images/backgrounds/abandoned-city-building.jpg`, 
+//   `images/backgrounds/Abandoned-city.jpg`, 
+//   `images/backgrounds/abandoned-parking lot.jpg`, 
+//   `images/backgrounds/Abandoned-supermarket.jpg`, 
+//   `images/backgrounds/axe.jpg`, 
+//   `images/backgrounds/building-isnide.jpg`, 
+//   `images/backgrounds/Elena's-corner-store-camp.jpg`, 
+//   `images/backgrounds/firstaid.jpg`, 
+//   `images/backgrounds/food.jpg`, 
+//   `images/backgrounds/inside of potential building.jpg`, 
+//   `images/backgrounds/LuciaG-at-wrong-location.jpg`, 
+//   `images/backgrounds/monster&person-in-forest.jpg`, 
+//   `images/backgrounds/Potential-finalboss-monster.jpg`, 
+//   `images/backgrounds/potential-front-view-supermaket.jpg`, images/backgrounds/potential-hospital-room.jpg images/backgrounds/potential-pizzeria-inside.jpg images/backgrounds/potential-pizzeria-outside.jpg images/backgrounds/Potentialmonster.jpg images/backgrounds/randomTreeITookToTest.jpg images/backgrounds/skeleton-on-couch-2.0.jpg images/backgrounds/skeleton-on-couch.jpg
+// ];
 
 function onLoad(){
   titleShadow();
-  preloadImages('/images',folderPath);
+  // preloadImages(images);
 }
