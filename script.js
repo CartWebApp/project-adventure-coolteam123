@@ -398,9 +398,9 @@ function makeOptions() {
     link.onclick = function () {
       changePath(this.id, each[0]);
     };
+    let txt = getPath(each[1]).image.split('(')[1].split(')')[0];
     const img = new Image();
-    let txt = getPath('start').image.split('(')[1].split(')')[0]
-    img.src = txt;;
+    img.src = txt;
     options.append(link);
   }
   console.log('loading complete');
@@ -470,34 +470,6 @@ function typeWriter(messageToShow, targetElement, timeBetween, currentPos = 0) {
   }
 }
 
-// async function preloadImages(imageNames) {
-//   imageNames.forEach(name => {
-//       const img = new Image();
-//       img.src = `${name}`;
-//   });
-// }
-
-// let images = [
-//   `images/backgrounds/abandoned-building-forest.jpg`,
-//   `images/backgrounds/abandoned-cabin-2.0.jpg`, 
-//   `images/backgrounds/abandoned-cabin-in-woods.jpg`, 
-//   `images/backgrounds/abandoned-city-building.jpg`, 
-//   `images/backgrounds/Abandoned-city.jpg`, 
-//   `images/backgrounds/abandoned-parking lot.jpg`, 
-//   `images/backgrounds/Abandoned-supermarket.jpg`, 
-//   `images/backgrounds/axe.jpg`, 
-//   `images/backgrounds/building-isnide.jpg`, 
-//   `images/backgrounds/Elena's-corner-store-camp.jpg`, 
-//   `images/backgrounds/firstaid.jpg`, 
-//   `images/backgrounds/food.jpg`, 
-//   `images/backgrounds/inside of potential building.jpg`, 
-//   `images/backgrounds/LuciaG-at-wrong-location.jpg`, 
-//   `images/backgrounds/monster&person-in-forest.jpg`, 
-//   `images/backgrounds/Potential-finalboss-monster.jpg`, 
-//   `images/backgrounds/potential-front-view-supermaket.jpg`, images/backgrounds/potential-hospital-room.jpg images/backgrounds/potential-pizzeria-inside.jpg images/backgrounds/potential-pizzeria-outside.jpg images/backgrounds/Potentialmonster.jpg images/backgrounds/randomTreeITookToTest.jpg images/backgrounds/skeleton-on-couch-2.0.jpg images/backgrounds/skeleton-on-couch.jpg
-// ];
-
 function onLoad(){
   titleShadow();
-  // preloadImages(images);
 }
