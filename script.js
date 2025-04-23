@@ -121,7 +121,7 @@ const pathChar2 = new path(
   `pathChar2`,
   [
     `You've run out of supplies.`,
-    `There is a supermarket nearby. You should visit.`,
+    `There is a supermarket nearby. You should visit. Dog can keep you company and help you in this search`,
   ],
   `url(images/backgrounds/potential-front-view-supermaket.jpg)`,
   [
@@ -176,9 +176,20 @@ const char2Weapon = new path(
   `url(images/backgrounds/Abandoned-supermarket.jpg)`,
   [
     [`Leave the hatchet`, `char2Continue`],
-    [`Break it open`, `dead`],
+    [`Break it open`, `char2ObtainHatchet`],
   ]
 );
+
+const char2ObtainHatchet = new path(
+  `charObtainHatchet`,
+  [
+    `You break the glass and grab the hatchet. Just as you start to walk away you hear a loud unsettling sound.`,
+    `It's a shrieker and it's blocking your way.`
+  ],
+  [
+    [``]
+  ]
+)
 
 const char2Continue = new path(
   `char2Continue`,
@@ -203,8 +214,36 @@ const char2ListenToConv = new path(
     `You can't make out some parts but hear them talking about setting up a camp. "A safe area," they called it.`,
     `You've heard enough.`,
   ],
-  [[`Head back to your camp`, ``]]
+  [[`Head back to your camp`, `char2BackToCamp`]]
 );
+
+const char2BackToCamp = new path(
+  `char2BackToCamp`,
+  [
+    `You move quietly, avoiding the glass on the ground that could make your presence known.`,
+    `You successfuly avoid getting caught and get out of the store.`,
+    `Your search for today has ended. Now it is time to head back to your camp.`,
+    `Once you get home you remember the hunting traps you had set up nearby.`
+  ],
+  [
+    [`Go check on the traps`, `char2CheckTraps`]
+  ]
+)
+
+const char2CheckTraps = new path(
+  `charCheckTraps`,
+  [
+    `The walking distance is not that far. Dogs follows right behind as you walk towards the traps.`,
+    `Everything seems normal when out of nowhere a loud sound catches your attention.`,
+    `A cry of help soon follows.`,
+    `You run towards the direction of the commotion. You see a young man on the ground and a shrieker not so far from him.`,
+    `The shrieker is about to attack him.`
+  ],
+  [
+    [`Leave. There is nothing you can do`, `char2Ignore`],
+    [`Distract the shrieker`, `charDistractShrieker`]
+  ]
+)
 
 const pathChar3 = new path(
   `pathChar3`,
@@ -283,6 +322,8 @@ let paths = [
   char2Weapon,
   char2Continue,
   char2ListenToConv,
+  char2BackToCamp,
+  char2CheckTraps,
   char3AnswerCall,
   char3Delivery,
   char3Fired,
