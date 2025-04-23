@@ -124,7 +124,7 @@ html:has(.hover:hover) #cursor{
     height: 100vh;
     background: url(images/potential-character-facing-building.jpg);
     background-size: cover;
-    background-position: 0 -22vh;
+    background-position: 0 center;
     box-shadow: inset black 0px 0px 200px 20px;
 }
 
@@ -195,5 +195,44 @@ html:has(.hover:hover) #cursor{
         filter: brightness(0);
         opacity: 0;
         z-index: -1;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    #title {
+        margin: 0 5%;
+        top: 2vh;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    #title {
+        margin: 0 5%;
+        top: 2vh;
+        font-size: 8rem;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    #title {
+        margin: 0 5%;
+        top: 4vh;
+        font-size: 7rem;
+    }
+}
+
+@media only screen and (max-width: 470px) {
+    #title {
+        margin: 0 5%;
+        top: 5vh;
+        font-size: 6rem;
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    #title {
+        margin: 0 5%;
+        top: 5vh;
+        font-size:3rem;
     }
 }
