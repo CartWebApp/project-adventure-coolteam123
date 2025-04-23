@@ -34,7 +34,7 @@ const pathChar1 = new path(
   `pathChar1`,
   [
     `You've run out of supplies.`,
-    `There's a supermarket nearby - it'd probably be for the best to visit.`,
+    `There's a supermarket nearby - it'd probably be for the best to visit.`
   ],
   `url(images/backgrounds/potential-front-view-supermaket.jpg)`,
   [
@@ -48,7 +48,7 @@ const char1Supermarket = new path(
   [
     `You enter the supermarket.`,
     `The lights are flickering and most of the food seems expired.`,
-    `Likely, there won't be much to find. You may need to focus your efforts.`,
+    `Likely, there won't be much to find. You may need to focus your efforts.`
   ],
   `url(images/backgrounds/Abandoned-supermarket.jpg)`,
   [
@@ -63,7 +63,7 @@ const char1Food = new path(
   [
     `You look around the supermarket for food.`,
     `Everything seems expired, or has been infested with bugs.`,
-    `Unfortunately you don't find anything and return from your search empty-handed.`,
+    `Unfortunately you don't find anything and return from your search empty-handed.`
   ],
   `url(images/backgrounds/food.jpg)`,
   [[`Continue on your way`, `char1Continue`]]
@@ -74,7 +74,7 @@ const char1Medicine = new path(
   [
     `You look around the supermarket for medicine.`,
     `You spot a first aid kit attached to a wall.`,
-    `You take the first aid kit with you and return from your search.`,
+    `You take the first aid kit with you and return from your search.`
   ],
   `url(images/backgrounds/firstaid.jpg)`,
   [[`Continue on your way`, `char1Continue`]]
@@ -86,7 +86,7 @@ const char1Weapon = new path(
     `You look around the supermarket for a weapon.`,
     `It seems unlikely, but suprisingly enough you find a fire hatchet on a wall.`,
     `You try to open the case, but it's locked.`,
-    `You could try to break the lock, but the loud noise might bring trouble.`,
+    `You could try to break the lock, but the loud noise might bring trouble.`
   ],
   `url(images/backgrounds/axe.jpg)`,
   [
@@ -98,7 +98,7 @@ const char1Weapon = new path(
 const dead = new path(
   `dead`,
   [`You died.`],
-  `url(images/backgrounds/potential-character-facing-building.jpg)`,
+  `url(images/potential-character-facing-building.jpg)`,
   [[`Replay`, `start`]]
 );
 
@@ -108,12 +108,39 @@ const char1Continue = new path(
     `You continue on your way.`,
     `While walking you hear the faint buzz of talking, and quickly hide behind the shelves.`,
     `It's been a while since you've met people. You want to investigate, but it isn't impossible that the strangers are thieves or even killers.`,
-    `In fact, it's likely.`,
+    `In fact, it's likely.`
   ],
   `url(images/backgrounds/Abandoned-supermarket.jpg)`,
   [
-    [`Investigate`, `char1Food`],
+    [`Investigate`, `char1Listen`],
     [`Leave`, `char1Medicine`],
+  ]
+);
+const char1Listen = new path(
+  `char1Listen`,
+  [
+    `You get creep closer to them to try and figure out what they are talking about.`,
+    `You move quietly towards the direction of the voices and crouch behind some shelves. `,
+    `You can't make out some parts but hear them talking about setting up a camp. "A safe area", they called it.`,
+    `You've heard enough.`
+  ],
+  `url(images/backgrounds/Abandoned-supermarket.jpg)`,
+  [
+    [`Head back to your camp.`, `char1TryLeave`],
+    [`Go say hi`, ``]
+  ]
+);
+const char1TryLeave = new path(
+  `char1TryLeave`,
+  [
+    `You turn to leave.`,
+    `Your foot comes down with a loud crack on a glass bottle.`,
+    `They've definetely noticed you now. Might as well introduce yourself.`
+  ],
+  `url(images/backgrounds/Abandoned-supermarket.jpg)`,
+  [
+    [`Head back to your camp.`, `char1TryLeave`],
+    [`Go say hi`, ``]
   ]
 );
 
@@ -135,7 +162,7 @@ const char2Supermarket = new path(
   [
     `You enter the supermarket.`,
     `The lights are flickering and most of the food seems expired.`,
-    `Likely, there won't be much to find. You may need to focus your efforts.`,
+    `Likely, there won't be much to find. You may need to focus your efforts.`
   ],
   `url(images/backgrounds/Abandoned-supermarket.jpg)`,
   [
@@ -149,7 +176,7 @@ const char2Clothing = new path(
   `char2Clothing`,
   [
     `You look around the supermarket for clothes.`,
-    `You find a coat and a pair of boots.`,
+    `You find a coat and a pair of boots.`
   ],
   `url(images/backgrounds/Abandoned-supermarket.jpg)`,
   [[`Keep looking around`, `char2Continue`]]
@@ -160,7 +187,7 @@ const char2Medicine = new path(
   [
     `You look around the supermarket for medicine. Anything that might be useful.`,
     `You find a first aid kit.`,
-    `You take the first aid kit with you and return from your search.`,
+    `You take the first aid kit with you and return from your search.`
   ],
   `url(images/backgrounds/Abandoned-supermarket.jpg)`,
   [[`Keep looking around`, `char2Continue`]]
@@ -171,7 +198,7 @@ const char2Weapon = new path(
     `You look around the supermarket for any sort of weapon.`,
     `It seems unlikely, but suprisingly enough you find a fire hatchet on a wall.`,
     `You try to open the case, but it's locked.`,
-    `You could try to break the lock, but the loud noise might bring trouble.`,
+    `You could try to break the lock, but the loud noise might bring trouble.`
   ],
   `url(images/backgrounds/Abandoned-supermarket.jpg)`,
   [
@@ -197,7 +224,7 @@ const char2Continue = new path(
     `You keep looking around the supermarket for any other thing that may be of value.`,
     `While walking you hear the faint buzz of talking, and quickly hide behind the shelves.`,
     `It's been a while since you've met people. You want to investigate, but it isn't impossible that the strangers are thieves or even killers.`,
-    `In fact, it's likely.`,
+    `In fact, it's likely.`
   ],
   `url(images/backgrounds/Abandoned-supermarket.jpg)`,
   [
@@ -212,9 +239,10 @@ const char2ListenToConv = new path(
     `You get creep closer to them to try and figure out what they are talking about.`,
     `You move quietly towards the direction of the voices and crouch behind some shelves. `,
     `You can't make out some parts but hear them talking about setting up a camp. "A safe area," they called it.`,
-    `You've heard enough.`,
+    `You've heard enough.`
   ],
-  [[`Head back to your camp`, `char2BackToCamp`]]
+  `url(images/backgrounds/Abandoned-supermarket.jpg)`,
+  [[`Head back to your camp`, ``]]
 );
 
 const char2BackToCamp = new path(
@@ -249,7 +277,7 @@ const pathChar3 = new path(
   `pathChar3`,
   [
     `You are working your shift at the pizzeria.`,
-    `The phone is ringing. Someone is calling.`,
+    `The phone is ringing. Someone is calling.`
   ],
   `url(images/backgrounds/potential-pizzeria-inside.jpg)`,
   [
@@ -262,7 +290,7 @@ const char3AnswerCall = new path(
   `char3AnswerCall`,
   [
     `Someone wants to order a pepperoni pizza.`,
-    `They say they want it delivered at xxx and they give you their name.`,
+    `They say they want it delivered at xxx Fifth st. and they give you their name.`
   ],
   `url(images/backgrounds/potential-pizzeria-inside.jpg)`,
   [
@@ -276,7 +304,7 @@ const char3Delivery = new path(
   [
     `You try to remember and write down the location they gave you.`,
     `You prepare the pizza and get everything ready to head out.`,
-    `You are unsure if they said First Street or Fifth Street.`,
+    `You are unsure if they said First Street or Fifth Street.`
   ],
   `url(images/backgrounds/potential-pizzeria-outside.jpg)`,
   [
@@ -289,7 +317,7 @@ const char3CorrectLocation = new path(
   `char3CorrectLocation`,
   [
     `You wrote down the correct address.`,
-    `As you keep walking you notice a sketchy group of people gathered around something.`,
+    `As you keep walking you notice a sketchy group of people gathered around something.`
   ],
   `url(images/backgrounds/potential-pizzeria-outside.jpg)`,
   [
@@ -300,7 +328,10 @@ const char3CorrectLocation = new path(
 
 const char3Fired = new path(
   `char3Fired`,
-  [`You wrote down the wrong address.`, `You are fired!`],
+  [
+    `You wrote down the wrong address.`, 
+    `You are fired!`
+  ],
   `url(images/backgrounds/LuciaG-at-wrong-location.jpg)`,
   [[`Replay`, `start`]]
 );
@@ -315,6 +346,8 @@ let paths = [
   char1Medicine,
   char1Weapon,
   char1Continue,
+  char1Listen,
+  char1TryLeave,
   dead,
   char2Supermarket,
   char2Clothing,
@@ -406,8 +439,12 @@ function makeOptions() {
     link.onclick = function () {
       changePath(this.id, each[0]);
     };
+    let txt = getPath(each[1]).image.split('(')[1].split(')')[0];
+    const img = new Image();
+    img.src = txt;
     options.append(link);
   }
+  console.log('loading complete');
   options.style.visibility = `visible`;
 }
 
@@ -472,4 +509,8 @@ function typeWriter(messageToShow, targetElement, timeBetween, currentPos = 0) {
       typeWriter(messageToShow, targetElement, timeBetween, currentPos);
     }, timeBetween);
   }
+}
+
+function onLoad(){
+  titleShadow();
 }
