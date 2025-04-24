@@ -9,29 +9,42 @@ let flickerSpread = 30;
 let timeoutID;
 let timeoutID2;
 
-function path(name, text, image, options) {
-  this.name = name;
-  this.text = text;
-  this.image = image;
-  this.options = options;
-  this.textNum = 0;
+let inventory = [];
+
+class Item {
+  constructor(name, image) {
+    this.name = name;
+    this.image = image;
+  }
 }
 
-const start = new path(
+class Path {
+  constructor(name, text, image, options, item = null) {
+    this.name = name;
+    this.text = text;
+    this.image = image;
+    this.options = options;
+    this.item = item;
+    this.textNum = 0;
+
+  }
+}
+
+const start = new Path(
   `start`,
   [`Choose your character.`],
   `url(images/backgrounds/Abandoned-city.jpg)`,
   [
-    [`Play as char1`, `pathChar1`],
-    [`Play as char2`, `pathChar2`],
-    [`Play as char3`, `pathChar3`],
+    [`Play as char1`, `PathChar1`],
+    [`Play as char2`, `PathChar2`],
+    [`Play as char3`, `PathChar3`],
   ]
 );
 
 let story = start;
 
-const pathChar1 = new path(
-  `pathChar1`,
+const PathChar1 = new Path(
+  `PathChar1`,
   [
     `You've run out of supplies.`,
     `There's a supermarket nearby - it'd probably be for the best to visit.`
@@ -39,11 +52,11 @@ const pathChar1 = new path(
   `url(images/backgrounds/potential-front-view-supermaket.jpg)`,
   [
     [`Go in`, `char1Supermarket`],
-    [`Procrastinate`, `pathChar1`],
+    [`Procrastinate`, `PathChar1`],
   ]
 );
 
-const char1Supermarket = new path(
+const char1Supermarket = new Path(
   `char1Supermarket`,
   [
     `You enter the supermarket.`,
@@ -58,7 +71,7 @@ const char1Supermarket = new path(
   ]
 );
 
-const char1Food = new path(
+const char1Food = new Path(
   `char1Food`,
   [
     `You look around the supermarket for food.`,
@@ -69,7 +82,7 @@ const char1Food = new path(
   [[`Continue on your way`, `char1Continue`]]
 );
 
-const char1Medicine = new path(
+const char1Medicine = new Path(
   `char1Medicine`,
   [
     `You look around the supermarket for medicine.`,
@@ -77,10 +90,11 @@ const char1Medicine = new path(
     `You take the first aid kit with you and return from your search.`
   ],
   `url(images/backgrounds/firstaid.jpg)`,
-  [[`Continue on your way`, `char1Continue`]]
+  [[`Continue on your way`, `char1Continue`]],
+  new Item('FirstAid Kit','')
 );
 
-const char1Weapon = new path(
+const char1Weapon = new Path(
   `char1Weapon`,
   [
     `You look around the supermarket for a weapon.`,
@@ -95,14 +109,14 @@ const char1Weapon = new path(
   ]
 );
 
-const dead = new path(
+const dead = new Path(
   `dead`,
   [`You died.`],
   `url(images/potential-character-facing-building.jpg)`,
   [[`Replay`, `start`]]
 );
 
-const char1Continue = new path(
+const char1Continue = new Path(
   `char1Continue`,
   [
     `You continue on your way.`,
@@ -116,7 +130,7 @@ const char1Continue = new path(
     [`Leave`, `char1TryLeave`],
   ]
 );
-const char1Listen = new path(
+const char1Listen = new Path(
   `char1Listen`,
   [
     `You creep closer to them to try and figure out what they are talking about.`,
@@ -130,7 +144,7 @@ const char1Listen = new path(
     [`Go say hi`, `char1Talk`]
   ]
 );
-const char1TryLeave = new path(
+const char1TryLeave = new Path(
   `char1TryLeave`,
   [
     `You turn to leave.`,
@@ -142,7 +156,7 @@ const char1TryLeave = new path(
     [`Go say hi`, `char1Talk`]
   ]
 );
-const char1Talk = new path(
+const char1Talk = new Path(
   `char1Talk`,
   [
     `You slowly emerge from behind the shelves and see the group.`,
@@ -157,7 +171,7 @@ const char1Talk = new path(
   ]
 );
 
-const char1Sandwich = new path(
+const char1Sandwich = new Path(
   `char1Sandwich`,
   [
     `You take a sandwich and sit down in a circle with them.`,
@@ -171,7 +185,7 @@ const char1Sandwich = new path(
     [`Bid them farewell.`, `char1Farewell`]
   ]
 );
-const char1NoSandwich = new path(
+const char1NoSandwich = new Path(
   `char1NoSandwich`,
   [
     `You refuse a perfectly good sandwich, but still sit down with them as they eat.`,
@@ -185,7 +199,7 @@ const char1NoSandwich = new path(
     [`Bid them farewell.`, `char1Farewell`]
   ]
 );
-const char1Farewell = new path(
+const char1Farewell = new Path(
   `char1Farewell`,
   [
     `You find an excuse and dimiss yourself.`,
@@ -193,14 +207,103 @@ const char1Farewell = new path(
     `The camp is a little area set up in a backroom in a long-abandoned cornerstore.`,
     `Curling up in a sleeping bag, you drift to sleep.`
   ],
-  `url(images/backgrounds/Elena's-corner-store-camp.jpg)`,
+  `url(images/backgrounds/Elena-corner-store-camp.jpg)`,
   [
-    [`You die in your sleep.`, `dead`]
+    [`Wake up.`, `char1NewDay`]
   ]
 );
 
-const pathChar2 = new path(
-  `pathChar2`,
+const char1NewDay = new Path(
+  `char1NewDay`,
+  [
+    `You wake up to a new day.`,
+    `You want to stay sleeping, but you didn't get enough supplies yesterday.`,
+    `Slowly you gather your will to get out of your sleeping bag and prepare yourself to go back to the supermarket.`
+  ],
+  `url(images/backgrounds/abandoned-city-building.jpg)`,
+  [
+    [`Get up`, `char1Supermarket`],
+    [`Procrastinate`, `notThisAgain`]
+  ]
+);
+
+const notThisAgain = new Path(
+  `notThisAgain`,
+  [
+    `You wake up to a new day.`,
+    `You want to stay sleeping, but you didn't get enough supplies yesterday.`,
+    `Slowly you gather your will to get out of your sleeping bag and prepare yourself to go back to the supermarket.`
+  ],
+  `url(images/backgrounds/abandoned-city-building.jpg)`,
+  [
+    [`Get up`, `char1Supermarket`],
+    ['Get up', `char1Supermarket`],
+    [`Procrastinate`, `notThisAgainAgain`],
+    ['Get up', `char1Supermarket`]
+  ]
+);
+
+const notThisAgainAgain = new Path(
+  `notThisAgainAgain`,
+  [
+    `You wake up to a new day.`,
+    `You want to stay sleeping, but you didn't get enough supplies yesterday.`,
+    `Slowly you gather your will to get out of your sleeping bag and prepare yourself to go back to the supermarket.`
+  ],
+  `url(images/backgrounds/abandoned-city-building.jpg)`,
+  [
+    [`Get up`, `char1Supermarket`],
+    ['Get up', `char1Supermarket`],
+    [`Get up`, `char1Supermarket`],
+    ['Get up', `char1Supermarket`],
+    [`Procrastinate`, `pleaseNotThisAgain`],
+    [`Get up`, `char1Supermarket`],
+    ['Get up', `char1Supermarket`]
+  ]
+);
+
+const pleaseNotThisAgain = new Path(
+  `pleaseNotThisAgain`,
+  [
+    `You wake up to a new day.`,
+    `You want to stay sleeping, but you didn't get enough supplies yesterday.`,
+    `Slowly you gather your will to get out of your sleeping bag and prepare yourself to go back to the supermarket.`
+  ],
+  `url(images/backgrounds/abandoned-city-building.jpg)`,
+  [
+    [`Get up`, `char1Supermarket`],
+    ['Get up', `char1Supermarket`],
+    [`Get up`, `char1Supermarket`],
+    ['Get up', `char1Supermarket`],
+    [`Get up`, `char1Supermarket`],
+    ['Get up', `char1Supermarket`],
+    [`Get up`, `char1Supermarket`],
+    [`Procrastinate`, `pleaseNotThisAgainAgain`],
+    ['Get up', `char1Supermarket`],
+    ['Get up', `char1Supermarket`],
+    [`Get up`, `char1Supermarket`],
+    [`Wither away`, `dead`],
+    ['Get up', `char1Supermarket`],
+    [`Get up`, `char1Supermarket`],
+    ['Get up', `char1Supermarket`],
+    [`Get up`, `char1Supermarket`],
+    ['Get up', `char1Supermarket`]
+  ]
+);
+
+const pleaseNotThisAgainAgain = new Path(
+  `pleaseNotThisAgainAgain`,
+  [
+    `No.`
+  ],
+  `url(images/backgrounds/abandoned-city-building.jpg)`,
+  [
+    [`Get up`, `char1Supermarket`]
+  ]
+);
+
+const PathChar2 = new Path(
+  `PathChar2`,
   [
     `You've run out of supplies.`,
     `There is a supermarket nearby. You should visit. Max, your dog, can keep you company and help you in this search.`,
@@ -208,11 +311,11 @@ const pathChar2 = new path(
   `url(images/backgrounds/potential-front-view-supermaket.jpg)`,
   [
     [`Go in`, `char2Supermarket`],
-    [`Procrastinate`, `pathChar2`],
+    [`Procrastinate`, `PathChar2`],
   ]
 );
 
-const char2Supermarket = new path(
+const char2Supermarket = new Path(
   `char2Supermarket`,
   [
     `You enter the supermarket. Max following you behind.`,
@@ -227,7 +330,7 @@ const char2Supermarket = new path(
   ]
 );
 
-const char2Clothing = new path(
+const char2Clothing = new Path(
   `char2Clothing`,
   [
     `You look around the supermarket for clothes.`,
@@ -237,7 +340,7 @@ const char2Clothing = new path(
   [[`Keep looking around`, `char2Continue`]]
 );
 
-const char2Medicine = new path(
+const char2Medicine = new Path(
   `char2Medicine`,
   [
     `You look around the supermarket for medicine. Anything that might be useful.`,
@@ -247,7 +350,7 @@ const char2Medicine = new path(
   `url(images/backgrounds/Abandoned-supermarket.jpg)`,
   [[`Keep looking around`, `char2Continue`]]
 );
-const char2Weapon = new path(
+const char2Weapon = new Path(
   `char2Weapon`,
   [
     `You look around the supermarket for any sort of weapon.`,
@@ -264,7 +367,7 @@ const char2Weapon = new path(
   ]
 );
 
-const char2ObtainHatchet = new path( 
+const char2ObtainHatchet = new Path(
   `charObtainHatchet`,
   [
     `You break the glass and grab the hatchet just in time.`,
@@ -278,7 +381,7 @@ const char2ObtainHatchet = new path(
   ]
 )
 
-const char2Continue = new path(
+const char2Continue = new Path(
   `char2Continue`,
   [
     `Some time has passed and you keep looking around the supermarket for any other thing that may be of value.`,
@@ -294,7 +397,7 @@ const char2Continue = new path(
   ]
 );
 
-const char2ListenToConv = new path(
+const char2ListenToConv = new Path(
   `char2ListenToConv`,
   [
     `You creep closer to them to try and figure out what they are talking about.`,
@@ -306,7 +409,7 @@ const char2ListenToConv = new path(
   [[`Head back to your camp`, `char2BackToCamp`]]
 );
 
-const char2BackToCamp = new path(
+const char2BackToCamp = new Path(
   `char2BackToCamp`,
   [
     `You move quietly, avoiding the glass on the ground that could make your presence known.`,
@@ -319,7 +422,7 @@ const char2BackToCamp = new path(
   ]
 )
 
-const char2CheckTraps = new path(
+const char2CheckTraps = new Path(
   `charCheckTraps`,
   [
     `The walking distance is not that far. Max follows right behind as you walk towards the traps.`,
@@ -334,7 +437,7 @@ const char2CheckTraps = new path(
   ]
 )
 
-const char2DistractShrieker = new path(
+const char2DistractShrieker = new Path(
   `charDistractShrieker`,
   [
     `You decide to help by distracting the shrieker.`,
@@ -346,7 +449,7 @@ const char2DistractShrieker = new path(
   ]
 )
 
-const maxDead = new path(
+const maxDead = new Path(
   `maxDead`,
   [`Max runs on your command but the shrieker is too fast and strikes him.`,
     `Sadly Max doesn't make it. You have lost your life-long partner and eventually you die too from sadness.`
@@ -355,8 +458,8 @@ const maxDead = new path(
   [[`Replay`, `start`]]
 )
 
-const pathChar3 = new path(
-  `pathChar3`,
+const PathChar3 = new Path(
+  `PathChar3`,
   [
     `You are working your shift at the pizzeria.`,
     `The phone is ringing. Someone is calling.`
@@ -364,11 +467,11 @@ const pathChar3 = new path(
   `url(images/backgrounds/potential-pizzeria-inside.jpg)`,
   [
     [`Pick up the phone`, `char3AnswerCall`],
-    [`Ignore the call`, `pathChar3`],
+    [`Ignore the call`, `PathChar3`],
   ]
 );
 
-const char3AnswerCall = new path(
+const char3AnswerCall = new Path(
   `char3AnswerCall`,
   [
     `Someone wants to order a pepperoni pizza.`,
@@ -381,7 +484,7 @@ const char3AnswerCall = new path(
   ]
 );
 
-const char3Delivery = new path(
+const char3Delivery = new Path(
   `char3Delivery`,
   [
     `You try to remember and write down the location they gave you.`,
@@ -395,7 +498,7 @@ const char3Delivery = new path(
   ]
 );
 
-const char3CorrectLocation = new path(
+const char3CorrectLocation = new Path(
   `char3CorrectLocation`,
   [
     `You wrote down the correct address.`,
@@ -408,7 +511,7 @@ const char3CorrectLocation = new path(
   ]
 );
 
-const char3FiredBecauseNoWork = new path(
+const char3FiredBecauseNoWork = new Path(
   `char3FiredBecauseNoWork`,
   [
     `You tell them you don't feel like doing delivery right now.`,
@@ -419,7 +522,7 @@ const char3FiredBecauseNoWork = new path(
   [[`Replay`, `start`]]
 );
 
-const char3FiredBecauseAddress = new path(
+const char3FiredBecauseAddress = new Path(
   `char3FiredBecauseAddress`,
   [
     `You went to the the wrong address.`, 
@@ -429,11 +532,11 @@ const char3FiredBecauseAddress = new path(
   [[`Replay`, `start`]]
 );
 
-let paths = [
+let Paths = [
   start,
-  pathChar1,
-  pathChar2,
-  pathChar3,
+  PathChar1,
+  PathChar2,
+  PathChar3,
   char1Supermarket,
   char1Food,
   char1Medicine,
@@ -445,6 +548,11 @@ let paths = [
   char1Sandwich,
   char1NoSandwich,
   char1Farewell,
+  char1NewDay,
+  notThisAgain,
+  notThisAgainAgain,
+  pleaseNotThisAgain,
+  pleaseNotThisAgainAgain,
   dead,
   char2Supermarket,
   char2Clothing,
@@ -501,6 +609,7 @@ function startGame() {
   clearTimeout(timeoutID);
   clearTimeout(timeoutID2);
   typeWriter(story.text[story.textNum], text, 40);
+  history.push([story.text[story.textNum],0]);
   background.style.backgroundImage = story.image;
 }
 
@@ -511,18 +620,25 @@ function nextText() {
     startGame();
     hideOptions();
   } else {
-    if (text.innerHTML.length < story.text[story.textNum].length) {
-      clearTimeout(timeoutID);
-      text.innerText = story.text[story.textNum];
-    } else {
-      if (story.textNum < story.text.length - 1) {
-        story.textNum++;
-        text.innerText = "";
-        typeWriter(story.text[story.textNum], text, 40);
+    if(story.text[story.textNum]){
+      if (text.innerHTML.length < story.text[story.textNum].length) {
+        clearTimeout(timeoutID);
+        text.innerText = story.text[story.textNum];
+      } else {
+        if (story.textNum < story.text.length - 1) {
+          story.textNum++;
+          text.innerText = "";
+          typeWriter(story.text[story.textNum], text, 40);
+          history.push([story.text[story.textNum],0]);
+        }
       }
+    } else if(story.textNum == 999){
+      clearTimeout(timeoutID);
+      text.innerText = story.text[story.text.length-1];
     }
   }
   if (story.textNum == story.text.length - 1) {
+    story.textNum = 999;
     makeOptions();
   }
 }
@@ -534,14 +650,18 @@ function makeOptions() {
     link.id = each[1];
     link.className = `hover`;
     const text = document.createTextNode(each[0]);
-
+    
     link.appendChild(text);
+    
     link.onclick = function () {
-      changePath(this.id, each[0]);
+      changePath(this.id, this.innerText, Path.item);
     };
-    let txt = getPath(each[1]).image.split('(')[1].split(')')[0];
+    let Path = getPath(each[1]);
+
+    let txt = Path.image.split('(')[1].split(')')[0];
     const img = new Image();
     img.src = txt;
+
     options.append(link);
   }
   console.log('loading complete');
@@ -555,7 +675,35 @@ function showHistory() {
     clearHistory();
     for (each of history) {
       const text = document.createElement("p");
-      const textText = document.createTextNode(each);
+      const textText = document.createTextNode(each[0]);
+      switch (each[1]) {
+        case 0:
+          text.style.fontStyle = "normal";
+          text.style.color = "black";
+          break;
+          case 1:
+            text.style.fontStyle = "italic";
+            text.style.color = "blue";
+          break;
+        default:
+          break;
+      }
+      text.className = `historyText`;
+      text.append(textText);
+      historySection.append(text);
+    }
+    historySection.style.zIndex = 2;
+  }
+}
+
+function showInventory() {
+  if (historySection.style.zIndex == 2) {
+    historySection.style.zIndex = -2;
+  } else {
+    clearHistory();
+    for (each of inventory) {
+      const text = document.createElement("p");
+      const textText = document.createTextNode(each.name);
       text.className = `historyText`;
       text.append(textText);
       historySection.append(text);
@@ -582,19 +730,19 @@ function clearOptions() {
   }
 }
 
-function changePath(newPath, optionText) {
-  history.push(optionText);
-  story = getPath(newPath);
-  for (each of story.text) {
-    history.push(each);
+function changePath(newPath, optionText, item) {
+  if(item){
+    inventory.push(item);
   }
+  history.push([optionText,1]);
+  story = getPath(newPath);
   story.textNum = -1;
   nextText();
 }
 
-function getPath(pathName) {
-  for (each of paths) {
-    if (each.name == pathName) {
+function getPath(PathName) {
+  for (each of Paths) {
+    if (each.name == PathName) {
       return each;
     }
   }
