@@ -459,7 +459,7 @@ const maxDead = new Path(
   [[`Replay`, `start`]]
 );
 
-const char2UseItem = new path(
+const char2UseItem = new Path(
   `char2UseItem`,
   [
     `You use take of the new jacket you found today and throw at it the shrieker.`,
@@ -469,7 +469,7 @@ const char2UseItem = new path(
   ]
 );
 
-const char2SaveAlly = new path(
+const char2SaveAlly = new Path(
   `charSaveAlly`,
   [
     `You quickly run towards the man on the ground, grab him by the shoulder, and start running away.`,
@@ -479,7 +479,7 @@ const char2SaveAlly = new path(
   ]
 );
 
-// ***********Character 3(Lucia Graves)-path and choices***********
+// ***********Character 3(Lucia Graves)-Path and choices***********
 
 const PathChar3 = new Path(
   `PathChar3`,
@@ -555,7 +555,7 @@ const char3FiredBecauseAddress = new Path(
   [[`Replay`, `start`]]
 );
 
-const char3ClientOrHomeless = new path(
+const char3ClientOrHomeless = new Path(
   `char3ClientOrHomeless`,
   [
     `You decide to ignore them and as you keep walking you notice your client.`,
@@ -569,7 +569,7 @@ const char3ClientOrHomeless = new path(
   ]
 );
 
-const givePizzaToClient = new path(
+const givePizzaToClient = new Path(
   `givePizzaToClient`,
   [
     `You decide to do your job and give the pizza to your client.`,
@@ -580,7 +580,7 @@ const givePizzaToClient = new path(
   ]
 );
 
-const givePizzaToStranger = new path(
+const givePizzaToStranger = new Path(
   `givePizzaToStranger`,
   [
     `You decide to be kind and give the pizza to the starving stranger.`,
