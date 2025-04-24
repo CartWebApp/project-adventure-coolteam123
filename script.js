@@ -362,8 +362,8 @@ const char2Weapon = new Path(
   ],
   `url(images/backgrounds/Abandoned-supermarket.jpg)`,
   [
-    [`Leave the hatchet. It's not worth it`, `cchar2Continue`],
-    [`Break it open and fight`, `char2ObtainHatchet`],
+    [`Leave the hatchet. It's not worth it`, `char2Continue`],
+    [`Break it open and fight`, `char2ObtainHatchet`]
   ]
 );
 
@@ -371,15 +371,16 @@ const char2ObtainHatchet = new Path(
   `charObtainHatchet`,
   [
     `You break the glass and grab the hatchet just in time.`,
-    `The shriekr is just around the corner of the aisle.`,
-    `You run, gripping the hatchet tightly and strike the shrieker just as he was about to make the turn.`,
+    `The shrieker is just around the corner of the aisle.`,
+    `You run, gripping the hatchet tightly and strike the shrieker just as it was about to make the turn.`,
     `A loud screetch comes out of its mouth. It falls to the ground, wounded.`,
     `You don't think twice to stay. You get up quickly, call out for Max and run.`
   ],
+  `url(images/backgrounds/Abandoned-supermarket.jpg)`,
   [
     [`Run before the shrieker gets up`, `char2Continue`]
   ]
-)
+);
 
 const char2Continue = new Path(
   `char2Continue`,
@@ -420,7 +421,7 @@ const char2BackToCamp = new Path(
   [
     [`Go check on the traps`, `char2CheckTraps`]
   ]
-)
+);
 
 const char2CheckTraps = new Path(
   `charCheckTraps`,
@@ -435,7 +436,7 @@ const char2CheckTraps = new Path(
     [`Leave. There is nothing you can do`, `dead`],
     [`Distract the shrieker`, `char2DistractShrieker`]
   ]
-)
+);
 
 const char2DistractShrieker = new Path(
   `charDistractShrieker`,
@@ -445,9 +446,9 @@ const char2DistractShrieker = new Path(
   ],
   [
     [`Send Max to distract the shrieker`, `maxDead`],
-    [`Distract it yourselft`, ``]
+    [`Distract it yourselft`, `char2UseItem`]
   ]
-)
+);
 
 const maxDead = new Path(
   `maxDead`,
@@ -456,7 +457,29 @@ const maxDead = new Path(
   ],
   `url(images/potential-character-facing-building.jpg)`,
   [[`Replay`, `start`]]
-)
+);
+
+const char2UseItem = new path(
+  `char2UseItem`,
+  [
+    `You use take of the new jacket you found today and throw at it the shrieker.`,
+  ],
+  [
+    [`Run away with stranger`, `char2SaveAlly`]
+  ]
+);
+
+const char2SaveAlly = new path(
+  `charSaveAlly`,
+  [
+    `You quickly run towards the man on the ground, grab him by the shoulder, and start running away.`,
+    `You take him near your cabin and try to avoid showing your camp since he is a stranger afterall.`,
+    `"Thank you," he says while trying to catch his breath. You stay silent.`,
+    `"My name is Roman," he says while extending his hand for a handshake.`
+  ]
+);
+
+// ***********Character 3(Lucia Graves)-path and choices***********
 
 const PathChar3 = new Path(
   `PathChar3`,
@@ -532,7 +555,40 @@ const char3FiredBecauseAddress = new Path(
   [[`Replay`, `start`]]
 );
 
-let Paths = [
+const char3ClientOrHomeless = new path(
+  `char3ClientOrHomeless`,
+  [
+    `You decide to ignore them and as you keep walking you notice your client.`,
+    `However you also see someone on the side of the street. Its a young man around who seems to be around his early to mid 20s.`,
+    `He looks very malnourished.`,
+    `He could really use that pizza right now.`
+  ],
+  [
+    [`Give the pizza to the client`, `givePizzaToClient`],
+    [`Give the pizza to the starving stranger`, `givePizzaToStranger`]
+  ]
+);
+
+const givePizzaToClient = new path(
+  `givePizzaToClient`,
+  [
+    `You decide to do your job and give the pizza to your client.`,
+    `Your mission is complete and you live your whole life working at the pizzeria until you die from eating too much pizzas.`
+  ],
+  [
+    [`Replay`, `start`]
+  ]
+);
+
+const givePizzaToStranger = new path(
+  `givePizzaToStranger`,
+  [
+    `You decide to be kind and give the pizza to the starving stranger.`,
+  ]
+)
+
+// ***********Paths***********
+let paths = [
   start,
   PathChar1,
   PathChar2,
@@ -564,10 +620,16 @@ let Paths = [
   char2BackToCamp,
   char2CheckTraps,
   char2DistractShrieker,
+  maxDead,
+  char2UseItem,
+  char2SaveAlly,
   char3AnswerCall,
   char3Delivery,
   char3FiredBecauseAddress,
-  char3FiredBecauseNoWork
+  char3FiredBecauseNoWork,
+  char3ClientOrHomeless,
+  givePizzaToClient,
+  givePizzaToStranger
 ];
 let history = [];
 
