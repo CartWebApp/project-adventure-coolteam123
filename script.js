@@ -350,7 +350,7 @@ const char3AnswerCall = new path(
   `url(images/backgrounds/potential-pizzeria-inside.jpg)`,
   [
     [`Accept the order`, `char3Delivery`],
-    [`Say you don't do delivery`, ``],
+    [`Say you don't do delivery`, `char3FiredBecauseNoWork`],
   ]
 );
 
@@ -363,7 +363,7 @@ const char3Delivery = new path(
   ],
   `url(images/backgrounds/potential-pizzeria-outside.jpg)`,
   [
-    [`Go to xxx First St.`, `char3Fired`],
+    [`Go to xxx First St.`, `char3FiredBecauseAddress`],
     [`Go to xxx Fifth St.`, `char3CorrectLocation`],
   ]
 );
@@ -381,10 +381,21 @@ const char3CorrectLocation = new path(
   ]
 );
 
-const char3Fired = new path(
-  `char3Fired`,
+const char3FiredBecauseNoWork = new path(
+  `char3FiredBecauseNoWork`,
   [
-    `You wrote down the wrong address.`, 
+    `You tell them you don't feel like doing delivery right now.`,
+    `Instead, you tell them very politely to come to the pizzeria to pick it up.`, 
+    `You are fired!`
+  ],
+  `url(images/backgrounds/LuciaG-at-wrong-location.jpg)`,
+  [[`Replay`, `start`]]
+);
+
+const char3FiredBecauseAddress = new path(
+  `char3FiredBecauseAddress`,
+  [
+    `You went to the the wrong address.`, 
     `You are fired!`
   ],
   `url(images/backgrounds/LuciaG-at-wrong-location.jpg)`,
@@ -418,7 +429,8 @@ let paths = [
   char2CheckTraps,
   char3AnswerCall,
   char3Delivery,
-  char3Fired,
+  char3FiredBecauseAddress,
+  char3FiredBecauseNoWork
 ];
 let history = [];
 
