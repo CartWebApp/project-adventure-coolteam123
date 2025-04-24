@@ -803,7 +803,7 @@ function changePath(newPath, optionText, item) {
 }
 
 function getPath(PathName) {
-  for (each of Paths) {
+  for (each of paths) {
     if (each.name == PathName) {
       return each;
     }
