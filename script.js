@@ -113,13 +113,13 @@ const char1Continue = new path(
   `url(images/backgrounds/Abandoned-supermarket.jpg)`,
   [
     [`Investigate`, `char1Listen`],
-    [`Leave`, `char1Medicine`],
+    [`Leave`, `char1TryLeave`],
   ]
 );
 const char1Listen = new path(
   `char1Listen`,
   [
-    `You get creep closer to them to try and figure out what they are talking about.`,
+    `You creep closer to them to try and figure out what they are talking about.`,
     `You move quietly towards the direction of the voices and crouch behind some shelves. `,
     `You can't make out some parts but hear them talking about setting up a camp. "A safe area", they called it.`,
     `You've heard enough.`
@@ -127,7 +127,7 @@ const char1Listen = new path(
   `url(images/backgrounds/Abandoned-supermarket.jpg)`,
   [
     [`Head back to your camp.`, `char1TryLeave`],
-    [`Go say hi`, ``]
+    [`Go say hi`, `char1Talk`]
   ]
 );
 const char1TryLeave = new path(
@@ -139,8 +139,63 @@ const char1TryLeave = new path(
   ],
   `url(images/backgrounds/Abandoned-supermarket.jpg)`,
   [
-    [`Head back to your camp.`, `char1TryLeave`],
-    [`Go say hi`, ``]
+    [`Go say hi`, `char1Talk`]
+  ]
+);
+const char1Talk = new path(
+  `char1Talk`,
+  [
+    `You slowly emerge from behind the shelves and see the group.`,
+    `There's four of them - two male and two female.`,
+    `They call out to you first.`,
+    `A man in a dark gray shirt and black jeans, seemingly the leader, says they mean no harm, and they offer you a sandwich.`
+  ],
+  `url(images/backgrounds/peopleinstore.jpg)`,
+  [
+    [`Accept the sandwich.`, `char1Sandwich`],
+    [`Refuse the sandwich`, `char1NoSandwich`]
+  ]
+);
+
+const char1Sandwich = new path(
+  `char1Sandwich`,
+  [
+    `You take a sandwich and sit down in a circle with them.`,
+    `They introduce themselves - Elliot, the leader; Leah; Victor; and Tessa.`,
+    `They tell you their story - they've been traveling as a group of six, but two of them have gone missing.`,
+    `The group tells you how they hope to set up a permanent shelter.`,
+    `You laugh to yourself at that. Nowhere was safe enough for a permanent residence, and small camps were easier to move.`
+  ],
+  `url(images/backgrounds/peopleinstore.jpg)`,
+  [
+    [`Bid them farewell.`, `char1Farewell`]
+  ]
+);
+const char1NoSandwich = new path(
+  `char1NoSandwich`,
+  [
+    `You refuse a perfectly good sandwich, but still sit down with them as they eat.`,
+    `They introduce themselves - Elliot, the leader; Leah; Victor; and Tessa.`,
+    `They tell you their story - they've been traveling as a group of six, but two of them have gone missing.`,
+    `The group tells you how they hope to set up a permanent shelter.`,
+    `You laugh to yourself at that. Nowhere was safe enough for a permanent residence, and small camps were easier to move.`
+  ],
+  `url(images/backgrounds/peopleinstore.jpg)`,
+  [
+    [`Bid them farewell.`, `char1Farewell`]
+  ]
+);
+const char1Farewell = new path(
+  `char1Farewell`,
+  [
+    `You find an excuse and dimiss yourself.`,
+    `You head back to your camp after making sure they aren't tailing you.`,
+    `The camp is a little area set up in a backroom in a long-abandoned cornerstore.`,
+    `Curling up in a sleeping bag, you drift to sleep.`
+  ],
+  `url(images/backgrounds/Elena's-corner-store-camp.jpg)`,
+  [
+    [`You die in your sleep.`, `dead`]
   ]
 );
 
@@ -348,6 +403,10 @@ let paths = [
   char1Continue,
   char1Listen,
   char1TryLeave,
+  char1Talk,
+  char1Sandwich,
+  char1NoSandwich,
+  char1Farewell,
   dead,
   char2Supermarket,
   char2Clothing,
