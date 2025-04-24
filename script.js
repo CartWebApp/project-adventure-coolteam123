@@ -203,7 +203,7 @@ const pathChar2 = new path(
   `pathChar2`,
   [
     `You've run out of supplies.`,
-    `There is a supermarket nearby. You should visit. Dog can keep you company and help you in this search`,
+    `There is a supermarket nearby. You should visit. Max, your dog, can keep you company and help you in this search.`,
   ],
   `url(images/backgrounds/potential-front-view-supermaket.jpg)`,
   [
@@ -215,7 +215,7 @@ const pathChar2 = new path(
 const char2Supermarket = new path(
   `char2Supermarket`,
   [
-    `You enter the supermarket.`,
+    `You enter the supermarket. Max following you behind.`,
     `The lights are flickering and most of the food seems expired.`,
     `Likely, there won't be much to find. You may need to focus your efforts.`
   ],
@@ -253,58 +253,64 @@ const char2Weapon = new path(
     `You look around the supermarket for any sort of weapon.`,
     `It seems unlikely, but suprisingly enough you find a fire hatchet on a wall.`,
     `You try to open the case, but it's locked.`,
-    `You could try to break the lock, but the loud noise might bring trouble.`
+    `You could try to break the lock, but the loud noise might bring trouble.`,
+    `Suddendly a loud bang catches your attention.`,
+    `It's a shrieker. It sounds like its getting closer. Max starts barking.`
   ],
   `url(images/backgrounds/Abandoned-supermarket.jpg)`,
   [
-    [`Leave the hatchet`, `char2Continue`],
-    [`Break it open`, `char2ObtainHatchet`],
+    [`Leave the hatchet. It's not worth it`, `cchar2Continue`],
+    [`Break it open and fight`, `char2ObtainHatchet`],
   ]
 );
 
-const char2ObtainHatchet = new path(
+const char2ObtainHatchet = new path( 
   `charObtainHatchet`,
   [
-    `You break the glass and grab the hatchet. Just as you start to walk away you hear a loud unsettling sound.`,
-    `It's a shrieker and it's blocking your way.`
+    `You break the glass and grab the hatchet just in time.`,
+    `The shriekr is just around the corner of the aisle.`,
+    `You run, gripping the hatchet tightly and strike the shrieker just as he was about to make the turn.`,
+    `A loud screetch comes out of its mouth. It falls to the ground, wounded.`,
+    `You don't think twice to stay. You get up quickly, call out for Max and run.`
   ],
   [
-    [``]
+    [`Run before the shrieker gets up`, `char2Continue`]
   ]
 )
 
 const char2Continue = new path(
   `char2Continue`,
   [
-    `You keep looking around the supermarket for any other thing that may be of value.`,
+    `Some time has passed and you keep looking around the supermarket for any other thing that may be of value.`,
     `While walking you hear the faint buzz of talking, and quickly hide behind the shelves.`,
     `It's been a while since you've met people. You want to investigate, but it isn't impossible that the strangers are thieves or even killers.`,
-    `In fact, it's likely.`
+    `In fact, it's likely.`,
+    `To your advantage, you had trained Max to be quiet in times of crisis.`
   ],
   `url(images/backgrounds/Abandoned-supermarket.jpg)`,
   [
     [`Investigate`, `char2ListenToConv`],
-    [`Leave`, `char2Medicine`],
+    [`Leave`, `char2BackToCamp`],
   ]
 );
 
 const char2ListenToConv = new path(
   `char2ListenToConv`,
   [
-    `You get creep closer to them to try and figure out what they are talking about.`,
-    `You move quietly towards the direction of the voices and crouch behind some shelves. `,
+    `You creep closer to them to try and figure out what they are talking about.`,
+    `You command max to say and you move quietly towards the direction of the voices, crouching behind some shelves.`,
     `You can't make out some parts but hear them talking about setting up a camp. "A safe area," they called it.`,
     `You've heard enough.`
   ],
   `url(images/backgrounds/Abandoned-supermarket.jpg)`,
-  [[`Head back to your camp`, ``]]
+  [[`Head back to your camp`, `char2BackToCamp`]]
 );
 
 const char2BackToCamp = new path(
   `char2BackToCamp`,
   [
     `You move quietly, avoiding the glass on the ground that could make your presence known.`,
-    `You successfuly avoid getting caught and get out of the store.`,
+    `You successfuly avoid getting caught and get out of the store with Max.`,
     `Your search for today has ended. Now it is time to head back to your camp.`,
     `Once you get home you remember the hunting traps you had set up nearby.`
   ],
@@ -316,16 +322,37 @@ const char2BackToCamp = new path(
 const char2CheckTraps = new path(
   `charCheckTraps`,
   [
-    `The walking distance is not that far. Dogs follows right behind as you walk towards the traps.`,
-    `Everything seems normal when out of nowhere a loud sound catches your attention.`,
+    `The walking distance is not that far. Max follows right behind as you walk towards the traps.`,
+    `Everything seems normal when out of nowhere a loud screetch startles you.`,
     `A cry of help soon follows.`,
     `You run towards the direction of the commotion. You see a young man on the ground and a shrieker not so far from him.`,
     `The shrieker is about to attack him.`
   ],
   [
-    [`Leave. There is nothing you can do`, `char2Ignore`],
-    [`Distract the shrieker`, `charDistractShrieker`]
+    [`Leave. There is nothing you can do`, `dead`],
+    [`Distract the shrieker`, `char2DistractShrieker`]
   ]
+)
+
+const char2DistractShrieker = new path(
+  `charDistractShrieker`,
+  [
+    `You decide to help by distracting the shrieker.`,
+    `You don't know exactly what to do though.`
+  ],
+  [
+    [`Send Max to distract the shrieker`, `maxDead`],
+    [`Distract it yourselft`, ``]
+  ]
+)
+
+const maxDead = new path(
+  `maxDead`,
+  [`Max runs on your command but the shrieker is too fast and strikes him.`,
+    `Sadly Max doesn't make it. You have lost your life-long partner and eventually you die too from sadness.`
+  ],
+  `url(images/potential-character-facing-building.jpg)`,
+  [[`Replay`, `start`]]
 )
 
 const pathChar3 = new path(
@@ -423,10 +450,12 @@ let paths = [
   char2Clothing,
   char2Medicine,
   char2Weapon,
+  char2ObtainHatchet,
   char2Continue,
   char2ListenToConv,
   char2BackToCamp,
   char2CheckTraps,
+  char2DistractShrieker,
   char3AnswerCall,
   char3Delivery,
   char3FiredBecauseAddress,
