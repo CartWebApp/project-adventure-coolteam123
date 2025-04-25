@@ -336,7 +336,7 @@ const char2Clothing = new Path(
     `You look around the supermarket for clothes.`,
     `You find a coat and a pair of boots.`
   ],
-  `url(images/backgrounds/Abandoned-supermarket.jpg)`,
+  `url(images/backgrounds/Jacket-and-boots.jpg)`,
   [[`Keep looking around`, `char2Continue`]]
 );
 
@@ -347,7 +347,7 @@ const char2Medicine = new Path(
     `You find a first aid kit.`,
     `You take the first aid kit with you and return from your search.`
   ],
-  `url(images/backgrounds/Abandoned-supermarket.jpg)`,
+  `url(images/backgrounds/firstaid.jpg)`,
   [[`Keep looking around`, `char2Continue`]]
 );
 const char2Weapon = new Path(
@@ -360,7 +360,7 @@ const char2Weapon = new Path(
     `Suddendly a loud bang catches your attention.`,
     `It's a shrieker. It sounds like its getting closer. Max starts barking.`
   ],
-  `url(images/backgrounds/Abandoned-supermarket.jpg)`,
+  `url(images/backgrounds/axe.jpg)`,
   [
     [`Leave the hatchet. It's not worth it`, `char2Continue`],
     [`Break it open and fight`, `char2ObtainHatchet`]
@@ -368,7 +368,7 @@ const char2Weapon = new Path(
 );
 
 const char2ObtainHatchet = new Path(
-  `charObtainHatchet`,
+  `char2ObtainHatchet`,
   [
     `You break the glass and grab the hatchet just in time.`,
     `The shrieker is just around the corner of the aisle.`,
@@ -376,7 +376,7 @@ const char2ObtainHatchet = new Path(
     `A loud screetch comes out of its mouth. It falls to the ground, wounded.`,
     `You don't think twice to stay. You get up quickly, call out for Max and run.`
   ],
-  `url(images/backgrounds/Abandoned-supermarket.jpg)`,
+  `url(images/backgrounds/shrieker-supermarket.jpg)`,
   [
     [`Run before the shrieker gets up`, `char2Continue`]
   ]
@@ -391,10 +391,10 @@ const char2Continue = new Path(
     `In fact, it's likely.`,
     `To your advantage, you had trained Max to be quiet in times of crisis.`
   ],
-  `url(images/backgrounds/Abandoned-supermarket.jpg)`,
+  `url(images/backgrounds/Ezekiel-hiding.jpg)`,
   [
     [`Investigate`, `char2ListenToConv`],
-    [`Leave`, `char2BackToCamp`],
+    [`Leave, they could be dangerous`, `char2HeadBack`]
   ]
 );
 
@@ -406,25 +406,26 @@ const char2ListenToConv = new Path(
     `You can't make out some parts but hear them talking about setting up a camp. "A safe area," they called it.`,
     `You've heard enough.`
   ],
-  `url(images/backgrounds/Abandoned-supermarket.jpg)`,
-  [[`Head back to your camp`, `char2BackToCamp`]]
+  `url(images/backgrounds/group-silhouette.jpg)`,
+  [[`Head back to your camp`, `char2HeadBack`]]
 );
 
-const char2BackToCamp = new Path(
-  `char2BackToCamp`,
+const char2HeadBack = new Path(
+  `char2HeadBack`,
   [
     `You move quietly, avoiding the glass on the ground that could make your presence known.`,
     `You successfuly avoid getting caught and get out of the store with Max.`,
     `Your search for today has ended. Now it is time to head back to your camp.`,
     `Once you get home you remember the hunting traps you had set up nearby.`
   ],
+  `url(images/backgrounds/abandoned-cabin-in-woods.jpg)`,
   [
     [`Go check on the traps`, `char2CheckTraps`]
   ]
 );
 
 const char2CheckTraps = new Path(
-  `charCheckTraps`,
+  `char2CheckTraps`,
   [
     `The walking distance is not that far. Max follows right behind as you walk towards the traps.`,
     `Everything seems normal when out of nowhere a loud screetch startles you.`,
@@ -432,53 +433,124 @@ const char2CheckTraps = new Path(
     `You run towards the direction of the commotion. You see a young man on the ground and a shrieker not so far from him.`,
     `The shrieker is about to attack him.`
   ],
+  `url(images/backgrounds/Roman-being-attacked.jpg)`,
   [
     [`Leave. There is nothing you can do`, `dead`],
-    [`Distract the shrieker`, `char2DistractShrieker`]
+    [`Distract the shrieker`, `char2DistractShrieker`],
+    [`Use hatchet and attack.`, `char2Attack`]
+  ]
+);
+
+const char2Attack = new Path(
+  `char2Attack`,
+  [
+    `You quickly run towards the shrieker, raise your hatchet and smite it.`,
+    `It lets out a horrifying scream and runs away.`
+  ],
+  `url(images/backgrounds/Roman-being-attacked.jpg)`,
+  [
+    [`Get the stranger and run away too`, `char2SaveAlly`]
   ]
 );
 
 const char2DistractShrieker = new Path(
-  `charDistractShrieker`,
+  `char2DistractShrieker`,
   [
     `You decide to help by distracting the shrieker.`,
     `You don't know exactly what to do though.`
   ],
+  `url(images/backgrounds/Roman-being-attacked.jpg)`,
   [
     [`Send Max to distract the shrieker`, `maxDead`],
-    [`Distract it yourselft`, `char2UseItem`]
+    [`Distract it yourself`, `char2UseItem`]
   ]
 );
 
 const maxDead = new Path(
   `maxDead`,
   [`Max runs on your command but the shrieker is too fast and strikes him.`,
-    `Sadly Max doesn't make it. You have lost your life-long partner and eventually you die too from sadness.`
+    `Sadly Max doesn't make it. You have lost your life-long partner and eventually you die too, from sadness.`
   ],
-  `url(images/potential-character-facing-building.jpg)`,
+  `url(images/backgrounds/Max-dead.jpg)`,
   [[`Replay`, `start`]]
 );
 
 const char2UseItem = new Path(
   `char2UseItem`,
   [
-    `You use take of the new jacket you found today and throw at it the shrieker.`,
+    `You take off the new jacket you found today and throw at it the shrieker.`,
+    `It attempts to take the jacket off its face but it is struggling.`
   ],
+  `url(images/backgrounds/Abandoned-supermarket.jpg)`,
   [
-    [`Run away with stranger`, `char2SaveAlly`]
+    [`Run away with stranger before the shrieker gets the jacket off its face`, `char2SaveAlly`]
   ]
 );
 
 const char2SaveAlly = new Path(
-  `charSaveAlly`,
+  `char2SaveAlly`,
   [
-    `You quickly run towards the man on the ground, grab him by the shoulder, and start running away.`,
-    `You take him near your cabin and try to avoid showing your camp since he is a stranger afterall.`,
-    `"Thank you," he says while trying to catch his breath. You stay silent.`,
-    `"My name is Roman," he says while extending his hand for a handshake.`
+    `You quickly run towards the man on the ground, grab him by the forearm, and start running away. You take him near your cabin and try to avoid showing your camp since he is a stranger afterall.`,
+    `"Thank you," he says once you guys stop to rest, while trying to catch his breath. You stay silent.`,
+    `"My name is Roman," he says, extending his hand for a handshake.`,
+    `You ignore him again and just stare at Max who lays on the ground, resting too. Roman retrieves his hand and wipes the sweat of his forehead instead.`,
+    `Roman starts talking once again. He says he was with a group but got lost a few days ago. He was looking for his group members today when he got attacked by the shrieker you saw.`,
+    `"You should join us," he suggests.`,
+    `"They're probably already dead," you say no interested.`,
+    `"You don't know that. They're smart and alive, I know it. If you help me find them we can set up a safe are together," Roman says.`,
+    `Helping him could either bring you problems or help you stay alive.`,
+    `But why should you join him when you have kept yourself alive for so long.`
+  ],
+  `url(images/backgrounds/foggy-forest.jpg)`,
+  [
+    [`Decline his invitation. You don't need anyone but Max.`, `char2Refuse`],
+    [`Join him and help him find his group. You can help him stay alive.`, `char2Join`]
   ]
 );
 
+const char2Refuse = new Path(
+  `char2Refuse`,
+  [
+    `"No," You say firmly.`,
+    `"You should find a place to stay before it gets any darker," you tell him as you start walking away from him.`,
+    `You leave him behind and don't look back. A few years pass and you find a safer place to set your camp. Max dies from his old age and you eventually do too.`
+  ],
+  `url(images/backgrounds/abandoned-building-forest.jpg)`,
+  [[`Replay`, `start`]]
+);
+
+const char2Join = new Path(
+  `char2Join`,
+  [
+    `You stay silent for a few minutes, complementing Roman's suggestion.`,
+    `"Okay," you say. Roman just smiles and nods. He offers you some food he had left and you give some to Max. You take him to your cabin and offer to look for his group in the morning.`,
+    `You will have to trust him.`,
+    `So much has happened today. You should get some rest to help Roman find his group tomorrow morning.`
+  ],
+  `url(images/backgrounds/abandoned-cabin-in-woods.jpg)`,
+  [[`Get some sleep`, `char2NextDay`]]
+);
+
+const char2NextDay = new Path(
+  `char2NextDay`,
+  [
+    `You didn't get enough sleep. You stayed alert and kept waking up throughout the whole night. You had to make sure Roman hadn't tricked you and looted your supplies while you were asleep.`,
+    `You get out of your sleeping bag and turn your head to check on Max who is laying next to you. You then look at Roman who is on the other corner, still asleep.`,
+    `You get wake him up and get your things ready to head out. Roman had mentioned "Foods", the supermarket you went to yesterday, as the last place he saw his group.`
+  ],
+  `url(images/backgrounds/cabin-inside.jpg)`
+  [[`Go to the supermarket again`, `char2BackToFoods`]]
+)
+
+const char2BackToFoods = new Path(
+  `char2BackToFoods`,
+  [
+    `You arrive at the supermarket. You walk towards the entrance with Roman and Max following you behind.`
+    `You might as well look for more supplies now that you are here.`
+  ],
+  `url(images/backgrounds/abandoned-parking lot.jpg)`,
+  [[`Go inside and look for Roman's ground and more supplies`]]
+)
 // ***********Character 3(Lucia Graves)-Path and choices***********
 
 const PathChar3 = new Path(
@@ -617,12 +689,16 @@ let paths = [
   char2ObtainHatchet,
   char2Continue,
   char2ListenToConv,
-  char2BackToCamp,
+  char2HeadBack,
   char2CheckTraps,
+  char2Attack,
   char2DistractShrieker,
   maxDead,
   char2UseItem,
   char2SaveAlly,
+  char2Refuse,
+  char2Join,
+  char2NextDay,
   char3AnswerCall,
   char3Delivery,
   char3FiredBecauseAddress,
