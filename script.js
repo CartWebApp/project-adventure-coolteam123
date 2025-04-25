@@ -1,6 +1,13 @@
 const text = document.getElementById("text");
+const saveName = document.getElementById("name");
 const background = document.getElementById("background");
 const options = document.getElementById("options");
+const settings = document.getElementById("settings");
+const loadOptions = document.getElementById("loadOptions");
+const loadSection = document.getElementById("loadSection");
+const homeSection = document.getElementById("homeSection");
+const inventorySection = document.getElementById("inventorySection");
+const saveSection = document.getElementById("saveSection");
 const historySection = document.getElementById("historySection");
 const titleScreen = document.getElementById("titleScreen");
 let flickerBlur = 170;
@@ -738,7 +745,7 @@ function titleSpread() {
 
 function leaveMenu() {
   titleScreen.className = "throughBlack";
-  setTimeout(function () {
+  timeoutID = setTimeout(function () {
     startGame();
   }, 2500);
 }
@@ -770,7 +777,7 @@ function nextText() {
           history.push([story.text[story.textNum],0]);
         }
       }
-    } else if(story.textNum == 999){
+    } else if(story.textNum >= 900){
       clearTimeout(timeoutID);
       text.innerText = story.text[story.text.length-1];
     }
@@ -810,6 +817,7 @@ function showHistory() {
   if (historySection.style.zIndex == 2) {
     historySection.style.zIndex = -2;
   } else {
+    hideAllOptions(historySection);
     clearHistory();
     for (each of history) {
       const text = document.createElement("p");
@@ -835,18 +843,19 @@ function showHistory() {
 }
 
 function showInventory() {
-  if (historySection.style.zIndex == 2) {
-    historySection.style.zIndex = -2;
+  if (inventorySection.style.zIndex == 2) {
+    inventorySection.style.zIndex = -2;
   } else {
+    hideAllOptions(inventorySection);
     clearHistory();
     for (each of inventory) {
       const text = document.createElement("p");
       const textText = document.createTextNode(each.name);
       text.className = `historyText`;
       text.append(textText);
-      historySection.append(text);
+      inventorySection.append(text);
     }
-    historySection.style.zIndex = 2;
+    inventorySection.style.zIndex = 2;
   }
 }
 
@@ -863,6 +872,13 @@ function clearHistory() {
 
 function clearOptions() {
   let sections = document.querySelectorAll("#options button");
+  for (each of sections) {
+    each.remove();
+  }
+}
+
+function clearLoadOptions() {
+  let sections = document.querySelectorAll("#loadOptions button");
   for (each of sections) {
     each.remove();
   }
@@ -900,3 +916,109 @@ function typeWriter(messageToShow, targetElement, timeBetween, currentPos = 0) {
 function onLoad(){
   titleShadow();
 }
+
+function hideAllOptions(section){
+  saveSection.style.zIndex = -2;
+  loadSection.style.zIndex = -2;
+  historySection.style.zIndex = -2;
+  inventorySection.style.zIndex = -2;
+  homeSection.style.zIndex = -2;
+  if(section){
+    section.style.zIndex = 2;
+  }
+}
+
+function createNewSave(){
+  if(saveName.value){
+    localStorage.setItem(`game_${saveName.value}`, JSON.stringify([story, history, inventory]));
+    saveName.value = '';
+    hideAllOptions();    
+  } else {
+    saveName.placeholder = 'Please enter a name.'
+  }
+}
+
+function saveToLocalStorage(){
+  saveName.ariaPlaceholder = ''
+  if (saveSection.style.zIndex == 2) {
+    saveSection.style.zIndex = -2;
+  } else {
+    saveSection.style.zIndex = 2;
+    hideAllOptions(saveSection)
+  }
+}
+
+function loadFromLocalStorage(){
+  if (loadSection.style.zIndex == 2) {
+    loadSection.style.zIndex = -2;
+  } else {
+    hideAllOptions(loadSection);
+    loadSection.style.zIndex = 2;
+    let search = 'game_';
+    let values = Object.keys(localStorage).filter((key)=> key.startsWith(search)).map(str => str.split(`_`)[1]);
+    
+    clearLoadOptions();
+    for (each of values) {
+      var link = document.createElement("button");
+      link.id = each;
+      link.className = `hover`;
+      const text = document.createTextNode(each);
+      
+      link.appendChild(text);
+      
+      link.onclick = function () {
+        restoreFromLocalStorage(this.id);
+      };
+
+      loadOptions.append(link);
+    }
+  }
+}
+
+function returnHome(){
+  if (homeSection.style.zIndex == 2) {
+    homeSection.style.zIndex = -2;
+  } else {
+    hideAllOptions(homeSection);
+    homeSection.style.zIndex = 2;
+  }
+}
+
+function returnHomeAnyway(){
+  titleScreen.className = "backFromBlack";
+  inventory = [];
+  story = getPath('start');
+  story.textNum = 0;
+  hideAllOptions();
+  background.style.backgroundImage = story.image;
+  text.innerHTML = '';
+  history = [];
+  clearOptions();
+  titleShadow();
+}
+
+function restoreFromLocalStorage(load){
+
+  story = JSON.parse(localStorage.getItem(`game_${load}`))[0];
+  history = JSON.parse(localStorage.getItem(`game_${load}`))[1];
+  inventory = JSON.parse(localStorage.getItem(`game_${load}`))[2];
+
+  text.innerText = story.text[story.textNum];
+
+  clearOptions();
+
+  if (story.textNum == story.text.length - 1 || story.textNum > 900) {
+    story.textNum = 999;
+    makeOptions();
+    nextText();
+  }
+  background.style.backgroundImage = story.image;
+
+  loadSection.style.zIndex = -2;
+}
+
+document.addEventListener('click', function(event) {
+  if (!homeSection.contains(event.target)&&!loadSection.contains(event.target)&&!saveSection.contains(event.target)&&!inventorySection.contains(event.target)&&!historySection.contains(event.target)&&!settings.contains(event.target)) {
+    hideAllOptions();
+  }
+});

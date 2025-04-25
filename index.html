@@ -23,10 +23,33 @@
         <p id="text"></p>
     </section>
     <div id="historySection">
+        <h2>History:</h2>
+    </div>
+    <div id="inventorySection">
+        <h2>Inventory:</h2>
+    </div>
+    <div id="loadSection">
+        <h2>Load:</h2>
+        <div id="loadOptions"></div>
+    </div>
+    <div id="homeSection">
+        <h2>If you return home without saving your progress will be lost.</h2>
+        <button onclick="returnHomeAnyway()">Return home anyway</button>
+    </div>
+    <div id="saveSection">
+        <h2>Save:</h2>
+        <form>
+            <label for="name">Save name:</label>
+            <input type="text" id="name" name="name">
+            <button type="button" onclick="createNewSave()">Save</button>
+        </form>
     </div>
     <section id="settings">
+        <button id="home" onclick="returnHome()">Home</button>
         <button id="history" onclick="showHistory()">History</button>
         <button id="inventory" onclick="showInventory()">Inventory</button>
+        <button id="save" onclick="saveToLocalStorage()">Save</button>
+        <button id="load" onclick="loadFromLocalStorage()">Load</button>
     </section>
     <script src="script.js">
 
