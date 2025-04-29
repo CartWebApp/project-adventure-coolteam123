@@ -735,6 +735,7 @@ let paths = [
   char2Refuse,
   char2Join,
   char2NextDay,
+  char2BackToFoods,
   char2Supermarket2,
   char2Split,
   char2Together,
