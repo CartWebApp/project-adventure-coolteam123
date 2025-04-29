@@ -541,7 +541,8 @@ const char2NextDay = new Path(
 const char2BackToFoods = new Path(
   `char2BackToFoods`,
   [
-    `You arrive at the supermarket. You walk towards the entrance with Roman and Max following you behind.``You might as well look for more supplies now that you are here.`,
+    `You arrive at the supermarket. You walk towards the entrance with Roman and Max following you behind.`,
+    `You might as well look for more supplies now that you are here.`,
   ],
   `url(images/backgrounds/abandoned-parking lot.jpg)`,
   [[`Go inside`, `char2Supermarket2`]]
