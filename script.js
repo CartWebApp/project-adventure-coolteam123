@@ -560,8 +560,17 @@ const char2Supermarket2 = new Path(
   ]
 );
 
+const char2Together = new Path(
+  `char2Together`,
+  [
+    `You never find Roman's group, years pass but you guys become a team and die in your sleep.`,
+  ],
+  `url(images/backgrounds/dead-graves.jpg)`,
+  [`Replay`, `start`]
+);
+
 const char2Split = new Path(
-  `char2Spli`,
+  `char2Split`,
   [
     `You tell Roman to search in the "Cleaning Supplies" section while you'll search in "Frozen Foods.`,
     `You head towards "Frozen Foods" with Max.`,
@@ -576,13 +585,15 @@ const char2Split = new Path(
   ]
 );
 
-const char2Together = new Path(
-  `char2Together`,
+const char2FindRoman = new Path(
+  `char2FindRoman`,
   [
-    `You never find Roman's group, years pass but you guys become a team and die in your sleep.`,
+    `You run with Max and head towards the "Cleaning Supplies" section. You grab a long piece of metal you found on the way, getting ready to hit anything that is attacking Roman.`,
+    `You make a turn and are about to raise the weapon on your hand but you freeze. You don't see Roman getting attacked.`,
+    `You see him hugging people. Its his group.`,
+    `You drop your weapon.`,
   ],
-  `url(images/backgrounds/dead-graves.jpg)`,
-  [`Replay`, `start`]
+  `url(images/backgrounds/frozen-foods.jpg)`
 );
 // ***********Character 3(Lucia Graves)-Path and choices***********
 
@@ -725,6 +736,8 @@ let paths = [
   char2Join,
   char2NextDay,
   char2Supermarket2,
+  char2Split,
+  char2Together,
   char3AnswerCall,
   char3Delivery,
   char3FiredBecauseAddress,
