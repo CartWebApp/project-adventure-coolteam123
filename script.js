@@ -559,6 +559,31 @@ const char2Supermarket2 = new Path(
     [`Stay together and go to "Canned Goods" section`, `char2Together`],
   ]
 );
+
+const char2Split = new Path(
+  `char2Spli`,
+  [
+    `You tell Roman to search in the "Cleaning Supplies" section while you'll search in "Frozen Foods.`,
+    `You head towards "Frozen Foods" with Max.`,
+    `On your way there you examine your surroundings, trying to find anything that may be helpful.`,
+    `You are observing the freezers which had stopped working due to the supermarket not being in an area with electricity which was still limited either way.`,
+    `Out of nowhere you hear a squeal followed by clamor. Roman could be in danger.`,
+  ],
+  `url(images/backgrounds/frozen-foods.jpg)`,
+  [
+    [`Go look for roman`, `char2FindRoman`],
+    [`Leave the supermarket, He could be dead already.`, `dead`],
+  ]
+);
+
+const char2Together = new Path(
+  `char2Together`,
+  [
+    `You never find Roman's group, years pass but you guys become a team and die in your sleep.`,
+  ],
+  `url(images/backgrounds/dead-graves.jpg)`,
+  [`Replay`, `start`]
+);
 // ***********Character 3(Lucia Graves)-Path and choices***********
 
 const PathChar3 = new Path(
@@ -699,6 +724,7 @@ let paths = [
   char2Refuse,
   char2Join,
   char2NextDay,
+  char2Supermarket2,
   char3AnswerCall,
   char3Delivery,
   char3FiredBecauseAddress,

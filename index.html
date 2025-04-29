@@ -1,58 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>The Darkling</title>
-    <link rel="icon" type="image/logo-icon" href="/images/the-darkling-logo.jpg">
-    <link rel="preload" as="image" href="images/potential-character-facing-building.jpg">
-</head>
-<body onload="onLoad()">
+    <link
+      rel="icon"
+      type="image/logo-icon"
+      href="/images/the-darkling-logo.jpg"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="images/potential-character-facing-building.jpg"
+    />
+  </head>
+  <body onload="onLoad()">
     <section id="titleScreen">
-        <div id="buttonHolder">
-            <h1 id="title">The Darkling</h1>
-            <button id="startGame" class="hover" onclick="leaveMenu()">Play</button>
-        </div>
+      <div id="buttonHolder">
+        <h1 id="title">The Darkling</h1>
+        <button id="startGame" class="hover" onclick="leaveMenu()">Play</button>
+      </div>
     </section>
     <div id="cursor"></div>
     <div id="background"></div>
-    <section id="options">
-    </section>
+    <section id="options"></section>
     <section id="textInteract" class="hover" onclick="nextText()">
-        <p id="text"></p>
+      <p id="text"></p>
     </section>
     <div id="historySection">
-        <h2>History:</h2>
+      <h2>History:</h2>
     </div>
     <div id="inventorySection">
-        <h2>Inventory:</h2>
+      <h2>Inventory:</h2>
     </div>
     <div id="loadSection">
-        <h2>Load:</h2>
-        <div id="loadOptions"></div>
+      <h2>Load:</h2>
+      <div id="loadOptions"></div>
     </div>
     <div id="homeSection">
-        <h2>If you return home without saving your progress will be lost.</h2>
-        <button onclick="returnHomeAnyway()">Return home anyway</button>
+      <h2>If you return home without saving your progress will be lost.</h2>
+      <button onclick="returnHomeAnyway()">Return home anyway</button>
     </div>
     <div id="saveSection">
-        <h2>Save:</h2>
-        <form>
-            <label for="name">Save name:</label>
-            <input type="text" id="name" name="name">
-            <button type="button" onclick="createNewSave()">Save</button>
-        </form>
+      <h2>Save:</h2>
+      <form>
+        <label for="name">Save name:</label>
+        <input type="text" id="name" name="name" />
+        <button type="button" onclick="createNewSave()">Save</button>
+      </form>
     </div>
     <section id="settings">
-        <button id="home" onclick="returnHome()">Home</button>
-        <button id="history" onclick="showHistory()">History</button>
-        <button id="inventory" onclick="showInventory()">Inventory</button>
-        <button id="save" onclick="saveToLocalStorage()">Save</button>
-        <button id="load" onclick="loadFromLocalStorage()">Load</button>
+      <button id="home" onclick="returnHome()">Home</button>
+      <button id="history" onclick="showHistory()">History</button>
+      <button id="inventory" onclick="showInventory()">Inventory</button>
+      <button id="save" onclick="saveToLocalStorage()">Save</button>
+      <button id="load" onclick="loadFromLocalStorage()">Load</button>
     </section>
-    <script src="script.js">
-
-    </script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
