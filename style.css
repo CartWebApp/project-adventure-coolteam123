@@ -31,7 +31,8 @@ body {
   display: flex;
   flex-flow: column nowrap;
   width: 25%;
-  min-width: 500px;
+  width: 500px;
+  max-width: 90%;
   visibility: hidden;
 }
 
