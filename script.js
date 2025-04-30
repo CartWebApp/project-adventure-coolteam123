@@ -533,9 +533,8 @@ const char2NextDay = new Path(
     `You get out of your sleeping bag and turn your head to check on Max who is laying next to you. You then look at Roman who is on the other corner, still asleep.`,
     `You get wake him up and get your things ready to head out. Roman had mentioned "Foods", the supermarket you went to yesterday, as the last place he saw his group.`,
   ],
-  `url(images/backgrounds/cabin-inside.jpg)`[
-    [`Go to the supermarket again`, `char2BackToFoods`]
-  ]
+  `url(images/backgrounds/cabin-inside.jpg)`,
+  [[`Go to the supermarket again`, `char2BackToFoods`]]
 );
 
 const char2BackToFoods = new Path(
@@ -544,7 +543,7 @@ const char2BackToFoods = new Path(
     `You arrive at the supermarket. You walk towards the entrance with Roman and Max following you behind.`,
     `You might as well look for more supplies now that you are here.`,
   ],
-  `url(images/backgrounds/abandoned-parking lot.jpg)`,
+  `url(images/backgrounds/potential-front-view-supermaket.jpg)`,
   [[`Go inside`, `char2Supermarket2`]]
 );
 
@@ -554,7 +553,7 @@ const char2Supermarket2 = new Path(
     `You open the door and head inside.`,
     `You walk quietly, analyzing the place for any trace of what could lead to Roman's group.`,
   ],
-  `url(images/backgrounds/potential-front-view-supermaket.jpg)`,
+  `url(images/backgrounds/Abandoned-supermarket.jpg)`,
   [
     [`Split and go to "Frozen Foods" section`, `char2Split`],
     [`Stay together and go to "Canned Goods" section`, `char2Together`],
@@ -567,7 +566,7 @@ const char2Together = new Path(
     `You never find Roman's group, years pass but you guys become a team and die in your sleep.`,
   ],
   `url(images/backgrounds/dead-graves.jpg)`,
-  [`Replay`, `start`]
+  [[`Replay`, `start`]]
 );
 
 const char2Split = new Path(
@@ -594,7 +593,38 @@ const char2FindRoman = new Path(
     `You see him hugging people. Its his group.`,
     `You drop your weapon.`,
   ],
-  `url(images/backgrounds/frozen-foods.jpg)`
+  `url(images/backgrounds/encounter-group.jpg)`,
+  [[`Get closer and say hi`, `char2MeetGroup`]]
+);
+
+const char2MeetGroup = new Path(
+  `char2MeetGroup`,
+  [
+    `As you walk closer to them you recognize the face of a man, around his late 20s.`,
+    `It's the group from yesterday, the one discussing the possible safe area.`,
+    `Roman introduces you to Elliot, the man you recognized, Leah, a young woman around her 20s, Victor, a young man who is probably in his early 20s, and Tessa, who appears to be the youngest.`,
+    `They offer you to sit down and talk.`,
+  ],
+  `url(images/backgrounds/encounter-group.jpg)`,
+  [[`Sit down and talk`, `char2SitDown`]]
+);
+
+const char2SitDown = new Path(
+  `char2SitDown`,
+  [
+    `You guys go find a place to sit down.`,
+    `The group introduces themselves one more time. Roman mentions how you saved him and the group thanks you.`,
+    `"I inivted him to join us," says Roman. "He can help us find George and help us form the safe area."`,
+    `Elliot tells you about a place they heard about, guarded by a huge shrieker, but potentially save enough to help you stay alive for years.`,
+    `"The place is big and shriekers barely go there," says Leah.`,
+    `"We can plant crops there too," adds Victor.``They keep telling you about the place when Elliot interupts. He suggests you guys head back and keep discussing tomorrow.`,
+    `He offers you to stay with them in their camp close to the supermarket but your place would be safer.`,
+  ],
+  `url(images/backgrounds/encounter-group.jpg)`,
+  [
+    [`Go to their camp`, `char2TheirCamp`],
+    [`Offer them to stay at your place`, `char2YourCampWithGroup`],
+  ]
 );
 // ***********Character 3(Lucia Graves)-Path and choices***********
 
@@ -740,6 +770,7 @@ let paths = [
   char2Supermarket2,
   char2Split,
   char2Together,
+  char2FindRoman,
   char3AnswerCall,
   char3Delivery,
   char3FiredBecauseAddress,
