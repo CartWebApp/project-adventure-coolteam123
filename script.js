@@ -10,11 +10,17 @@ const inventorySection = document.getElementById("inventorySection");
 const saveSection = document.getElementById("saveSection");
 const historySection = document.getElementById("historySection");
 const titleScreen = document.getElementById("titleScreen");
+const timeBar = document.getElementById("loadingBar");
 let flickerBlur = 170;
 let flickerSpread = 30;
+let quickTimeCounter = 0;
+let quickTimer = 3;
 
 let timeoutID;
 let timeoutID2;
+let intervalId;
+
+let startTime = Date.now();
 
 let inventory = [];
 
@@ -723,8 +729,86 @@ const givePizzaToClient = new Path(
 );
 
 const givePizzaToStranger = new Path(`givePizzaToStranger`, [
-  `You decide to be kind and give the pizza to the starving stranger.`,
+  `You decide to be kind and give the pizza to the starving stranger.`
 ]);
+
+// ***********Quick time event***********
+const quickTimeStart = new Path(
+  `quickTimeStart`,
+  [
+    `The monster is coming!`,
+    `Run away from it - go to slow or the wrong direction and you could be in trouble!`,
+  ],
+  `url(images/backgrounds/monster&person-in-forest.jpg)`,
+  [[`beginQuickTime`,`quickTime`]]
+);
+
+const quickTimeNorth = new Path(
+  `quickTimeNorth`,
+  [
+    `The monster is coming from the north!`
+  ],
+  `url(images/backgrounds/monster&person-in-forest.jpg)`,
+  [[`Go north`, `dead`],
+  [`Go east`, `dead`],
+  [`Go west`, `dead`],
+  [`Go south`, `quickTime`]]
+);
+
+const quickTimeSouth = new Path(
+  `quickTimeSouth`,
+  [
+    `The monster is coming from the south!`
+  ],
+  `url(images/backgrounds/monster&person-in-forest.jpg)`,
+  [[`Go north`, `quickTime`],
+  [`Go east`, `dead`],
+  [`Go west`, `dead`],
+  [`Go south`, `dead`]]
+);
+
+const quickTimeWest = new Path(
+  `quickTimeWest`,
+  [
+    `The monster is coming from the west!`
+  ],
+  `url(images/backgrounds/monster&person-in-forest.jpg)`,
+  [[`Go north`, `dead`],
+  [`Go east`, `quickTime`],
+  [`Go west`, `dead`],
+  [`Go south`, `dead`]]
+);
+
+const quickTimeEast = new Path(
+  `quickTimeEast`,
+  [
+    `The monster is coming from the east!`
+  ],
+  `url(images/backgrounds/monster&person-in-forest.jpg)`,
+  [[`Go north`, `dead`],
+  [`Go east`, `dead`],
+  [`Go west`, `quickTime`],
+  [`Go south`, `dead`]]
+);
+
+const wonQuickTime = new Path(
+  `wonQuickTime`,
+  [
+    `You safely got away from the monster`
+  ],
+  `url(images/backgrounds/foggy-forest.jpg)`,
+  [[`Try again`, `quickTimeStart`]]
+);
+
+const quickTime = new Path(
+  `quickTime`,
+  [
+    `Just to keep everything happy`
+  ],
+  `url(images/backgrounds/monster&person-in-forest.jpg)`,
+  [[`Perish`, `dead`]]
+);
+
 
 // ***********Paths***********
 let paths = [
@@ -778,6 +862,13 @@ let paths = [
   char3ClientOrHomeless,
   givePizzaToClient,
   givePizzaToStranger,
+  quickTimeStart,
+  quickTimeEast,
+  quickTimeNorth,
+  quickTimeSouth,
+  quickTimeWest,
+  wonQuickTime,
+  quickTime
 ];
 let history = [];
 
@@ -809,6 +900,7 @@ function titleSpread() {
 }
 
 function leaveMenu() {
+  quickTimeCounter = 0;
   titleScreen.className = "throughBlack";
   timeoutID = setTimeout(function () {
     startGame();
@@ -818,9 +910,11 @@ function leaveMenu() {
 function startGame() {
   clearTimeout(timeoutID);
   clearTimeout(timeoutID2);
-  typeWriter(story.text[story.textNum], text, 40);
-  history.push([story.text[story.textNum], 0]);
-  background.style.backgroundImage = story.image;
+  if(story.textNum < 900){
+    typeWriter(story.text[story.textNum], text, 40);
+    history.push([story.text[story.textNum], 0]);
+    background.style.backgroundImage = story.image;
+  }
 }
 
 function nextText() {
@@ -863,10 +957,23 @@ function makeOptions() {
 
     link.appendChild(text);
 
-    link.onclick = function () {
-      changePath(this.id, this.innerText, Path.item);
-    };
+    if(each[0] == 'quickTimeStart'){
+      story.textNum = -1;
+      quickTimeCounter = 0;
+    }
+
+    if(each[1] == 'quickTime'){
+      link.onclick = function () {
+        randomQuickTimeEvent();
+      };
+    } else {
+      link.onclick = function () {
+        changePath(this.id, this.innerText, Path.item);
+      };
+    }
     let Path = getPath(each[1]);
+    console.log(Path);
+    console.log(Path.image);
 
     let txt = Path.image.split("(")[1].split(")")[0];
     const img = new Image();
@@ -912,7 +1019,7 @@ function showInventory() {
     inventorySection.style.zIndex = -2;
   } else {
     hideAllOptions(inventorySection);
-    clearHistory();
+    clearInventory();
     for (each of inventory) {
       const text = document.createElement("p");
       const textText = document.createTextNode(each.name);
@@ -926,6 +1033,13 @@ function showInventory() {
 
 function hideOptions() {
   options.style.visibility = `hidden`;
+}
+
+function clearInventory() {
+  let sections = document.querySelectorAll("#inventorySection p");
+  for (each of sections) {
+    each.remove();
+  }
 }
 
 function clearHistory() {
@@ -1065,6 +1179,85 @@ function returnHomeAnyway() {
   history = [];
   clearOptions();
   titleShadow();
+}
+
+function randomQuickTimeEvent(){
+  if(intervalId){
+    clearInterval(intervalId);
+  }
+  quickTimeCounter ++;
+  let path = Math.round(Math.random()*3)+1;
+  if(quickTimeCounter < 5){
+    timeBar.style.display = 'flex';
+    doTimer();
+    switch (path) {
+      case 1:
+        story = getPath('quickTimeNorth');
+        break;
+      case 2:
+        story = getPath('quickTimeEast');
+        break;
+      case 3:
+        story = getPath('quickTimeSouth');
+        break;
+      case 4:
+        story = getPath('quickTimeWest');
+        break;
+      default:
+        break;
+    }
+    text.innerHTML = "";
+    clearOptions();
+
+    story.textNum = -1;
+    makeOptions();
+    nextText();
+    background.style.backgroundImage = story.image;
+  } else {
+    quickTimeCounter = 0;
+    timeBar.style.display = 'none';
+    text.innerHTML = "";
+    story = getPath('wonQuickTime');
+    clearOptions();
+
+    story.textNum = -1;
+    makeOptions();
+    nextText();
+    background.style.backgroundImage = story.image;
+  }
+}
+
+function doTimer(){
+  startTime = Date.now();
+  intervalId = setInterval(updateTimer, 100);
+}
+
+function updateTimer() {
+  const elapsedTime = Date.now()/1000.0 - startTime/1000.0;
+  timeBar.style.width = `${(quickTimer-elapsedTime)*(100/quickTimer)}%`;
+
+  if (elapsedTime >= quickTimer) {
+    timeBar.style.width = `0%`;
+    timeBar.style.display = 'none';
+    clearInterval(intervalId);
+    text.innerHTML = "";
+    story = getPath('dead');
+    clearOptions();
+
+    startGame();
+  }
+}
+
+function beginQuickTime(){
+  story = getPath('quickTimeStart');
+  background.style.backgroundImage = story.image;
+}
+
+function quickTimeEvent() {
+  beginQuickTime();
+  setTimeout(() => {
+    leaveMenu();
+  }, 200);
 }
 
 function restoreFromLocalStorage(load) {

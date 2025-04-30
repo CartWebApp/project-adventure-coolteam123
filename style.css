@@ -147,6 +147,15 @@ html:has(.hover:hover) #cursor {
   border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
+#loadingBar {
+  width: 100%;
+  height: 5px;
+  background: red;
+  top: -5px;
+  position: absolute;
+  display: none;
+}
+
 #titleScreen {
   display: flex;
   justify-content: center;
@@ -167,7 +176,7 @@ html:has(.hover:hover) #cursor {
   align-items: center;
 }
 
-#startGame {
+#buttonHolder button {
   width: fit-content;
   text-shadow: 1px 1px 1px rgb(106, 32, 32), -1px -1px 1px rgb(80, 80, 80);
   background: none;
@@ -182,7 +191,7 @@ html:has(.hover:hover) #cursor {
   transition: text-shadow 500ms;
 }
 
-#startGame:hover {
+#buttonHolder button:hover {
   text-shadow: 1px 1px 5px rgb(177, 32, 32), -1px -1px 5px gray;
 }
 
