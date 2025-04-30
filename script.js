@@ -614,10 +614,10 @@ const char2SitDown = new Path(
   [
     `You guys go find a place to sit down.`,
     `The group introduces themselves one more time. Roman mentions how you saved him and the group thanks you.`,
-    `"I inivted him to join us," says Roman. "He can help us find George and help us form the safe area."`,
+    `"I invited him to join us," says Roman. "He can help us find George and help us form the safe area."`,
     `Elliot tells you about a place they heard about, guarded by a huge shrieker, but potentially save enough to help you stay alive for years.`,
     `"The place is big and shriekers barely go there," says Leah.`,
-    `"We can plant crops there too," adds Victor.``They keep telling you about the place when Elliot interupts. He suggests you guys head back and keep discussing tomorrow.`,
+    `"We can plant crops there too," adds Victor. They keep telling you about the place when Elliot interupts. He suggests you guys head back and keep discussing tomorrow.`,
     `He offers you to stay with them in their camp close to the supermarket but your place would be safer.`,
   ],
   `url(images/backgrounds/encounter-group.jpg)`,
