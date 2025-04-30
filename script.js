@@ -586,7 +586,7 @@ const char2Split = new Path(
   ],
   `url(images/backgrounds/frozen-foods.jpg)`,
   [
-    [`Go look for roman`, `char2FindRoman`],
+    [`Go look for Roman`, `char2FindRoman`],
     [`Leave the supermarket, He could be dead already.`, `dead`],
   ]
 );
@@ -632,6 +632,56 @@ const char2SitDown = new Path(
     [`Offer them to stay at your place`, `char2YourCampWithGroup`],
   ]
 );
+
+const char2TheirCamp = new Path(
+  `char2TheirCamp`,
+  [
+    `You don't mention your camp and just agree to go with them.`,
+    `You will get your things some other time.`
+  ],
+  `url(images/backgrounds/potential-front-view-supermaket.jpg)`,
+  [[`Get out of the supermarket`, ``]]
+);
+
+const char2YourCampWithGroup = new Path(
+  `char2YourCampWithGroup`,
+  [
+    `You offer then to stay at your camp.`,
+    `"It's safer I've rarely encountered any shriekers there," you tell them.`,
+    `The group agrees and you guys get out of the store.`
+  ],
+  `url(images/backgrounds/potential-front-view-supermaket.jpg)`,
+  [[`Get out of the supermarket`, `char2ParkingLot`]]
+);
+
+const char2ParkingLot = new Path(
+  `char2ParkingLot`,
+  [
+    `You take the lead and the group follows you behind, talking to each other and still sharing stories. You notice Max playing with Tessa.`,
+    `Then Victor, the guy with the spiky short hair and the black long sleeve shirt with the red T-shirt layered on top, starts talking about some George again.`,
+    `Roman notices your confused expression and tells you about George.`,
+    `"George has been missing for quite some time. We were in the woods and got separated. Tessa was with him when he left to chase a deer he apparently saw, but never came back. She was scared and came to look for us but we never found Geroge," explained Roman.`,
+    `"That's the last we some of him," said Leah.`,
+    `"Now that we have found Roman, we can look for George again," said Elliot.`,
+    `You stayed silent. The group kept talking about George and the crazy and fun things they did together.`
+  ],
+  `url(images/backgrounds/abandoned-parking-lot.jpg)`,
+  [[`Keep walking back to your camp.`, `char2HeadBack2`]]
+)
+
+const char2HeadBack2 = new Path(
+  `char2HeadBack2`,
+  [
+    `Once you arrive at your camp your warn them about the traps you had set up, the location of the traps to catch animals, where to do your business and more.`,
+    `You set up a fire and they share their food with you.`,
+    `Elliot starts talking.`
+  ],
+  `url(images/backgrounds/abandoned-cabin-in-woods.jpg)`,
+  [
+    [`Accept to go look for him`, `char2FindGeorge`],
+    [`Resufe and stay to guard your place`, `char2Stay`]
+  ]
+)
 // ***********Character 3(Lucia Graves)-Path and choices***********
 
 const PathChar3 = new Path(
@@ -855,6 +905,12 @@ let paths = [
   char2Split,
   char2Together,
   char2FindRoman,
+  char2MeetGroup,
+  char2SitDown,
+  char2TheirCamp,
+  char2YourCampWithGroup,
+  char2ParkingLot,
+  char2HeadBack2,
   char3AnswerCall,
   char3Delivery,
   char3FiredBecauseAddress,
