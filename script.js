@@ -124,7 +124,7 @@ const char1Weapon = new Path(
 const dead = new Path(
   `dead`,
   [`You died.`],
-  `url(images/potential-character-facing-building.jpg)`,
+  `url(images/backgrounds/dead-graves.jpg)`,
   [[`Replay`, `start`]]
 );
 
@@ -624,7 +624,7 @@ const char2SitDown = new Path(
     `Elliot tells you about a place they heard about, guarded by a huge shrieker, but potentially save enough to help you stay alive for years.`,
     `"The place is big and shriekers barely go there," says Leah.`,
     `"We can plant crops there too," adds Victor. They keep telling you about the place when Elliot interupts. He suggests you guys head back and keep discussing tomorrow.`,
-    `He offers you to stay with them in their camp close to the supermarket but your place would be safer.`,
+    `He offers you to stay with them in their camp close to the supermarket - but your place would be safer.`,
   ],
   `url(images/backgrounds/encounter-group.jpg)`,
   [
@@ -646,7 +646,7 @@ const char2TheirCamp = new Path(
 const char2YourCampWithGroup = new Path(
   `char2YourCampWithGroup`,
   [
-    `You offer then to stay at your camp.`,
+    `You offer to them to stay at your camp.`,
     `"It's safer I've rarely encountered any shriekers there," you tell them.`,
     `The group agrees and you guys get out of the store.`
   ],
@@ -661,7 +661,7 @@ const char2ParkingLot = new Path(
     `Then Victor, the guy with the spiky short hair and the black long sleeve shirt with the red T-shirt layered on top, starts talking about some George again.`,
     `Roman notices your confused expression and tells you about George.`,
     `"George has been missing for quite some time. We were in the woods and got separated. Tessa was with him when he left to chase a deer he apparently saw, but never came back. She was scared and came to look for us but we never found Geroge," explained Roman.`,
-    `"That's the last we some of him," said Leah.`,
+    `"That's the last we saw of him," said Leah.`,
     `"Now that we have found Roman, we can look for George again," said Elliot.`,
     `You stayed silent. The group kept talking about George and the crazy and fun things they did together.`
   ],
@@ -672,7 +672,7 @@ const char2ParkingLot = new Path(
 const char2HeadBack2 = new Path(
   `char2HeadBack2`,
   [
-    `Once you arrive at your camp your warn them about the traps you had set up, the location of the traps to catch animals, where to do your business and more.`,
+    `Once you arrive at your camp you warn them about the traps you had set up, the location of the traps to catch animals, where to do your business and more.`,
     `You set up a fire and they share their food with you.`,
     `Elliot starts talking.`
   ],
