@@ -337,7 +337,8 @@ const char2Clothing = new Path(
     `You find a coat and a pair of boots.`,
   ],
   `url(images/backgrounds/Jacket-and-boots.jpg)`,
-  [[`Keep looking around`, `char2Continue`]]
+  [[`Keep looking around`, `char2Continue`]],
+  new Item("Sturdy Clothing", "")
 );
 
 const char2Medicine = new Path(
@@ -348,7 +349,8 @@ const char2Medicine = new Path(
     `You take the first aid kit with you and return from your search.`,
   ],
   `url(images/backgrounds/firstaid.jpg)`,
-  [[`Keep looking around`, `char2Continue`]]
+  [[`Keep looking around`, `char2Continue`]],
+  new Item("First-Aid Kit", "")
 );
 const char2Weapon = new Path(
   `char2Weapon`,
@@ -377,7 +379,8 @@ const char2ObtainHatchet = new Path(
     `You don't think twice to stay. You get up quickly, call out for Max and run.`,
   ],
   `url(images/backgrounds/shrieker-supermarket.jpg)`,
-  [[`Run before the shrieker gets up`, `char2Continue`]]
+  [[`Run before the shrieker gets up`, `char2Continue`]],
+  new Item("Hatchtet", "")
 );
 
 const char2Continue = new Path(
@@ -735,7 +738,7 @@ const char2Slip = new Path(
     `You're about to take a step when you slip on a piece of glass on the floor`,
   ],
   `url(images/backgrounds/front-entrance.jpg)`,
-  [[`Begin Quick Time`, `char2QuickTime`]]
+  [[`Run!`, `startQuickTime`]]
 );
 
 // ***********Character 3(Lucia Graves)-Path and choices***********
@@ -899,9 +902,11 @@ const quickTimeEast = new Path(
 
 const wonQuickTime = new Path(
   `wonQuickTime`,
-  [`You safely got away from the monster`],
+  [`You let out a sigh fo relief as you look behind you.`,
+  `It seems like you've managed to get away safely.`,
+  `This is the current end to our game.`],
   `url(images/backgrounds/foggy-forest.jpg)`,
-  [[`Try again`, `quickTimeStart`]]
+  [[]]
 );
 
 const quickTime = new Path(
