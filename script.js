@@ -1035,6 +1035,9 @@ function startGame() {
 }
 
 function nextText() {
+  if (intervalId) {
+    clearInterval(intervalId);
+  }
   if (story.textNum < 0) {
     story.textNum++;
     text.innerHTML = "";
@@ -1334,11 +1337,10 @@ function randomQuickTimeEvent() {
     quickTimeCounter = 0;
     timeBar.style.display = "none";
     text.innerHTML = "";
-    story = getPath("wonQuickTime");
     clearOptions();
+    story = getPath("wonQuickTime");
 
     story.textNum = -1;
-    makeOptions();
     nextText();
     background.style.backgroundImage = story.image;
   }
