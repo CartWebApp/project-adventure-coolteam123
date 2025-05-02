@@ -738,7 +738,7 @@ const char2Slip = new Path(
     `You're about to take a step when you slip on a piece of glass on the floor`,
   ],
   `url(images/backgrounds/front-entrance.jpg)`,
-  [[`Run!`, `startQuickTime`]]
+  [[`Run!`, `quickTimeStart`]]
 );
 
 // ***********Character 3(Lucia Graves)-Path and choices***********
