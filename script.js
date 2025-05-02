@@ -1035,8 +1035,11 @@ function startGame() {
 }
 
 function nextText() {
-  if (intervalId) {
-    clearInterval(intervalId);
+  if(story.name == 'dead'){
+    if (intervalId) {
+      clearInterval(intervalId);
+      timeBar.style.display = "none";
+    }
   }
   if (story.textNum < 0) {
     story.textNum++;
