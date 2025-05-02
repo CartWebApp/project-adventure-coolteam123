@@ -631,7 +631,7 @@ const char2SitDown = new Path(
   ],
   `url(images/backgrounds/encounter-group.jpg)`,
   [
-    [`Go to their camp`, `char2TheirCamp`],
+    // [`Go to their camp`, `char2TheirCamp`],
     [`Offer them to stay at your place`, `char2YourCampWithGroup`],
   ]
 );
@@ -1089,8 +1089,8 @@ function makeOptions() {
       };
     }
     let Path = getPath(each[1]);
-    console.log(Path);
-    console.log(Path.image);
+    // console.log(Path);
+    // console.log(Path.image);
 
     let txt = Path.image.split("(")[1].split(")")[0];
     const img = new Image();
