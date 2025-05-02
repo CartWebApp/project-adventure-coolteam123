@@ -683,8 +683,8 @@ const char2HeadBack2 = new Path(
   ],
   `url(images/backgrounds/abandoned-cabin-in-woods.jpg)`,
   [
-    [`Accept`, `char2FindGeorge`],
-    [`Resufe`, `char2Stay`],
+    // [`Accept`, `char2FindGeorge`],
+    [`Refuse`, `char2Stay`],
   ]
 );
 
