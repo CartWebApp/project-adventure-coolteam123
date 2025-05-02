@@ -637,7 +637,7 @@ const char2TheirCamp = new Path(
   `char2TheirCamp`,
   [
     `You don't mention your camp and just agree to go with them.`,
-    `You will get your things some other time.`
+    `You will get your things some other time.`,
   ],
   `url(images/backgrounds/potential-front-view-supermaket.jpg)`,
   [[`Get out of the supermarket`, ``]]
@@ -648,7 +648,7 @@ const char2YourCampWithGroup = new Path(
   [
     `You offer to them to stay at your camp.`,
     `"It's safer I've rarely encountered any shriekers there," you tell them.`,
-    `The group agrees and you guys get out of the store.`
+    `The group agrees and you guys get out of the store.`,
   ],
   `url(images/backgrounds/potential-front-view-supermaket.jpg)`,
   [[`Get out of the supermarket`, `char2ParkingLot`]]
@@ -663,25 +663,81 @@ const char2ParkingLot = new Path(
     `"George has been missing for quite some time. We were in the woods and got separated. Tessa was with him when he left to chase a deer he apparently saw, but never came back. She was scared and came to look for us but we never found Geroge," explained Roman.`,
     `"That's the last we saw of him," said Leah.`,
     `"Now that we have found Roman, we can look for George again," said Elliot.`,
-    `You stayed silent. The group kept talking about George and the crazy and fun things they did together.`
+    `You stayed silent. The group kept talking about George and the crazy and fun things they did together.`,
   ],
   `url(images/backgrounds/abandoned-parking-lot.jpg)`,
   [[`Keep walking back to your camp.`, `char2HeadBack2`]]
-)
+);
 
 const char2HeadBack2 = new Path(
   `char2HeadBack2`,
   [
     `Once you arrive at your camp you warn them about the traps you had set up, the location of the traps to catch animals, where to do your business and more.`,
     `You set up a fire and they share their food with you.`,
-    `Elliot starts talking.`
+    `Elliot starts talking.`,
+    `"Ezekiel, we've been thinking...you're a hunter and you've had some experience tracking," said Elliot.`,
+    `"We'd really appreciate if you could help us look for George," interrupts Leah.`,
   ],
   `url(images/backgrounds/abandoned-cabin-in-woods.jpg)`,
   [
-    [`Accept to go look for him`, `char2FindGeorge`],
-    [`Resufe and stay to guard your place`, `char2Stay`]
+    [`Accept`, `char2FindGeorge`],
+    [`Resufe`, `char2Stay`],
   ]
-)
+);
+
+const char2Stay = new Path(
+  `char2Stay`,
+  [
+    `"There is no use. You're lucky enough to have found Roman but this George you speak of is not coming back. He's been gone for too long."`,
+    `"We'll scout the other place you mentioned tomorrow.`,
+    `They stay silent. You thank them for the food and then head inside the cabin.`,
+  ],
+  `url(images/backgrounds/abandoned-cabin-in-woods.jpg)`,
+  [[`The next day`, `char2NextDay2`]]
+);
+
+const char2NextDay2 = new Path(
+  `char2NextDay2`,
+  [
+    `The next morning, you wake up to find the group already getting ready.`,
+    `"I'll show you where the place is located at," says Roman.`,
+    `You nod, whistle for Max and head out.`,
+  ],
+  `url(images/backgrounds/abandoned-cabin-in-woods.jpg)`,
+  [[`Go look for the safe area`, `char2Scout`]]
+);
+
+const char2Scout = new Path(
+  `char2Scout`,
+  [
+    `The walk is long, but eventually, Roman recognizes the are and you arrive.`,
+    `You hide behind some bushes in front of the building.`,
+    `"You guys stay here with Max and guard, I'll go check it out with Roman." You tell them.`,
+    `You approach the front door.`,
+  ],
+  `url(images/backgrounds/abandoned-building-forest.jpg)`,
+  [[`Open the door`, `charHeadInside`]]
+);
+
+const charHeadInside = new Path(
+  `charHeadInside`,
+  [
+    `You cautiously open the door and head inside with Roman, walking silently.`,
+    `Everything is going smoothly. Then-bang! You hear something fall over and a shriek soon follows.`,
+  ],
+  `url(images/backgrounds/safe-place-entrance.jpg)`,
+  [[`Move`, `char2Slip`]]
+);
+
+const char2Slip = new Path(
+  `char2Slip`,
+  [
+    `You're about to take a step when you slip on a piece of glass on the floor`,
+  ],
+  `url(images/backgrounds/front-entrance.jpg)`,
+  [[`Begin Quick Time`, `char2QuickTime`]]
+);
+
 // ***********Character 3(Lucia Graves)-Path and choices***********
 
 const PathChar3 = new Path(
@@ -779,7 +835,7 @@ const givePizzaToClient = new Path(
 );
 
 const givePizzaToStranger = new Path(`givePizzaToStranger`, [
-  `You decide to be kind and give the pizza to the starving stranger.`
+  `You decide to be kind and give the pizza to the starving stranger.`,
 ]);
 
 // ***********Quick time event***********
@@ -787,78 +843,73 @@ const quickTimeStart = new Path(
   `quickTimeStart`,
   [
     `The monster is coming!`,
-    `Run away from it - go to slow or the wrong direction and you could be in trouble!`,
+    `Run away from it - go too slow or the wrong direction and you could be in trouble!`,
   ],
   `url(images/backgrounds/monster&person-in-forest.jpg)`,
-  [[`beginQuickTime`,`quickTime`]]
+  [[`beginQuickTime`, `quickTime`]]
 );
 
 const quickTimeNorth = new Path(
   `quickTimeNorth`,
-  [
-    `The monster is coming from the north!`
-  ],
+  [`The monster is coming from the north!`],
   `url(images/backgrounds/monster&person-in-forest.jpg)`,
-  [[`Go north`, `dead`],
-  [`Go east`, `dead`],
-  [`Go west`, `dead`],
-  [`Go south`, `quickTime`]]
+  [
+    [`Go north`, `dead`],
+    [`Go east`, `dead`],
+    [`Go west`, `dead`],
+    [`Go south`, `quickTime`],
+  ]
 );
 
 const quickTimeSouth = new Path(
   `quickTimeSouth`,
-  [
-    `The monster is coming from the south!`
-  ],
+  [`The monster is coming from the south!`],
   `url(images/backgrounds/monster&person-in-forest.jpg)`,
-  [[`Go north`, `quickTime`],
-  [`Go east`, `dead`],
-  [`Go west`, `dead`],
-  [`Go south`, `dead`]]
+  [
+    [`Go north`, `quickTime`],
+    [`Go east`, `dead`],
+    [`Go west`, `dead`],
+    [`Go south`, `dead`],
+  ]
 );
 
 const quickTimeWest = new Path(
   `quickTimeWest`,
-  [
-    `The monster is coming from the west!`
-  ],
+  [`The monster is coming from the west!`],
   `url(images/backgrounds/monster&person-in-forest.jpg)`,
-  [[`Go north`, `dead`],
-  [`Go east`, `quickTime`],
-  [`Go west`, `dead`],
-  [`Go south`, `dead`]]
+  [
+    [`Go north`, `dead`],
+    [`Go east`, `quickTime`],
+    [`Go west`, `dead`],
+    [`Go south`, `dead`],
+  ]
 );
 
 const quickTimeEast = new Path(
   `quickTimeEast`,
-  [
-    `The monster is coming from the east!`
-  ],
+  [`The monster is coming from the east!`],
   `url(images/backgrounds/monster&person-in-forest.jpg)`,
-  [[`Go north`, `dead`],
-  [`Go east`, `dead`],
-  [`Go west`, `quickTime`],
-  [`Go south`, `dead`]]
+  [
+    [`Go north`, `dead`],
+    [`Go east`, `dead`],
+    [`Go west`, `quickTime`],
+    [`Go south`, `dead`],
+  ]
 );
 
 const wonQuickTime = new Path(
   `wonQuickTime`,
-  [
-    `You safely got away from the monster`
-  ],
+  [`You safely got away from the monster`],
   `url(images/backgrounds/foggy-forest.jpg)`,
   [[`Try again`, `quickTimeStart`]]
 );
 
 const quickTime = new Path(
   `quickTime`,
-  [
-    `Just to keep everything happy`
-  ],
+  [`Just to keep everything happy`],
   `url(images/backgrounds/monster&person-in-forest.jpg)`,
   [[`Perish`, `dead`]]
 );
-
 
 // ***********Paths***********
 let paths = [
@@ -911,6 +962,11 @@ let paths = [
   char2YourCampWithGroup,
   char2ParkingLot,
   char2HeadBack2,
+  char2Stay,
+  char2NextDay2,
+  char2Scout,
+  charHeadInside,
+  char2Slip,
   char3AnswerCall,
   char3Delivery,
   char3FiredBecauseAddress,
@@ -924,7 +980,7 @@ let paths = [
   quickTimeSouth,
   quickTimeWest,
   wonQuickTime,
-  quickTime
+  quickTime,
 ];
 let history = [];
 
@@ -966,7 +1022,7 @@ function leaveMenu() {
 function startGame() {
   clearTimeout(timeoutID);
   clearTimeout(timeoutID2);
-  if(story.textNum < 900){
+  if (story.textNum < 900) {
     typeWriter(story.text[story.textNum], text, 40);
     history.push([story.text[story.textNum], 0]);
     background.style.backgroundImage = story.image;
@@ -1013,12 +1069,12 @@ function makeOptions() {
 
     link.appendChild(text);
 
-    if(each[0] == 'quickTimeStart'){
+    if (each[0] == "quickTimeStart") {
       story.textNum = -1;
       quickTimeCounter = 0;
     }
 
-    if(each[1] == 'quickTime'){
+    if (each[1] == "quickTime") {
       link.onclick = function () {
         randomQuickTimeEvent();
       };
@@ -1237,27 +1293,27 @@ function returnHomeAnyway() {
   titleShadow();
 }
 
-function randomQuickTimeEvent(){
-  if(intervalId){
+function randomQuickTimeEvent() {
+  if (intervalId) {
     clearInterval(intervalId);
   }
-  quickTimeCounter ++;
-  let path = Math.round(Math.random()*3)+1;
-  if(quickTimeCounter < 5){
-    timeBar.style.display = 'flex';
+  quickTimeCounter++;
+  let path = Math.round(Math.random() * 3) + 1;
+  if (quickTimeCounter < 5) {
+    timeBar.style.display = "flex";
     doTimer();
     switch (path) {
       case 1:
-        story = getPath('quickTimeNorth');
+        story = getPath("quickTimeNorth");
         break;
       case 2:
-        story = getPath('quickTimeEast');
+        story = getPath("quickTimeEast");
         break;
       case 3:
-        story = getPath('quickTimeSouth');
+        story = getPath("quickTimeSouth");
         break;
       case 4:
-        story = getPath('quickTimeWest');
+        story = getPath("quickTimeWest");
         break;
       default:
         break;
@@ -1271,9 +1327,9 @@ function randomQuickTimeEvent(){
     background.style.backgroundImage = story.image;
   } else {
     quickTimeCounter = 0;
-    timeBar.style.display = 'none';
+    timeBar.style.display = "none";
     text.innerHTML = "";
-    story = getPath('wonQuickTime');
+    story = getPath("wonQuickTime");
     clearOptions();
 
     story.textNum = -1;
@@ -1283,29 +1339,29 @@ function randomQuickTimeEvent(){
   }
 }
 
-function doTimer(){
+function doTimer() {
   startTime = Date.now();
   intervalId = setInterval(updateTimer, 100);
 }
 
 function updateTimer() {
-  const elapsedTime = Date.now()/1000.0 - startTime/1000.0;
-  timeBar.style.width = `${(quickTimer-elapsedTime)*(100/quickTimer)}%`;
+  const elapsedTime = Date.now() / 1000.0 - startTime / 1000.0;
+  timeBar.style.width = `${(quickTimer - elapsedTime) * (100 / quickTimer)}%`;
 
   if (elapsedTime >= quickTimer) {
     timeBar.style.width = `0%`;
-    timeBar.style.display = 'none';
+    timeBar.style.display = "none";
     clearInterval(intervalId);
     text.innerHTML = "";
-    story = getPath('dead');
+    story = getPath("dead");
     clearOptions();
 
     startGame();
   }
 }
 
-function beginQuickTime(){
-  story = getPath('quickTimeStart');
+function beginQuickTime() {
+  story = getPath("quickTimeStart");
   background.style.backgroundImage = story.image;
 }
 
