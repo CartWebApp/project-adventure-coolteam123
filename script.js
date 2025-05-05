@@ -48,7 +48,7 @@ const start = new Path(
   `url(images/backgrounds/Abandoned-city.jpg)`,
   [
     [`Play as char1`, `PathChar1`],
-    [`Play as char2`, `PathChar2`],
+    [`Play as Ezekiel`, `PathChar2`],
     [`Play as char3`, `PathChar3`],
   ]
 );
@@ -747,8 +747,18 @@ const char2GotAway = new Path(
     `You let out a sigh fo relief as you look behind you.`,
     `It seems like you've managed to get away safely.`
   ],
-    `url(images/backgrounds/foggy-forest.jpg)`,
-    [[]]
+  `url(images/backgrounds/safe-area-back.jpg)`,
+    [[`Go back to the group`, `char2TalkGroup`]]
+)
+
+const char2TalkGroup = new Path(
+  `char2TalkGroup`,
+  [
+    `You do a quick scan of the back and side of the place and go round it to meet with your group again.`,
+    `You begin to form a plan.`,
+    `You have plan A and plan B`
+  ],
+  [[]]
 )
 
 // ***********Character 3(Lucia Graves)-Path and choices***********
