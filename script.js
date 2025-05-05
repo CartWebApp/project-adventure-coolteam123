@@ -741,6 +741,16 @@ const char2Slip = new Path(
   [[`Run!`, `quickTimeStart`]]
 );
 
+const char2GotAway = new Path(
+  `char2GotAway`,
+  [
+    `You let out a sigh fo relief as you look behind you.`,
+    `It seems like you've managed to get away safely.`
+  ],
+    `url(images/backgrounds/foggy-forest.jpg)`,
+    [[]]
+)
+
 // ***********Character 3(Lucia Graves)-Path and choices***********
 
 const PathChar3 = new Path(
@@ -972,6 +982,7 @@ let paths = [
   char2Scout,
   charHeadInside,
   char2Slip,
+  char2GotAway,
   char3AnswerCall,
   char3Delivery,
   char3FiredBecauseAddress,
@@ -1089,6 +1100,8 @@ function makeOptions() {
       link.onclick = function () {
         randomQuickTimeEvent();
       };
+    } else if (each[1] == "bossFight"){
+
     } else {
       link.onclick = function () {
         changePath(this.id, this.innerText, Path.item);
@@ -1341,7 +1354,11 @@ function randomQuickTimeEvent() {
     timeBar.style.display = "none";
     text.innerHTML = "";
     clearOptions();
-    story = getPath("wonQuickTime");
+    if(history.includes("char2")){
+      story = getPath("char2GotAway");
+    } else {
+      story = getPath("wonQuickTime");
+    }
 
     story.textNum = -1;
     nextText();
