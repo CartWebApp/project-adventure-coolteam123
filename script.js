@@ -748,19 +748,81 @@ const char2GotAway = new Path(
     `It seems like you've managed to get away safely.`
   ],
   `url(images/backgrounds/safe-area-back.jpg)`,
-    [[`Go back to the group`, `char2TalkGroup`]]
+    [[`Go back to the group`, `char2TalkPlan`]]
 )
 
-const char2TalkGroup = new Path(
-  `char2TalkGroup`,
+const char2TalkPlan = new Path(
+  `char2TalkPlan`,
   [
     `You do a quick scan of the back and side of the place and go round it to meet with your group again.`,
     `You begin to form a plan.`,
-    `You have plan A and plan B`
+    `You have plan A and plan B.`
   ],
-  [[]]
+  `url(images/backgrounds/green-bushes.jpg)`,
+  [
+    [`Go with plan A`, `char2GoodPlan`],
+    [`Go with plan B`, `char2BadPlan`]
+  ]
 )
 
+const char2GoodPlan = new Path(
+  `char2GoodPlan`,
+  [
+    `You decided to go in with Max so that group can set traps around the area, leaving only one place open so that the darkling has no option but to leave from there.`,
+    `You will have to lead the darkling to the back entrace and corner it so it leaves, you will try to avoid fighting.`,
+    `You quickly teach some traps to the group and get ready to go isnide the building again.`,
+    `You enter the building and send Max to follow the darkling's smell. You stay alert waiting for Max to come back when all of a sudden you hear a roar and a whimper.`,
+    `You run towards the direction of where the sounds came from and find Max on a corner. He is still alive but he is injured.`
+  ],
+  `url(images/backgrounds/safe-area-inside2.jpg)`,
+  [
+    [`Stay and lead the darkling to the back entrance`,`char2ContPlan`],
+    [`Run away, Max was a good dog.`, `charRunAway`]
+  ]
+)
+
+const char2BadPlan = new Path(
+  `char2BadPlan`,
+  [
+    `You decide to confront the darkling together. You share the few weapons that you have with each other and get ready to go inside once again.`,
+    `You enter quietly and send Elliot and Tessa to search for the darkling in a room to the left and send Victor and Leah to search the room to your right.`,
+    `Roman, Max, and you head towards the stairs. Everything is going according to plan when out of nowhere a loud roar and screams startle you.`,
+    `You go back down the stairs and head to the room on your left. Elliot and Tessa are injured and the darkling is heading towards Leah and Victor who got there before you.`,
+    `Max heads towards the darkling but he gets hit.`
+  ],
+  `url(images/backgrounds/safe-area-inside2.jpg)`,
+  [
+    [`Stay and find a way to help`, `dead`],
+    [`Run away, they were good people and Max was a good dog`, `charRunAway`]
+  ]
+)
+
+const charRunAway = new Path(
+  `charRunAway`,
+  [
+    `You decide to run away. It is a hard decision to make but you do.`,
+    `You don't think anyone else is going to make it and this is your chance to run so you do.`,
+    `The rest of the group and Max don't survive their injuries and they sadly pass away.`,
+    `You run back to your camp.`
+  ],
+  `url(images/backgrounds/close-to-mansion2.jpg)`,
+  [[`Return to your camp`, `char2ReturnAlone`]]
+)
+
+const char2ReturnAlone = new Path(
+  `char2ReturnAlone`,
+  [
+    `You run back to your camp, exhausting your feet, but rarly stopping to take breaks.`,
+    `You can't belive you lost your long-life best friend, Max.`,
+    `Once you arrive home you go immediately inside your carbin and sit down in a corner, trying to process everything.`,
+    `A few hours pass and you stay in the same corner, staring at the wall. The silence is suddenly interrupted when you hear your metal cans outside hitting against each other. Someone or something is here.`,
+    `You grab a metal tea pot next to you and head outside. You find a stranger on the floor, he looks scared.`,
+    `"There is a huge shrieker coming this way, run! Get out of here!" He warns you as he gets up and continues running.`,
+    `It looks like you will have to confront this darkling one way or the other. You prepare yourself and go look for the darkling. You will have to fight it, for your friends and for Max.`
+  ],
+  `url(images/backgrounds/abandoned-cabin-in-woods.jpg)`,
+  [[]]
+)
 // ***********Character 3(Lucia Graves)-Path and choices***********
 
 const PathChar3 = new Path(
@@ -993,6 +1055,7 @@ let paths = [
   charHeadInside,
   char2Slip,
   char2GotAway,
+  char2TalkPlan,
   char3AnswerCall,
   char3Delivery,
   char3FiredBecauseAddress,
