@@ -226,7 +226,7 @@ const char1NewDay = new Path(
   ],
   `url(images/backgrounds/abandoned-city-building.jpg)`,
   [
-    [`Get up`, `char1Supermarket`],
+    [`Get up`, `char1BeginNewDay`],
     [`Procrastinate`, `notThisAgain`],
   ]
 );
@@ -240,10 +240,10 @@ const notThisAgain = new Path(
   ],
   `url(images/backgrounds/abandoned-city-building.jpg)`,
   [
-    [`Get up`, `char1Supermarket`],
-    ["Get up", `char1Supermarket`],
+    [`Get up`, `char1BeginNewDay`],
+    ["Get up", `char1BeginNewDay`],
     [`Procrastinate`, `notThisAgainAgain`],
-    ["Get up", `char1Supermarket`],
+    ["Get up", `char1BeginNewDay`],
   ]
 );
 
@@ -256,13 +256,13 @@ const notThisAgainAgain = new Path(
   ],
   `url(images/backgrounds/abandoned-city-building.jpg)`,
   [
-    [`Get up`, `char1Supermarket`],
-    ["Get up", `char1Supermarket`],
-    [`Get up`, `char1Supermarket`],
-    ["Get up", `char1Supermarket`],
+    [`Get up`, `char1BeginNewDay`],
+    ["Get up", `char1BeginNewDay`],
+    [`Get up`, `char1BeginNewDay`],
+    ["Get up", `char1BeginNewDay`],
     [`Procrastinate`, `pleaseNotThisAgain`],
-    [`Get up`, `char1Supermarket`],
-    ["Get up", `char1Supermarket`],
+    [`Get up`, `char1BeginNewDay`],
+    ["Get up", `char1BeginNewDay`],
   ]
 );
 
@@ -275,23 +275,23 @@ const pleaseNotThisAgain = new Path(
   ],
   `url(images/backgrounds/abandoned-city-building.jpg)`,
   [
-    [`Get up`, `char1Supermarket`],
-    ["Get up", `char1Supermarket`],
-    [`Get up`, `char1Supermarket`],
-    ["Get up", `char1Supermarket`],
-    [`Get up`, `char1Supermarket`],
-    ["Get up", `char1Supermarket`],
-    [`Get up`, `char1Supermarket`],
+    [`Get up`, `char1BeginNewDay`],
+    ["Get up", `char1BeginNewDay`],
+    [`Get up`, `char1BeginNewDay`],
+    ["Get up", `char1BeginNewDay`],
+    [`Get up`, `char1BeginNewDay`],
+    ["Get up", `char1BeginNewDay`],
+    [`Get up`, `char1BeginNewDay`],
     [`Procrastinate`, `pleaseNotThisAgainAgain`],
-    ["Get up", `char1Supermarket`],
-    ["Get up", `char1Supermarket`],
-    [`Get up`, `char1Supermarket`],
+    ["Get up", `char1BeginNewDay`],
+    ["Get up", `char1BeginNewDay`],
+    [`Get up`, `char1BeginNewDay`],
     [`Wither away`, `dead`],
-    ["Get up", `char1Supermarket`],
-    [`Get up`, `char1Supermarket`],
-    ["Get up", `char1Supermarket`],
-    [`Get up`, `char1Supermarket`],
-    ["Get up", `char1Supermarket`],
+    ["Get up", `char1BeginNewDay`],
+    [`Get up`, `char1BeginNewDay`],
+    ["Get up", `char1BeginNewDay`],
+    [`Get up`, `char1BeginNewDay`],
+    ["Get up", `char1BeginNewDay`],
   ]
 );
 
@@ -299,8 +299,87 @@ const pleaseNotThisAgainAgain = new Path(
   `pleaseNotThisAgainAgain`,
   [`No.`],
   `url(images/backgrounds/abandoned-city-building.jpg)`,
-  [[`Get up`, `char1Supermarket`]]
+  [[`Get up`, `char1BeginNewDay`]]
 );
+
+const char1BeginNewDay = new Path(
+  `char1BeginNewDay`,
+  [
+    `You decide to head back to the supermarket.`,
+    `You gather up your equipment and do some light stretching to wake yourself up.`,
+    `Because of your run in with the group you were unable to thoroughly search the place, and you'd like to try again.`
+  ],
+  `url(images/backgrounds/cabin-inside.jpg)`,
+  [
+    ['Go out', 'char1ReturnToSupermarket'],
+    ['Procrastinate...', 'whyIsThisStillAnOption']
+  ]
+)
+
+const char1ReturnToSupermarket = new Path(
+  `char1ReturnToSupermarket`,
+  [
+    `You exit your camp and walk over to the supermarket.`,
+    `You stop before heading in to take a couple deep breaths.`
+  ],
+  `url(images/backgrounds/potential-front-view-supermaket.jpg)`,
+  [
+    ['Head in', 'char1EnterAgain']
+  ]
+)
+
+const whyIsThisStillAnOption = new Path(
+  `whyIsThisStillAnOption`,
+  [
+    `You procrastinate.`,
+    `Of course you do.`,
+    `...`,
+    `You sit there on your sleeping bag without exiting it.`,
+    `But that's not enough. That's still to tiring`,
+    `You lay down and snuggle back up in your sleeping bag`,
+    `Quickly, your lazy self manages to leave the world behind to the haze of sleep.`,
+    `Forever.`,
+    `You have an unfortunate stroke while sleeping and never wake up.`
+  ],
+  `url(images/backgrounds/cabin-inside.jpg)`,
+  [
+    ['Accept you fate', 'dead']
+  ]
+)
+
+const char1EnterAgain = new Path(
+  `char1EnterAgain`,
+  [
+    `You don't make it very far before a loud bang catches your attention.`,
+    `It's a shrieker - a dangerous monster that roams these parts. It sounds like its getting closer.`
+  ],
+  `url(images/backgrounds/Abandoned-supermarket.jpg)`,
+  [[`Run!`, `char1RunForIt`]]
+)
+
+const char1RunForIt = new Path(
+  `char1RunForIt`,
+  [
+    `You're already running - but its given chase`,
+    `You aren't familiar with the supermarket, and aren't sure which direction to go.`,
+    `The screamer, slowly but surely, as you feel yourself starting to tire`,
+    `You aren't even sure if there's an exit in the back towards where you are running.`,
+    `You might just be dooming yourself.`,
+    `Suddenly, a voice calls out: "Take a left, then go through the first door on your right!"`
+  ],
+  `url(images/backgrounds/shrieker-supermarket.jpg)`,
+  [
+    ['Trust the unknown voice', 'char1Survived'],
+    [`Ignore the stranger's words`, `dead`]
+  ]
+)
+
+const char1Survived = new Path(
+  `char1Survived`,
+  [],
+  `url(images/backgrounds/abandoned-parking-lot.jpg)`,
+  []
+)
 
 const PathChar2 = new Path(
   `PathChar2`,
@@ -326,7 +405,7 @@ const char2Supermarket = new Path(
   [
     [`Search for sturdy clothing`, `char2Clothing`],
     [`Search for medicine`, `char2Medicine`],
-    [`Search for a hatchet`, `char2Weapon`],
+    [`Search for a weapon`, `char2Weapon`],
   ]
 );
 
@@ -360,7 +439,7 @@ const char2Weapon = new Path(
     `You try to open the case, but it's locked.`,
     `You could try to break the lock, but the loud noise might bring trouble.`,
     `Suddendly a loud bang catches your attention.`,
-    `It's a shrieker. It sounds like its getting closer. Max starts barking.`,
+    `It's a shrieker - a dangerous monster that roams these parts. It sounds like its getting closer. Max starts barking.`,
   ],
   `url(images/backgrounds/axe.jpg)`,
   [
@@ -380,7 +459,7 @@ const char2ObtainHatchet = new Path(
   ],
   `url(images/backgrounds/shrieker-supermarket.jpg)`,
   [[`Run before the shrieker gets up`, `char2Continue`]],
-  new Item("Hatchtet", "")
+  new Item("Hatchet", "")
 );
 
 const char2Continue = new Path(
@@ -436,7 +515,7 @@ const char2CheckTraps = new Path(
   [
     [`Leave. There is nothing you can do`, `dead`],
     [`Distract the shrieker`, `char2DistractShrieker`],
-    [`Use hatchet and attack.`, `char2Attack`],
+    [`Use hatchet and attack.`, `char2Attack`, `doesInventoryHave('Hatchet')`],
   ]
 );
 
@@ -497,16 +576,16 @@ const char2SaveAlly = new Path(
     `You ignore him again and just stare at Max who lays on the ground, resting too. Roman retrieves his hand and wipes the sweat of his forehead instead.`,
     `Roman starts talking once again. He says he was with a group but got lost a few days ago. He was looking for his group members today when he got attacked by the shrieker you saw.`,
     `"You should join us," he suggests.`,
-    `"They're probably already dead," you say no interested.`,
+    `"They're probably already dead," you say not interested.`,
     `"You don't know that. They're smart and alive, I know it. If you help me find them we can set up a safe are together," Roman says.`,
     `Helping him could either bring you problems or help you stay alive.`,
-    `But why should you join him when you have kept yourself alive for so long.`,
+    `But why should you join him when you have kept yourself alive for so long?`,
   ],
   `url(images/backgrounds/foggy-forest.jpg)`,
   [
     [`Decline his invitation. You don't need anyone but Max.`, `char2Refuse`],
     [
-      `Join him and help him find his group. You can help him stay alive.`,
+      `Join him and help him find his group. He can help you stay alive.`,
       `char2Join`,
     ],
   ]
@@ -526,7 +605,7 @@ const char2Refuse = new Path(
 const char2Join = new Path(
   `char2Join`,
   [
-    `You stay silent for a few minutes, complementing Roman's suggestion.`,
+    `You stay silent for a few minutes, contemplating Roman's suggestion.`,
     `"Okay," you say. Roman just smiles and nods. He offers you some food he had left and you give some to Max. You take him to your cabin and offer to look for his group in the morning.`,
     `You will have to trust him.`,
     `So much has happened today. You should get some rest to help Roman find his group tomorrow morning.`,
@@ -540,7 +619,7 @@ const char2NextDay = new Path(
   [
     `You didn't get enough sleep. You stayed alert and kept waking up throughout the whole night. You had to make sure Roman hadn't tricked you and looted your supplies while you were asleep.`,
     `You get out of your sleeping bag and turn your head to check on Max who is laying next to you. You then look at Roman who is on the other corner, still asleep.`,
-    `You get wake him up and get your things ready to head out. Roman had mentioned "Foods", the supermarket you went to yesterday, as the last place he saw his group.`,
+    `You wake him up and get your things ready to head out. Roman had mentioned "Foods", the supermarket you went to yesterday, as the last place he saw his group.`,
   ],
   `url(images/backgrounds/cabin-inside.jpg)`,
   [[`Go to the supermarket again`, `char2BackToFoods`]]
@@ -598,8 +677,8 @@ const char2FindRoman = new Path(
   `char2FindRoman`,
   [
     `You run with Max and head towards the "Cleaning Supplies" section. You grab a long piece of metal you found on the way, getting ready to hit anything that is attacking Roman.`,
-    `You make a turn and are about to raise the weapon on your hand but you freeze. You don't see Roman getting attacked.`,
-    `You see him hugging people. Its his group.`,
+    `You make a turn and are about to raise the weapon in your hand but you freeze. You don't see Roman getting attacked.`,
+    `You see him hugging people. It's his group.`,
     `You drop your weapon.`,
   ],
   `url(images/backgrounds/encounter-group.jpg)`,
@@ -1016,11 +1095,18 @@ let paths = [
   char1NoSandwich,
   char1Farewell,
   char1NewDay,
+  char1ReturnToSupermarket,
+  char1RunForIt,
   notThisAgain,
   notThisAgainAgain,
   pleaseNotThisAgain,
   pleaseNotThisAgainAgain,
+  char1BeginNewDay,
+  char1ReturnToSupermarket,
+  whyIsThisStillAnOption,
   dead,
+  char1EnterAgain,
+  char1Survived,
   char2Supermarket,
   char2Clothing,
   char2Medicine,
@@ -1156,39 +1242,39 @@ function nextText() {
 
 function makeOptions() {
   clearOptions();
-  for (each of story.options) {
-    var link = document.createElement("button");
-    link.id = each[1];
-    link.className = `hover`;
-    const text = document.createTextNode(each[0]);
-
-    link.appendChild(text);
-
-    if (each[0] == "quickTimeStart") {
-      story.textNum = -1;
-      quickTimeCounter = 0;
+  for (let element of story.options) {
+    if(!element[2] || (eval(element[2]) === true)){
+      var link = document.createElement("button");
+      link.id = element[1];
+      link.className = `hover`;
+      const text = document.createTextNode(element[0]);
+  
+      link.appendChild(text);
+  
+      if (element[0] == "quickTimeStart") {
+        story.textNum = -1;
+        quickTimeCounter = 0;
+      }
+  
+      if (element[1] == "quickTime") {
+        link.onclick = function () {
+          randomQuickTimeEvent();
+        };
+      } else if (element[1] == "bossFight"){
+  
+      } else {
+        link.onclick = function () {
+          changePath(this.id, this.innerText, Path.item);
+        };
+      }
+      let Path = getPath(element[1]);
+  
+      let txt = Path.image.split("(")[1].split(")")[0];
+      const img = new Image();
+      img.src = txt;
+  
+      options.append(link);
     }
-
-    if (each[1] == "quickTime") {
-      link.onclick = function () {
-        randomQuickTimeEvent();
-      };
-    } else if (each[1] == "bossFight"){
-
-    } else {
-      link.onclick = function () {
-        changePath(this.id, this.innerText, Path.item);
-      };
-    }
-    let Path = getPath(each[1]);
-    // console.log(Path);
-    // console.log(Path.image);
-
-    let txt = Path.image.split("(")[1].split(")")[0];
-    const img = new Image();
-    img.src = txt;
-
-    options.append(link);
   }
   console.log("loading complete");
   options.style.visibility = `visible`;
@@ -1427,7 +1513,7 @@ function randomQuickTimeEvent() {
     timeBar.style.display = "none";
     text.innerHTML = "";
     clearOptions();
-    if(history.includes("char2")){
+    if(doesHistoryHave("Play as char2")){
       story = getPath("char2GotAway");
     } else {
       story = getPath("wonQuickTime");
@@ -1437,6 +1523,24 @@ function randomQuickTimeEvent() {
     nextText();
     background.style.backgroundImage = story.image;
   }
+}
+
+function doesHistoryHave(string){
+  for (each of history) {
+    if(each[0] == (string)){
+      return true;
+    }
+  };
+  return false;
+}
+
+function doesInventoryHave(string){
+  for (each of inventory) {
+    if(each.name == (string)){
+      return true;
+    }
+  };
+  return false;
 }
 
 function doTimer() {
