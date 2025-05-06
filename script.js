@@ -47,7 +47,7 @@ const start = new Path(
   [`Choose your character.`],
   `url(images/backgrounds/Abandoned-city.jpg)`,
   [
-    [`Play as char1`, `PathChar1`],
+    [`Play as Elena`, `PathChar1`],
     [`Play as Ezekiel`, `PathChar2`],
     [`Play as char3`, `PathChar3`],
   ]
@@ -333,7 +333,7 @@ const whyIsThisStillAnOption = new Path(
     `Of course you do.`,
     `...`,
     `You sit there on your sleeping bag without exiting it.`,
-    `But that's not enough. That's still to tiring`,
+    `But that's not enough. That's still too tiring.`,
     `You lay down and snuggle back up in your sleeping bag`,
     `Quickly, your lazy self manages to leave the world behind to the haze of sleep.`,
     `Forever.`,
@@ -372,9 +372,328 @@ const char1RunForIt = new Path(
 
 const char1Survived = new Path(
   `char1Survived`,
-  [],
+  [
+    `You take the turn and see an emergency exit.`,
+    `Drawing on the last of your reserves, you sprint through the door and slam it behind you.`,
+    `The shrieker continues down the hallway, unaware of your exit.`,
+    `The sound of footsteps snap you out of your stupor as a man rounds a corner and walks towards you.`,
+    `"Hey. You okay?" he says, looking at you worriedly.`,
+    `You recognize the voice. It's the person who helped you out earlier.`
+  ],
   `url(images/backgrounds/abandoned-parking-lot.jpg)`,
-  []
+  [
+    [`"Yeah"`, `char1TalkRomanYes`],
+    [`"No"`, `char1TalkRomanNo`],
+    [`"Who are you?"`, `char1TalkRomanRude`]
+  ],
+);
+
+const char1TalkRomanYes = new Path(
+  `char1TalkRomanYes`,
+  [
+    `"That's good. These times are pretty stressful, you know?"`,
+    `"Oh, almost forgot to introduce myself. The name's Roman. How about you?"`,
+    `"I'm with a group... well, I was. We got a little seperated a couple days back. You should join and help me find them! I'm sure being part of a group could be helpful to you as well."`
+  ],
+  `url(images/backgrounds/unknown-people-in-forest.jpg)`,
+  [
+    [`Join up with him`, `char1GoWithRoman`]
+  ]
+)
+
+const char1TalkRomanNo = new Path(
+  `char1TalkRomanNo`,
+  [
+    `He freezes, unprepared for such a frank response, but quickly shakes it off.`,
+    `"I definetely feel that. Take as much time as you need, alright?`,
+    `"Oh, almost forgot to introduce myself. The name's Roman. How about you?"`,
+    `"I'm with a group... well, I was. We got a little seperated a couple days back. You should join and help me find them! I'm sure being part of a group could be helpful to you as well."`
+  ],
+  `url(images/backgrounds/unknown-people-in-forest.jpg)`,
+  [
+    [`Join up with him`, `char1GoWithRoman`]
+  ]
+)
+
+const char1TalkRomanRude = new Path(
+  `char1TalkRomanRude`,
+  [
+    `"He laughs. "Sorry, guess I forgot to introduce myself, huh?"`,
+    `"He reaches out to shake your hand in greeting. "The name's Roman. How about you?"`,
+    `"I'm with a group... well, I was. We got a little seperated a couple days back. You should join and help me find them! I'm sure being part of a group could be helpful to you as well."`
+  ],
+  `url(images/backgrounds/unknown-people-in-forest.jpg)`,
+  [
+    [`Join up with him`, `char1GoWithRoman`]
+  ]
+)
+
+const char1GoWithRoman = new Path(
+  `char1GoWithRoman`,
+  [
+    `You stay silent for a few minutes, contemplating Roman's suggestion.`,
+    `"Okay," you say. Roman just smiles and nods. He offers you some food he had left. You take him to your camp and offer to look for his group in the morning.`,
+    `So much has happened today. You should get some rest to help Roman find his group tomorrow morning.`,
+  ],
+  `url(images/backgrounds/abandoned-cabin-in-woods.jpg)`,
+  [[`Get some sleep`, `char1NextDay`]]
+);
+
+const char1NextDay = new Path(
+  `char1NextDay`,
+  [
+    `You didn't get enough sleep. You stayed alert and kept waking up throughout the whole night. You had to make sure Roman hadn't tricked you and looted your supplies while you were asleep.`,
+    `You get out of your sleeping bag and get your supplies prepared. You then look at Roman who is on the other corner, still asleep.`,
+    `You wake him up and get your things ready to head out. Roman had mentioned "Foods", the supermarket you went to yesterday, as the last place he saw his group.`,
+  ],
+  `url(images/backgrounds/cabin-inside.jpg)`,
+  [[`Go to the supermarket again`, `char1BackToFoods`]]
+);
+
+const char1BackToFoods = new Path(
+  `char1BackToFoods`,
+  [
+    `You arrive at the supermarket. You walk towards the entrance, following behind Roman.`,
+    `You might as well look for more supplies now that you are here.`,
+  ],
+  `url(images/backgrounds/potential-front-view-supermaket.jpg)`,
+  [[`Go inside`, `char1Supermarket2`]]
+);
+
+const char1Supermarket2 = new Path(
+  `char1Supermarket2`,
+  [
+    `You open the door and head inside.`,
+    `You walk quietly, searching the place for any trace of what could lead to Roman's group.`,
+  ],
+  `url(images/backgrounds/Abandoned-supermarket.jpg)`,
+  [
+    [`Split your search`, `char1Split`],
+    [`Stay together`, `char1Together`],
+  ]
+);
+
+const char1Together = new Path(
+  `char1Together`,
+  [
+    `You've watched enough horror movies to know what happens if you seperate.`,
+    `Roman and you walk through the supermarket, keeping an eye out for signs of his allies.`,
+    `Suddenly, he takes sight of something and runs off, leaving you behind.`,
+    `You give chase, slowing down when you see Roman with a group of other people.`
+  ],
+  `url(images/backgrounds/Jacket-and-boots.jpg)`,
+  [[`Approach`, `char1MeetGroup`]]
+);
+
+const char1Split = new Path(
+  `char1Split`,
+  [
+    `Apparently you haven't watched many horror movies, and you suggest splitting your search for more efficiency.`,
+    `You seperate from Roman and walk the supermarket alone.`,
+    `A shrieker attacks you from behind and you die.`
+  ],
+  `url(images/backgrounds/dead-graves.jpg)`,
+  [
+    [`:(`, `dead`],
+  ]
+);
+
+const char1MeetGroup = new Path(
+  `char1MeetGroup`,
+  [
+    `As you walk closer to them you recognize the face of a man, around his late 20s.`,
+    `It's the group from yesterday.`,
+    `Roman starts to introduce you, but you interrupt and tell him you've already met.`,
+    `They offer you to sit down and talk.`,
+  ],
+  `url(images/backgrounds/encounter-group.jpg)`,
+  [[`Sit down and talk`, `char1SitDown`]]
+);
+
+const char1SitDown = new Path(
+  `char1SitDown`,
+  [
+    `You guys go find a place to sit down.`,
+    `The group introduces themselves one more time. Roman mentions how you saved him and the group thanks you.`,
+    `"I invited her to join us," says Roman. "She can help us find George and help us form the safe area."`,
+    `Elliot tells you about a place they heard about, guarded by a huge shrieker, but potentially safe enough to help you stay alive for years.`,
+    `"The place is big and shriekers barely go there," says Leah.`,
+    `"We can plant crops there too," adds Victor. They keep telling you about the place when Elliot interupts. He suggests you guys head back and keep discussing tomorrow.`,
+    `He offers you to stay with them in their camp close to the supermarket - but your place would be safer.`,
+  ],
+  `url(images/backgrounds/encounter-group.jpg)`,
+  [
+    // [`Go to their camp`, `char1TheirCamp`],
+    [`Offer them to stay at your place`, `char1YourCampWithGroup`],
+  ]
+);
+
+const char1TheirCamp = new Path(
+  `char1TheirCamp`,
+  [
+    `You don't mention your camp and just agree to go with them.`,
+    `You will get your things some other time.`,
+  ],
+  `url(images/backgrounds/potential-front-view-supermaket.jpg)`,
+  [[`Get out of the supermarket`, `char1ParkingLot`]]
+);
+
+const char1YourCampWithGroup = new Path(
+  `char1YourCampWithGroup`,
+  [
+    `You offer to them to stay at your camp.`,
+    `"It's safer I've rarely encountered any shriekers there," you tell them.`,
+    `The group agrees and you guys get out of the store.`,
+  ],
+  `url(images/backgrounds/potential-front-view-supermaket.jpg)`,
+  [[`Get out of the supermarket`, `char1ParkingLot`]]
+);
+
+const char1ParkingLot = new Path(
+  `char1ParkingLot`,
+  [
+    `You take the lead and the group follows you behind, talking to each other and still sharing stories.`,
+    `Then Victor, the guy with the spiky short hair and the black long sleeve shirt with the red T-shirt layered on top, starts talking about some George again.`,
+    `Roman notices your confused expression and tells you about George.`,
+    `"George has been missing for quite some time. We were in the woods and got separated. Tessa was with him when he left to chase a deer he apparently saw, but never came back. She was scared and came to look for us but we never found Geroge," explained Roman.`,
+    `"That's the last we saw of him," said Leah.`,
+    `"Now that we have found Roman, we can look for George again," said Elliot.`,
+    `You stayed silent. The group kept talking about George and the crazy and fun things they did together.`,
+  ],
+  `url(images/backgrounds/abandoned-parking-lot.jpg)`,
+  [[`Keep walking back to your camp.`, `char1HeadBack2`]]
+);
+
+const char1HeadBack2 = new Path(
+  `char1HeadBack2`,
+  [
+    `Once you arrive at your camp you warn them about the traps you had set up, the location of the traps to catch animals, and more.`,
+    `You set up a fire and they share their food with you.`,
+    `Elliot starts talking.`,
+    `"Elena, we've been thinking... you seem like you have some skills to have stayed alive all this time.," said Elliot.`,
+    `"We'd really appreciate if you could help us look for George," adds Leah.`,
+  ],
+  `url(images/backgrounds/abandoned-cabin-in-woods.jpg)`,
+  [
+    // [`Accept`, `char2FindGeorge`],
+    [`Refuse`, `char1Stay`],
+  ]
+);
+
+const char1Stay = new Path(
+  `char1Stay`,
+  [
+    `"There is no use. You're lucky enough to have found Roman, but George... is probably already dead."`,
+    `"We'll scout the other place you mentioned tomorrow."`,
+    `They stay silent. You thank them for the food and then head inside the cabin.`,
+  ],
+  `url(images/backgrounds/abandoned-cabin-in-woods.jpg)`,
+  [[`The next day`, `char1NextDay2`]]
+);
+
+const char1NextDay2 = new Path(
+  `char1NextDay2`,
+  [
+    `The next morning, you wake up to find the group already getting ready.`,
+    `"I'll show you where the place is located at," says Roman.`,
+    `You nod, gather some gear, and head out.`,
+  ],
+  `url(images/backgrounds/abandoned-cabin-in-woods.jpg)`,
+  [[`Go look for the safe area`, `char1Scout`]]
+);
+
+const char1Scout = new Path(
+  `char1Scout`,
+  [
+    `The walk is long, but eventually, Roman recognizes the are and you arrive.`,
+    `You hide behind some bushes in front of the building.`,
+    `"You guys stay here with and guard, Roman and I will check it out." You tell them.`,
+    `You approach the front door.`,
+  ],
+  `url(images/backgrounds/abandoned-building-forest.jpg)`,
+  [[`Open the door`, `char1HeadInside`]]
+);
+
+const char1HeadInside = new Path(
+  `char1HeadInside`,
+  [
+    `You cautiously open the door and head inside with Roman, walking silently.`,
+    `Everything is going smoothly. Then-bang! You hear something fall over and a shriek soon follows.`,
+  ],
+  `url(images/backgrounds/safe-place-entrance.jpg)`,
+  [[`Move`, `char1Slip`]]
+);
+
+const char1Slip = new Path(
+  `char1Slip`,
+  [
+    `You're about to take a step when you slip on a piece of glass on the floor`,
+  ],
+  `url(images/backgrounds/front-entrance.jpg)`,
+  [[`Run!`, `quickTimeStart`]]
+);
+
+const char1GotAway = new Path(
+  `char1GotAway`,
+  [
+    `You let out a sigh of relief as you look behind you.`,
+    `It seems like you've managed to get away safely.`,
+  ],
+  `url(images/backgrounds/safe-area-back.jpg)`,
+  [[`Go back to the group`, `char1ReturnToGroup`]]
+);
+
+const char1ReturnToGroup = new Path(
+  `char1ReturnToGroup`,
+  [
+    `Looking around, you see Roman just a bit away. Seems like he made it out safely as well.`,
+    `With your scouting done and no desire to face that monster again, you walk over to the rest of the group and head back to the camp.`,
+  ],
+  `url(images/backgrounds/close-to-mansion2.jpg)`,
+  [[`Formulate a plan for taking the safe area`, `char1Planning`]]
+);
+
+const char1Planning = new Path(
+  `char1Planning`,
+  [
+    `Everyone gathers around at a nearby cornerstore.`,
+    `After hours of talking, a plan has been devised. Shriekers normally drift from place to place, but unlike it the darkling seems attached to something.`,
+    `While scouting the place Roman noticed a nest - destory it and the monster should have no attachment to the place.`,
+    `However, it requires a volunteer to risk themselves to distract the monster while the others destroy the nest.`,
+    `Currently Roman says he'll do it, but he seems nervous.`,
+    `You're a better runner than him, so it'd be safer for you to take the chance... but are you willing to risk it?`
+  ],
+  `url(images/backgrounds/Elena-corner-store-camp.jpg)`,
+  [
+    [`Volunteer in his stead`, `char1GoodPlan`],
+    [`Let him do it`, `char1BadPlan`]
+  ]
+);
+
+const char1BadPlan = new Path(
+  `char1BadPlan`,
+  [
+    `You let Roman take the distraction role.`,
+    `Everyone goes to bed to rest up, and when the day comes everyone heads out. No time like the present, after all.`,
+    `Approaching the mansion, you give Roman a pat on the back. He takes a deep breath to calm himself, then nods to himself and starts to head to position.`
+  ],
+  `url(images/backgrounds/close-to-mansion2.jpg)`,
+  [
+    [`It's time`, `char1DestroyNest`]
+  ]
+);
+
+const char1GoodPlan = new Path(
+  `char1BadPlan`,
+  [
+    `After taking the night to rest, everyone heads out. No time like the present, after all.`,
+    `After hours of talking, a plan has been devised.`,
+    `Approaching the mansion, Roman gives you a pat on the back. You take a deep breath to calm down, then nod to yourself and head to position.`
+  ],
+  `url(images/backgrounds/close-to-mansion2.jpg)`,
+  [
+    [`It's time`, `char1DistractDarkling`],
+  ]
 );
 
 const PathChar2 = new Path(
@@ -707,7 +1026,7 @@ const char2SitDown = new Path(
   ],
   `url(images/backgrounds/encounter-group.jpg)`,
   [
-    // [`Go to their camp`, `char2TheirCamp`],
+    [`Go to their camp`, `char2TheirCamp`],
     [`Offer them to stay at your place`, `char2YourCampWithGroup`],
   ]
 );
@@ -719,7 +1038,7 @@ const char2TheirCamp = new Path(
     `You will get your things some other time.`,
   ],
   `url(images/backgrounds/potential-front-view-supermaket.jpg)`,
-  [[`Get out of the supermarket`, ``]]
+  [[`Get out of the supermarket`, `char2ParkingLot`]]
 );
 
 const char2YourCampWithGroup = new Path(
@@ -820,7 +1139,7 @@ const char2Slip = new Path(
 const char2GotAway = new Path(
   `char2GotAway`,
   [
-    `You let out a sigh fo relief as you look behind you.`,
+    `You let out a sigh of relief as you look behind you.`,
     `It seems like you've managed to get away safely.`,
   ],
   `url(images/backgrounds/safe-area-back.jpg)`,
@@ -1215,6 +1534,27 @@ let paths = [
   dead,
   char1EnterAgain,
   char1Survived,
+  char1TalkRomanYes,
+  char1TalkRomanNo,
+  char1TalkRomanRude,
+  char1GoWithRoman,
+  char1NextDay,
+  char1BackToFoods,
+  char1Supermarket2,
+  char1Together,
+  char1Split,
+  char1MeetGroup,
+  char1SitDown,
+  char1TheirCamp,
+  char1YourCampWithGroup,
+  char1ParkingLot,
+  char1HeadBack2,
+  char1Stay,
+  char1NextDay2,
+  char1Scout,
+  char1HeadInside,
+  char1Slip,
+  char1GotAway,
   char2Supermarket,
   char2Clothing,
   char2Medicine,
@@ -1633,8 +1973,10 @@ function randomQuickTimeEvent() {
     timeBar.style.display = "none";
     text.innerHTML = "";
     clearOptions();
-    if (doesHistoryHave("Play as char2")) {
+    if (doesHistoryHave('Play as Ezekiel')) {
       story = getPath("char2GotAway");
+    } else if(doesHistoryHave('Play as Elena')){
+      story = getPath("char1GotAway");
     } else {
       story = getPath("wonQuickTime");
     }
