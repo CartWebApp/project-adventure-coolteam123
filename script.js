@@ -307,26 +307,24 @@ const char1BeginNewDay = new Path(
   [
     `You decide to head back to the supermarket.`,
     `You gather up your equipment and do some light stretching to wake yourself up.`,
-    `Because of your run in with the group you were unable to thoroughly search the place, and you'd like to try again.`
+    `Because of your run in with the group you were unable to thoroughly search the place, and you'd like to try again.`,
   ],
   `url(images/backgrounds/cabin-inside.jpg)`,
   [
-    ['Go out', 'char1ReturnToSupermarket'],
-    ['Procrastinate...', 'whyIsThisStillAnOption']
+    ["Go out", "char1ReturnToSupermarket"],
+    ["Procrastinate...", "whyIsThisStillAnOption"],
   ]
-)
+);
 
 const char1ReturnToSupermarket = new Path(
   `char1ReturnToSupermarket`,
   [
     `You exit your camp and walk over to the supermarket.`,
-    `You stop before heading in to take a couple deep breaths.`
+    `You stop before heading in to take a couple deep breaths.`,
   ],
   `url(images/backgrounds/potential-front-view-supermaket.jpg)`,
-  [
-    ['Head in', 'char1EnterAgain']
-  ]
-)
+  [["Head in", "char1EnterAgain"]]
+);
 
 const whyIsThisStillAnOption = new Path(
   `whyIsThisStillAnOption`,
@@ -339,23 +337,21 @@ const whyIsThisStillAnOption = new Path(
     `You lay down and snuggle back up in your sleeping bag`,
     `Quickly, your lazy self manages to leave the world behind to the haze of sleep.`,
     `Forever.`,
-    `You have an unfortunate stroke while sleeping and never wake up.`
+    `You have an unfortunate stroke while sleeping and never wake up.`,
   ],
   `url(images/backgrounds/cabin-inside.jpg)`,
-  [
-    ['Accept you fate', 'dead']
-  ]
-)
+  [["Accept you fate", "dead"]]
+);
 
 const char1EnterAgain = new Path(
   `char1EnterAgain`,
   [
     `You don't make it very far before a loud bang catches your attention.`,
-    `It's a shrieker - a dangerous monster that roams these parts. It sounds like its getting closer.`
+    `It's a shrieker - a dangerous monster that roams these parts. It sounds like its getting closer.`,
   ],
   `url(images/backgrounds/Abandoned-supermarket.jpg)`,
   [[`Run!`, `char1RunForIt`]]
-)
+);
 
 const char1RunForIt = new Path(
   `char1RunForIt`,
@@ -365,21 +361,21 @@ const char1RunForIt = new Path(
     `The screamer, slowly but surely, as you feel yourself starting to tire`,
     `You aren't even sure if there's an exit in the back towards where you are running.`,
     `You might just be dooming yourself.`,
-    `Suddenly, a voice calls out: "Take a left, then go through the first door on your right!"`
+    `Suddenly, a voice calls out: "Take a left, then go through the first door on your right!"`,
   ],
   `url(images/backgrounds/shrieker-supermarket.jpg)`,
   [
-    ['Trust the unknown voice', 'char1Survived'],
-    [`Ignore the stranger's words`, `dead`]
+    ["Trust the unknown voice", "char1Survived"],
+    [`Ignore the stranger's words`, `dead`],
   ]
-)
+);
 
 const char1Survived = new Path(
   `char1Survived`,
   [],
   `url(images/backgrounds/abandoned-parking-lot.jpg)`,
   []
-)
+);
 
 const PathChar2 = new Path(
   `PathChar2`,
@@ -682,7 +678,8 @@ const char2FindRoman = new Path(
     `You drop your weapon.`,
   ],
   `url(images/backgrounds/encounter-group.jpg)`,
-  [[`Get closer and say hi`, `char2MeetGroup`]]
+  [[`Get closer and say hi`, `char2MeetGroup`]],
+  new Item("Long metal tube", "")
 );
 
 const char2MeetGroup = new Path(
@@ -824,25 +821,25 @@ const char2GotAway = new Path(
   `char2GotAway`,
   [
     `You let out a sigh fo relief as you look behind you.`,
-    `It seems like you've managed to get away safely.`
+    `It seems like you've managed to get away safely.`,
   ],
   `url(images/backgrounds/safe-area-back.jpg)`,
-    [[`Go back to the group`, `char2TalkPlan`]]
-)
+  [[`Go back to the group`, `char2TalkPlan`]]
+);
 
 const char2TalkPlan = new Path(
   `char2TalkPlan`,
   [
     `You do a quick scan of the back and side of the place and go round it to meet with your group again.`,
     `You begin to form a plan.`,
-    `You have plan A and plan B.`
+    `You have plan A and plan B.`,
   ],
   `url(images/backgrounds/green-bushes.jpg)`,
   [
     [`Go with plan A`, `char2GoodPlan`],
-    [`Go with plan B`, `char2BadPlan`]
+    [`Go with plan B`, `char2BadPlan`],
   ]
-)
+);
 
 const char2GoodPlan = new Path(
   `char2GoodPlan`,
@@ -851,14 +848,14 @@ const char2GoodPlan = new Path(
     `You will have to lead the darkling to the back entrace and corner it so it leaves, you will try to avoid fighting.`,
     `You quickly teach some traps to the group and get ready to go isnide the building again.`,
     `You enter the building and send Max to follow the darkling's smell. You stay alert waiting for Max to come back when all of a sudden you hear a roar and a whimper.`,
-    `You run towards the direction of where the sounds came from and find Max on a corner. He is still alive but he is injured.`
+    `You run towards the direction of where the sounds came from and find Max on a corner. He is still alive but he is injured.`,
   ],
   `url(images/backgrounds/safe-area-inside2.jpg)`,
   [
-    [`Stay and lead the darkling to the back entrance`,`char2ContPlan`],
-    [`Run away, Max was a good dog.`, `charRunAway`]
+    [`Stay and lead the darkling to the back entrance`, `char2ContPlan`],
+    [`Run away, Max was a good dog.`, `charRunAway`],
   ]
-)
+);
 
 const char2BadPlan = new Path(
   `char2BadPlan`,
@@ -867,14 +864,14 @@ const char2BadPlan = new Path(
     `You enter quietly and send Elliot and Tessa to search for the darkling in a room to the left and send Victor and Leah to search the room to your right.`,
     `Roman, Max, and you head towards the stairs. Everything is going according to plan when out of nowhere a loud roar and screams startle you.`,
     `You go back down the stairs and head to the room on your left. Elliot and Tessa are injured and the darkling is heading towards Leah and Victor who got there before you.`,
-    `Max heads towards the darkling but he gets hit.`
+    `Max heads towards the darkling but he gets hit.`,
   ],
   `url(images/backgrounds/safe-area-inside2.jpg)`,
   [
     [`Stay and find a way to help`, `dead`],
-    [`Run away, they were good people and Max was a good dog`, `charRunAway`]
+    [`Run away, they were good people and Max was a good dog`, `charRunAway`],
   ]
-)
+);
 
 const charRunAway = new Path(
   `charRunAway`,
@@ -882,26 +879,66 @@ const charRunAway = new Path(
     `You decide to run away. It is a hard decision to make but you do.`,
     `You don't think anyone else is going to make it and this is your chance to run so you do.`,
     `The rest of the group and Max don't survive their injuries and they sadly pass away.`,
-    `You run back to your camp.`
+    `You run back to your camp.`,
   ],
   `url(images/backgrounds/close-to-mansion2.jpg)`,
   [[`Return to your camp`, `char2ReturnAlone`]]
-)
+);
 
 const char2ReturnAlone = new Path(
   `char2ReturnAlone`,
   [
-    `You run back to your camp, exhausting your feet, but rarly stopping to take breaks.`,
+    `You run back to your camp, exhausting your feet, but rarely stopping to take breaks.`,
     `You can't belive you lost your long-life best friend, Max.`,
     `Once you arrive home you go immediately inside your carbin and sit down in a corner, trying to process everything.`,
     `A few hours pass and you stay in the same corner, staring at the wall. The silence is suddenly interrupted when you hear your metal cans outside hitting against each other. Someone or something is here.`,
     `You grab a metal tea pot next to you and head outside. You find a stranger on the floor, he looks scared.`,
     `"There is a huge shrieker coming this way, run! Get out of here!" He warns you as he gets up and continues running.`,
-    `It looks like you will have to confront this darkling one way or the other. You prepare yourself and go look for the darkling. You will have to fight it, for your friends and for Max.`
+    `It looks like you will have to confront this darkling one way or the other. You prepare yourself and go look for the darkling. You will have to fight it, for your friends and for Max.`,
   ],
   `url(images/backgrounds/abandoned-cabin-in-woods.jpg)`,
-  [[]]
-)
+  [[`Go fight the "Darkling"`, ``]]
+);
+
+const char2DefeatDarkling = new Path(
+  [
+    `You did it! You defeated the monster that hurt your friends and your best friend Max.`,
+    `You sit down and rest, closing your eyes and feeling the wind hit your face. You feel as if a great weight has been lifted off of you.`,
+    `You don't waste your time anymore and go back to your camp, you will move into the new safe area.`,
+    `You bring the majority of your things into the new building. You look for a room and spend the night there.`,
+    `You can enjoy this mansion by yourself or make it a sanctuary for other people.`,
+  ],
+  `url(images/backgrounds/ezekiel-room.jpg)`,
+  [
+    [`Live here alone`, `char2EndAlone`],
+    [`Make this place a sanctuary and help other travelers`, `char2Sanctuary`],
+  ]
+);
+
+const char2EndAlone = new Path(
+  `char2EndAlone`,
+  [
+    `You decide to live here by yourself.`,
+    `This mansion has many rooms and as the years pass you dedicate specific rooms for Elliot, Tessa, Victor, Leah, Roman, and Max. You commemorate them by decorating the rooms with their belongings.`,
+    `Years pass and you cultivate crops in your backyard, reinforce your mansion with traps, and live alone until you die in your sleep peacefully.`,
+    `The las thing you dream of is Max as a puppy.`,
+  ],
+  `url(images/backgrounds/Ezekiel-dead.jpg)`,
+  [[`Replay`, `start`]]
+);
+
+const char2Sanctuary = new Path(
+  `char2Sanctuary`,
+  [
+    `You decide to live here by yourself.`,
+    `This mansion has many rooms and as the years pass you dedicate specific rooms for Elliot, Tessa, Victor, Leah, Roman, and Max. You commemorate them by decorating the rooms with their belongings and you lock those rooms so no one can enter.`,
+    `Years pass and you cultivate crops in your backyard and reinforce your mansion with traps. You create signs to guide travelers to your mansion where you welcome them.`,
+    `You meet new people, create a community and help them stay alive. As the years pass and more people come, they build new houses next to your mansion.`,
+    `You visit your old group's graves every afternoon and tell stories about them to the new friends you meet.`,
+  ],
+  `url(images/backgrounds/gravestones.jpg)`,
+  [[`Replay`, `start`]]
+);
 // ***********Character 3(Lucia Graves)-Path and choices***********
 
 const PathChar3 = new Path(
@@ -1063,9 +1100,11 @@ const quickTimeEast = new Path(
 
 const wonQuickTime = new Path(
   `wonQuickTime`,
-  [`You let out a sigh fo relief as you look behind you.`,
-  `It seems like you've managed to get away safely.`,
-  `This is the current end to our game.`],
+  [
+    `You let out a sigh fo relief as you look behind you.`,
+    `It seems like you've managed to get away safely.`,
+    `This is the current end to our game.`,
+  ],
   `url(images/backgrounds/foggy-forest.jpg)`,
   [[]]
 );
@@ -1205,7 +1244,7 @@ function startGame() {
 }
 
 function nextText() {
-  if(story.name == 'dead'){
+  if (story.name == "dead") {
     if (intervalId) {
       clearInterval(intervalId);
       timeBar.style.display = "none";
@@ -1243,36 +1282,35 @@ function nextText() {
 function makeOptions() {
   clearOptions();
   for (let element of story.options) {
-    if(!element[2] || (eval(element[2]) === true)){
+    if (!element[2] || eval(element[2]) === true) {
       var link = document.createElement("button");
       link.id = element[1];
       link.className = `hover`;
       const text = document.createTextNode(element[0]);
-  
+
       link.appendChild(text);
-  
+
       if (element[0] == "quickTimeStart") {
         story.textNum = -1;
         quickTimeCounter = 0;
       }
-  
+
       if (element[1] == "quickTime") {
         link.onclick = function () {
           randomQuickTimeEvent();
         };
-      } else if (element[1] == "bossFight"){
-  
+      } else if (element[1] == "bossFight") {
       } else {
         link.onclick = function () {
           changePath(this.id, this.innerText, Path.item);
         };
       }
       let Path = getPath(element[1]);
-  
+
       let txt = Path.image.split("(")[1].split(")")[0];
       const img = new Image();
       img.src = txt;
-  
+
       options.append(link);
     }
   }
@@ -1513,7 +1551,7 @@ function randomQuickTimeEvent() {
     timeBar.style.display = "none";
     text.innerHTML = "";
     clearOptions();
-    if(doesHistoryHave("Play as char2")){
+    if (doesHistoryHave("Play as char2")) {
       story = getPath("char2GotAway");
     } else {
       story = getPath("wonQuickTime");
@@ -1525,21 +1563,21 @@ function randomQuickTimeEvent() {
   }
 }
 
-function doesHistoryHave(string){
+function doesHistoryHave(string) {
   for (each of history) {
-    if(each[0] == (string)){
+    if (each[0] == string) {
       return true;
     }
-  };
+  }
   return false;
 }
 
-function doesInventoryHave(string){
+function doesInventoryHave(string) {
   for (each of inventory) {
-    if(each.name == (string)){
+    if (each.name == string) {
       return true;
     }
-  };
+  }
   return false;
 }
 
