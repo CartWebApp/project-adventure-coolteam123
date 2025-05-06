@@ -554,7 +554,7 @@ const char2UseItem = new Path(
     `You take off the new jacket you found today and throw at it the shrieker.`,
     `It attempts to take the jacket off its face but it is struggling.`,
   ],
-  `url(images/backgrounds/Abandoned-supermarket.jpg)`,
+  `url(images/backgrounds/Roman-being-attacked.jpg)`,
   [
     [
       `Run away with stranger before the shrieker gets the jacket off its face`,
@@ -857,6 +857,71 @@ const char2GoodPlan = new Path(
   ]
 );
 
+const char2ContPlan = new Path(
+  `char2ContPlan`,
+  [
+    `You quickly grab the frame to your right and throw it at the darkling. It won't do any damage but you hope it makes him leave through the door behind him.`,
+    `Just as you predicted, the darkling goes out the back door, it's probably tired and doesn't want to fight.`,
+    `You chase him, making sure he doesn't take any unexpected turns, and lead him towards the back door that leads to the garden and into the woods.`,
+    `Once he vanishes and all you see is trees and bushes you quickly run back inside. You need to help Max.`,
+    `You kneel down next to him and notice his paw is bleeding. Max whimperings but he is going to be okay. You grab some ointment and spread it over the wound, you are not sure if it will work but you do. You rip a pice of clothing and wrap it around Max's wound.`
+  ],
+  `url(images/backgrounds/safe-area-back.jpg)`,
+  [[`Go check on the others`,`char2MoreLore`]]
+);
+
+const char2MoreLore = new Path(
+  `char2MoreLore`,
+  [
+    `Go outside and find the others already celebrating. Some are laying on the ground resting and catching their breaths.`,
+    `"There is no time to waste, lets examine the place," you tell them. They get up and head inside.`,
+    `"Where's Max?" Asks Roman. You tell him what happened and reassure him he is going to be fine.`,
+    `Elliot and Leah volunteer to hunt for food while the rest of you decide to look around the rooms, verying that there is no other shrieker there.`,
+    `While searching the rooms Victor starts talking and starts sharing stories about a similar shriker they encountered once, "...although not as big." he says.`,
+    `They keep talking, about and hour goes by, and you finish clearing the place.`
+  ],
+  `url(images/backgrounds/kitchen.jpg)`,
+  [[`Go to the living room`, `char2LivingRoom`]],
+)
+
+const char2LivingRoom = new Path(
+  `char2LivingRoom`,
+  [
+    `You go to the living room and sit down on the sofas, waiting for Elliot and Leah to return.`,
+    `Leah come back first holding a dead rabbit by the ears, with a grin on her first.`,
+    `She's about to say something when Elliot storms in.`,
+    `"It's coming back! I saw it, that thing is heading here again," he warns.`,
+    `You are going to have to fight this darkling if you want to keep this place.`
+  ],
+  `url(images/backgrounds/living-room.jpg)`,
+  [[`Go fight the "Darkling"`], ``]
+)
+
+const char2DefeatDarkling1 = new Path(
+  `char2DefeatDarkling1`,
+  [
+    `You did it! You defeated it. That thing is not going to bother you anymore.`,
+    `You can finally live here in peace.`,
+    `You sit down and rest, closing your eyes and feeling the wind hit your face. You feel as if a great weight has been lifted off of you.`,
+    `You wait a few minutes outside before heading towards the mansion again.`
+  ],
+  `url(images/backgrounds/place-final-fight1.jpg)`,
+  [[`Go back`,`char2GreenEnding`]]
+)
+
+const char2GreenEnding = new Path(
+  `char2GreenEnding`,
+  [
+    `When you enter the living room, you see them stand up,they are relived to see you.`,
+    `You don't say anything and just smile, which surprises them and gets some laughs out of them.`,
+    `Finally you sit down on the sofa next to Max, someone had brought him in, and rest.`,
+    `As the years pass, Max heals and is as happy as ever,you guys reinforce the area with traps, you cultivate crops near the backyard, and rarely encounter any shriekers.`,
+    `You get closer with your group and enjoy the mansions, having fun everyday until you die of old age.`
+  ],
+  `url(images/backgrounds/green-ending.jpg)`,
+  [[`Replay`,`start`]]
+)
+
 const char2BadPlan = new Path(
   `char2BadPlan`,
   [
@@ -900,7 +965,8 @@ const char2ReturnAlone = new Path(
   [[`Go fight the "Darkling"`, ``]]
 );
 
-const char2DefeatDarkling = new Path(
+const char2DefeatDarkling2 = new Path(
+  `char2DefeatDarkling2`,
   [
     `You did it! You defeated the monster that hurt your friends and your best friend Max.`,
     `You sit down and rest, closing your eyes and feeling the wind hit your face. You feel as if a great weight has been lifted off of you.`,
@@ -972,11 +1038,11 @@ const char3Delivery = new Path(
   [
     `You try to remember and write down the location they gave you.`,
     `You prepare the pizza and get everything ready to head out.`,
-    `You are unsure if they said First Street or Fifth Street.`,
+    `You are unsure if they said First Street or Fifth Street.`
   ],
   `url(images/backgrounds/potential-pizzeria-outside.jpg)`,
   [
-    [`Go to xxx First St.`, `char3FiredBecauseAddress`],
+    [`Go to xxx First St.`, `char3FiredBecauseNoWork`],
     [`Go to xxx Fifth St.`, `char3CorrectLocation`],
   ]
 );
@@ -1035,9 +1101,12 @@ const givePizzaToClient = new Path(
   [[`Replay`, `start`]]
 );
 
-const givePizzaToStranger = new Path(`givePizzaToStranger`, [
+const givePizzaToStranger = new Path(
+  `givePizzaToStranger`, 
+  [
   `You decide to be kind and give the pizza to the starving stranger.`,
-]);
+  ]
+);
 
 // ***********Quick time event***********
 const quickTimeStart = new Path(
@@ -1181,10 +1250,23 @@ let paths = [
   char2Slip,
   char2GotAway,
   char2TalkPlan,
+  char2GoodPlan,
+  char2ContPlan,
+  char2MoreLore,
+  char2LivingRoom,
+  char2DefeatDarkling1,
+  char2GreenEnding,
+  char2BadPlan,
+  charRunAway,
+  char2ReturnAlone,
+  char2DefeatDarkling2,
+  char2EndAlone,
+  char2Sanctuary,
   char3AnswerCall,
   char3Delivery,
-  char3FiredBecauseAddress,
   char3FiredBecauseNoWork,
+  char3CorrectLocation,
+  char3FiredBecauseAddress,
   char3ClientOrHomeless,
   givePizzaToClient,
   givePizzaToStranger,
