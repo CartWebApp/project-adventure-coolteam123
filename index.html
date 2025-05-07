@@ -21,7 +21,7 @@
       <div id="buttonHolder">
         <h1 id="title">The Darkling</h1>
         <button id="startGame" class="hover" onclick="leaveMenu()">Play</button>
-        <button id="quickMinigame" class="hover" onclick="bossFight()">BossFight(WIP)</button>
+        <button id="quickMinigame" class="hover" onclick="startBossFight()">BossFight</button>
       </div>
     </section>
     <div id="cursor"></div>
@@ -59,6 +59,27 @@
       <button id="inventory" onclick="showInventory()">Inventory</button>
       <button id="save" onclick="saveToLocalStorage()">Save</button>
       <button id="load" onclick="loadFromLocalStorage()">Load</button>
+    </section>
+    <section id="bossFight">
+      <img src="images/backgrounds/Potential-finalboss-monster.jpg">
+      <div class="fightOptions">
+          <button class="hover playerAction" onclick="attack()" id="attack">Attack with knife</button>
+          <button class="hover playerAction" onclick="rest()">Rest</button>
+          <button class="hover playerAction" onclick="block()" id="block">Block</button>
+          <button class="hover playerAction" onclick="flee()">Flee</button>
+          <button class="hover next" onclick="next()">Continue</button>
+      </div>
+      <div class="playerStats">
+        <div>Health: <span id="pHealth">100</span></div>
+        <div>Stamina: <span id="pStamina">100</span></div>
+      </div>
+      <div class="darklingStats">
+        <div>Health: <span id="dHealth">100</span></div>
+        <div>Stamina: <span id="dStamina">100</span></div>
+      </div>
+      <div id="fightTextbox">
+        <p id="fightText"></p>
+      </div>
     </section>
     <script src="script.js"></script>
   </body>

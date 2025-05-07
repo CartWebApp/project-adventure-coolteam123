@@ -156,6 +156,80 @@ html:has(.hover:hover) #cursor {
   display: none;
 }
 
+#bossFight{
+  display: none;
+  z-index: 999;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  /* bottom: 50%;
+  left: 50%;
+  transform: translate(-50%); */
+}
+
+.next{
+  display: none;
+}
+
+#bossFight > img{
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.fightOptions{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  padding-bottom: 2vh;
+  width: 100%;
+  height: 20vh;
+  background: black;
+  bottom: 0;
+  position: absolute;
+}
+
+.fightOptions > button{
+  width: 25%;
+  height: 8vh;
+}
+
+.playerStats{
+  position: absolute;
+  bottom: 12vh;
+  left: 7%;
+  color: white;
+ font-size:  1.5rem;
+}
+
+.darklingStats{
+  position: absolute;
+  top: 14vh;
+  right: 7%;
+  color: white;
+  font-size: 4rem;
+  color: black;
+  text-shadow: red 0px 0px 4px;
+}
+
+#fightTextbox{
+  padding: 5px;
+  display: flex;
+  width: 45%;
+  height: 5vh;
+  position: absolute;
+  background: beige;
+  align-items: center;
+  left: 50%;
+  transform: translate(-50%);
+  bottom: 12vh;
+  text-align: center;
+  border: orange 2px inset;
+}
+
 #titleScreen {
   display: flex;
   justify-content: center;

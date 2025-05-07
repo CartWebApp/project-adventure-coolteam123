@@ -11,14 +11,33 @@ const saveSection = document.getElementById("saveSection");
 const historySection = document.getElementById("historySection");
 const titleScreen = document.getElementById("titleScreen");
 const timeBar = document.getElementById("loadingBar");
+const bossFight = document.getElementById("bossFight");
+const bossText = document.getElementById("fightText");
+const pHealth = document.getElementById("pHealth");
+const pStamina = document.getElementById("pStamina");
+const dHealth = document.getElementById("dHealth");
+const dStamina = document.getElementById("dStamina");
+const attackText = document.getElementById("attack");
+const blockText = document.getElementById("block");
+const playerActions = document.getElementsByClassName("playerAction");
+const nextButton = document.getElementsByClassName("next");
 let flickerBlur = 170;
 let flickerSpread = 30;
 let quickTimeCounter = 0;
 let quickTimer = 3;
+let playerHealth = 100;
+let playerStamina = 100;
+let playerDefense = 0;
+let darklingHealth = 110;
+let darklingStamina = 100;
+let darklingDefense = 0;
+let darklingPhase = 0;
+let coward = false;
 
 let timeoutID;
 let timeoutID2;
 let intervalId;
+let timeoutID3;
 
 let startTime = Date.now();
 
@@ -684,10 +703,9 @@ const char1BadPlan = new Path(
 );
 
 const char1GoodPlan = new Path(
-  `char1BadPlan`,
+  `char1GoodPlan`,
   [
     `After taking the night to rest, everyone heads out. No time like the present, after all.`,
-    `After hours of talking, a plan has been devised.`,
     `Approaching the mansion, Roman gives you a pat on the back. You take a deep breath to calm down, then nod to yourself and head to position.`
   ],
   `url(images/backgrounds/close-to-mansion2.jpg)`,
@@ -998,8 +1016,7 @@ const char2FindRoman = new Path(
     `You drop your weapon.`,
   ],
   `url(images/backgrounds/encounter-group.jpg)`,
-  [[`Get closer and say hi`, `char2MeetGroup`]],
-  new Item("Long metal tube", "")
+  [[`Get closer and say hi`, `char2MeetGroup`]]
 );
 
 const char2MeetGroup = new Path(
@@ -1151,13 +1168,14 @@ const char2TalkPlan = new Path(
   `char2TalkPlan`,
   [
     `You do a quick scan of the back and side of the place and go round it to meet with your group again.`,
-    `You begin to form a plan.`,
-    `You have plan A and plan B.`,
+    `After hours of talking, a plan has been devised. Shriekers normally drift from place to place, and its unlikely the darkling is particularly attached to the place.`,
+    `You could try to drive off the darkling, but that wouldn't end the threat for good.`,
+    `Or you could fight the darkling - as unmatched of a fight that seems.`
   ],
   `url(images/backgrounds/green-bushes.jpg)`,
   [
-    [`Go with plan A`, `char2GoodPlan`],
-    [`Go with plan B`, `char2BadPlan`],
+    [`Drive off the darkling`, `char2GoodPlan`],
+    [`Fight the darkling`, `char2BadPlan`],
   ]
 );
 
@@ -1208,13 +1226,13 @@ const char2LivingRoom = new Path(
   `char2LivingRoom`,
   [
     `You go to the living room and sit down on the sofas, waiting for Elliot and Leah to return.`,
-    `Leah come back first holding a dead rabbit by the ears, with a grin on her first.`,
+    `Leah comes back first holding a dead rabbit by the ears, with a grin on her first.`,
     `She's about to say something when Elliot storms in.`,
     `"It's coming back! I saw it, that thing is heading here again," he warns.`,
     `You are going to have to fight this darkling if you want to keep this place.`
   ],
   `url(images/backgrounds/living-room.jpg)`,
-  [[`Go fight the "Darkling"`], ``]
+  [[`Go fight the "Darkling"`, `startBossFight`]]
 )
 
 const char2DefeatDarkling1 = new Path(
@@ -1253,7 +1271,7 @@ const char2BadPlan = new Path(
   ],
   `url(images/backgrounds/safe-area-inside2.jpg)`,
   [
-    [`Stay and find a way to help`, `dead`],
+    [`Stay and fight`, `dead`],
     [`Run away, they were good people and Max was a good dog`, `charRunAway`],
   ]
 );
@@ -1282,7 +1300,7 @@ const char2ReturnAlone = new Path(
     `It looks like you will have to confront this darkling one way or the other. You prepare yourself and go look for the darkling. You will have to fight it, for your friends and for Max.`,
   ],
   `url(images/backgrounds/abandoned-cabin-in-woods.jpg)`,
-  [[`Go fight the "Darkling"`, ``]]
+  [[`Go fight the "Darkling"`, `startBossFight2`]]
 );
 
 const char2DefeatDarkling2 = new Path(
@@ -1627,6 +1645,20 @@ const quickTime = new Path(
   [[`Perish`, `dead`]]
 );
 
+const startBossFight = new Path(
+  `startBossFight`,
+  [`Just to keep everything happy`],
+  `url(images/backgrounds/Potential-finalboss-monster.jpg)`,
+  [[`Perish`, `dead`]]
+);
+
+const startBossFight2 = new Path(
+  `startBossFight2`,
+  [`Just to keep everything happy`],
+  `url(images/backgrounds/Potential-finalboss-monster.jpg)`,
+  [[`Perish`, `dead`]]
+);
+
 // ***********Paths***********
 let paths = [
   start,
@@ -1852,22 +1884,30 @@ function makeOptions() {
         link.onclick = function () {
           randomQuickTimeEvent();
         };
-      } else if (element[1] == "bossFight") {
+      } else if (element[1] == "startBossFight") {
+        link.onclick = function () {
+          beginBossFight();
+        };
+      } else if (element[1] == "startBossFight2") {
+        link.onclick = function () {
+          beginBossFight(true);
+        };
       } else {
         link.onclick = function () {
           changePath(this.id, this.innerText, Path.item);
         };
       }
-      let Path = getPath(element[1]);
+        let Path = getPath(element[1]);
 
-      let txt = Path.image.split("(")[1].split(")")[0];
-      const img = new Image();
-      img.src = txt;
+        if(Path){
+          let txt = Path.image.split("(")[1].split(")")[0];
+          const img = new Image();
+          img.src = txt;
+        }
 
       options.append(link);
     }
   }
-  console.log("loading complete");
   options.style.visibility = `visible`;
 }
 
@@ -2186,6 +2226,218 @@ function restoreFromLocalStorage(load) {
   background.style.backgroundImage = story.image;
 
   loadSection.style.zIndex = -2;
+}
+
+function doFightText(text){
+  bossText.innerHTML = '';
+  clearTimeout(timeoutID3);
+  timeoutID3 = typeWriter(text, bossText, 20);
+}
+
+function beginBossFight(ranAway = false){
+  coward = ranAway;
+  playerHealth = 100;
+  playerDefense = 0;
+  playerStamina = 100;
+  darklingDefense = 0;
+  darklingHealth = 110;
+  darklingPhase = 0;
+  darklingStamina = 100;
+  titleScreen.className = "throughBlack";
+
+  bossFight.style.display = 'flex';
+  setTimeout(() => {
+    doFightText(`It's time!`);
+  }, 300);
+  if(doesInventoryHave('Hatchet')){
+    attackText.onclick = function (){useHatchet()};
+    attackText.innerHTML = 'Attack with hatchet'
+  }
+  if(doesInventoryHave('Sturdy Clothing')){
+    playerHealth = 120;
+  }
+  updateStats(true);
+}
+
+function useHatchet(){
+  let atk = Math.round(Math.random()*18)+15;
+  doFightText(`You swing the hatchet! You dealt ${atk} damage!`);
+  darklingHealth -= atk;
+  playerStamina -= Math.round(Math.random()*6)+17;
+
+  updateStats();
+}
+
+function attack(){
+  let atk = Math.round(Math.random()*15)+10;
+  doFightText(`You swing the knife! You dealt ${atk} damage!`);
+  darklingHealth -= atk;
+  playerStamina -= Math.round(Math.random()*6)+17;
+
+  updateStats();
+}
+
+function next(){
+  for (each of nextButton){
+    each.style.display = 'none';
+  }
+  for (each of playerActions){
+    each.style.display = 'block';
+  }
+  doDarklingAction();
+}
+
+function block(){
+  doFightText(`You raise your guard in anticipation!`);
+  playerDefense = Math.round(Math.random()*5)+15;
+
+  updateStats();
+}
+
+function rest(){
+  let regen = Math.round(Math.random()*20)+10;
+  doFightText(`You take a moment to recover, for ${regen} stamina!`);
+  playerStamina += regen;
+
+  updateStats();
+}
+
+function doDarklingAction(){
+  let atk;
+  switch (darklingPhase) {
+    case 0:
+      doFightText(`The darkling prepares to launch a strong attack!`);
+      break;
+    case 1:
+      atk = Math.round(Math.random()*15)+20;
+      doFightText(`The darkling attacks with full force for ${Math.max(atk-playerDefense,0)} (${atk}-${playerDefense}) damage.`);
+      darklingStamina -= 20;
+      playerHealth -= Math.max(atk-playerDefense,0);
+      break;
+    case 2:
+      atk = Math.round(Math.random()*10)+10;
+      doFightText(`The darkling quickly attacks for ${Math.max(atk-playerDefense, 0)} (${atk}-${playerDefense}) damage.`);
+      darklingStamina -= 15;
+      playerHealth -= Math.max(atk-playerDefense,0);
+      break;
+    case 3:
+      atk = Math.round(Math.random()*10)+10;
+      doFightText(`The darkling quickly attacks for ${Math.max(atk-playerDefense,0)} (${atk}-${playerDefense}) damage.`);
+      darklingStamina -= 15;
+      playerHealth -= Math.max(atk-playerDefense,0);
+      break;
+    case 4:
+      doFightText(`The darkling prepares to launch a strong attack!`);
+      break;
+    case 5:
+      atk = Math.round(Math.random()*15)+20;
+      doFightText(`The darkling attacks with full force for ${Math.max(atk-playerDefense,0)} (${atk}-${playerDefense}) damage.`);
+      darklingStamina -= 20;
+      playerHealth -= Math.max(atk-playerDefense,0);
+      break;
+    case 6:
+      doFightText(`The darkling prepares to launch a strong attack!`);
+      break;
+    case 7:
+      atk = Math.round(Math.random()*15)+20;
+      doFightText(`The darkling faked you out and instead takes time to rest.`);
+      darklingStamina += 50;
+      break;
+    case 8:
+      atk = Math.round(Math.random()*10)+10;
+      doFightText(`The darkling quickly attacks for ${Math.max(atk-playerDefense,0)} (${atk}-${playerDefense}) damage.`);
+      darklingStamina -= 15;
+      playerHealth -= Math.max(atk-playerDefense,0);
+      break;
+    default:
+      doFightText(`The darkling takes a moment to rest.`);
+      darklingStamina += 35;
+      darklingPhase = -1;
+      break;
+  }
+  updateStats(true);
+  playerDefense = 0;
+  darklingPhase++;
+}
+
+function updateStats(darklingTurn = false){
+  if(playerStamina <= 10){
+    playerStamina = 0;
+    attackText.style.backgroundColor = 'red';
+    blockText.style.backgroundColor = 'red';
+    blockText.onclick = '';
+    attackText.onclick = '';
+  } else {
+    attackText.style.backgroundColor = 'white';
+    blockText.style.backgroundColor = 'white';
+    blockText.onclick = function (){block()};
+    if(doesInventoryHave('Hatchet')){
+      attackText.onclick = function (){useHatchet()};
+    } else {
+      attackText.onclick = function (){attack()};
+    }
+  }
+  pHealth.innerHTML = playerHealth;
+  pStamina.innerHTML = playerStamina;
+  dHealth.innerHTML = darklingHealth;
+  dStamina.innerHTML = darklingStamina;
+  if(!darklingTurn){
+    for (each of playerActions){
+      each.style.display = 'none';
+    }
+    for (each of nextButton){
+      each.style.display = 'block';
+    }
+  }
+  if(playerHealth<=0){
+    hideBossFight();
+    text.innerHTML = "";
+    clearOptions();
+    story = getPath("dead");
+
+    story.textNum = -1;
+    nextText();
+    background.style.backgroundImage = story.image;
+  } else if(darklingHealth<=0){
+    hideBossFight();
+    text.innerHTML = "";
+    clearOptions();
+    if (doesHistoryHave('Play as Ezekiel')) {
+      if(coward){
+        story = getPath("char2DefeatDarkling2");
+      } else {
+        story = getPath("char2DefeatDarkling1");
+      }
+    } else if(doesHistoryHave('Play as Elena')){
+
+      story = getPath("char2DefeatDarkling1");
+    } else {
+      story = getPath("char2DefeatDarkling1");
+    }
+
+    story.textNum = -1;
+    nextText();
+    background.style.backgroundImage = story.image;
+  }
+}
+
+function flee(){
+  hideBossFight()
+  if (doesHistoryHave('Play as Ezekiel')) {
+    story = getPath("char2GotAway");
+  } else if(doesHistoryHave('Play as Elena')){
+    story = getPath("charRunAway");
+  } else {
+    story = getPath("charRunAway");
+  }
+
+  story.textNum = -1;
+  nextText();
+  background.style.backgroundImage = story.image;
+}
+
+function hideBossFight(){
+  bossFight.style.display = 'none';
 }
 
 document.addEventListener("click", function (event) {
