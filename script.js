@@ -696,6 +696,7 @@ const char1GoodPlan = new Path(
   ]
 );
 
+// ***********Character 2(Ezekiel Valkyrie)-Path and choices***********
 const PathChar2 = new Path(
   `PathChar2`,
   [
@@ -1352,33 +1353,6 @@ const char3AnswerCall = new Path(
   ]
 );
 
-const char3Delivery = new Path(
-  `char3Delivery`,
-  [
-    `You try to remember and write down the location they gave you.`,
-    `You prepare the pizza and get everything ready to head out.`,
-    `You are unsure if they said First Street or Fifth Street.`
-  ],
-  `url(images/backgrounds/potential-pizzeria-outside.jpg)`,
-  [
-    [`Go to xxx First St.`, `char3FiredBecauseNoWork`],
-    [`Go to xxx Fifth St.`, `char3CorrectLocation`],
-  ]
-);
-
-const char3CorrectLocation = new Path(
-  `char3CorrectLocation`,
-  [
-    `You wrote down the correct address.`,
-    `As you keep walking you notice a sketchy group of people gathered around something.`,
-  ],
-  `url(images/backgrounds/potential-pizzeria-outside.jpg)`,
-  [
-    [`Avoid them.`, `char3ClientOrHomeless`],
-    [`Approach them`, `char3SketchyGroup`],
-  ]
-);
-
 const char3FiredBecauseNoWork = new Path(
   `char3FiredBecauseNoWork`,
   [
@@ -1390,6 +1364,20 @@ const char3FiredBecauseNoWork = new Path(
   [[`Replay`, `start`]]
 );
 
+const char3Delivery = new Path(
+  `char3Delivery`,
+  [
+    `You try to remember and write down the location they gave you.`,
+    `You prepare the pizza and get everything ready to head out.`,
+    `You are unsure if they said First Street or Fifth Street.`
+  ],
+  `url(images/backgrounds/potential-pizzeria-outside.jpg)`,
+  [
+    [`Go to xxx First St.`, `char3FiredBecauseAddress`],
+    [`Go to xxx Fifth St.`, `char3CorrectLocation`],
+  ]
+);
+
 const char3FiredBecauseAddress = new Path(
   `char3FiredBecauseAddress`,
   [`You went to the the wrong address.`, `You are fired!`],
@@ -1397,14 +1385,77 @@ const char3FiredBecauseAddress = new Path(
   [[`Replay`, `start`]]
 );
 
+const char3CorrectLocation = new Path(
+  `char3CorrectLocation`,
+  [
+    `You wrote down the correct address.`,
+    `As you keep walking you notice a sketchy group of people gathered around something.`,
+  ],
+  `url(images/backgrounds/potential-pizzeria-outside.jpg)`,
+  [
+    [`Avoid them`, `char3ClientOrHomeless`],
+    [`Approach them`, `char3SketchyGroup`],
+  ]
+);
+
+const char3SketchyGroup = new Path(
+  `char3SketchyGroup`,
+  [
+    `You walk closer to them and as you do they notice the pizza you are carrying.`,
+    `You realize that they might be dangerous and your about to turn back but more come from the back and corner you.`,
+    `One guy with a long beard and a bald head raises his hands and tries to grab the pizza box. You quickly flinch away and avoid his hands.`,
+    `They want to steal your pizza.`
+  ],
+  `url(images/backgrounds/sketchy-group.jpg)`,
+  [
+    [`Threaten them with your knife`, `char3BeatUp`],
+    [`Threaten to ban them from the pizzeria`, `char3LootThem`]
+  ]
+)
+
+const char3BeatUp = new Path(
+  `char3BeatUp`,
+  [
+    `They beat you up and steal the pizza. The worst thing is that you are FIRED!`
+  ],
+  `url(images/backgrounds/sketchy-group.jpg)`,
+  [[`Replay`, `start`]]
+)
+
+const char3LootThem = new Path(
+  `char3LootThem`,
+  [
+    `They get scared and start walking away but you notice one holding a mysterious bag.`
+  ],
+  `url(images/backgrounds/sketchy-group.jpg)`,
+  [
+    [`Leave them as quickly as you can`, `char3ClientOrHomeless`],
+    [`Steal their bag and make a run for it`, `char3FirstAidKit`]
+  ]
+)
+
+const char3FirstAidKit = new Path(
+  `char3FirstAidKit`,
+  [
+    `As the man starts walking you quickly run towards him and snatch the bag from him and make a run for it. You tightly hold the pizza box on one hand and the bag you stole on the other while running as fas as you can.`,
+    `You keep running towards the direction you were heading and after a few minutes you stop and start walking again.`,
+    `You open the bag and find a beanie, but you also notice a familiar looking container, it's a first aid kit!`
+  ],
+  `url(images/backgrounds/lucia-walking2.jpg)`,
+  [[`Keep looking for client`, `char3ClientOrHomeless`]],
+  new Item("First Aid Kit", ""),
+  new Item("Beanie", "")
+)
+
 const char3ClientOrHomeless = new Path(
   `char3ClientOrHomeless`,
   [
-    `You decide to ignore them and as you keep walking you notice your client.`,
-    `However you also see someone on the side of the street. Its a young man around who seems to be around his early to mid 20s.`,
-    `He looks very malnourished.`,
+    `You decide to keep walking and don't look back. After a few more minutes you notice your client.`,
+    `However you also see someone on the side of the street. It's a young man who seems to be around his early to mid 20s.`,
+    `He looks very tired.`,
     `He could really use that pizza right now.`,
   ],
+  `url(images/backgrounds/lucia-walking2.jpg)`,
   [
     [`Give the pizza to the client`, `givePizzaToClient`],
     [`Give the pizza to the starving stranger`, `givePizzaToStranger`],
@@ -1417,6 +1468,7 @@ const givePizzaToClient = new Path(
     `You decide to do your job and give the pizza to your client.`,
     `Your mission is complete and you live your whole life working at the pizzeria until you die from eating too much pizzas.`,
   ],
+  `url(images/backgrounds/pizza-to-client.jpg)`,
   [[`Replay`, `start`]]
 );
 
@@ -1424,6 +1476,77 @@ const givePizzaToStranger = new Path(
   `givePizzaToStranger`, 
   [
   `You decide to be kind and give the pizza to the starving stranger.`,
+  `Out of nowhere a van comes from the side of the street, a man sticks his head out and yells,"You're FIRED!"`,
+  `The van leaves as quickly as it came, leaving the young man you met and you dumbfounded.`,
+  `You sigh and sit down on the curb. The young man opens the pizza box and starts eating.`,
+  `"My name is Roman. Thank you for the food," he says.`,
+  `"I'm Lucia," you introduce yourself.`,
+  `After he finishes eating, Roman starts talking again. He tells you about his group of friends and how he was on his way back to his camp after looking for some food but got too tired from walking and decied to sit down.`,
+  `He was disappointed becuase he didn't find anything to eat.`,
+  `"You should join us," he suggests.`
+  ],
+  `url(images/backgrounds/homeless-man.jpg)`,
+  [
+    [`Join him, you don't have anything else to do`, `char3Join`],
+    [`Decline, you don't feel like walking`, `char3Decline`]
+  ]
+);
+
+const char3Decline = new Path(
+  `char3Decline`,
+  [
+    `You decline Roman's offer say goodbye.`,
+    `You live the rest of your life trying to look for a job until you die of boredom.`
+  ],
+  `url(images/backgrounds/lucia-bored.jpg)`,
+  [[`Replay`, `start`]]
+)
+
+const char3Join = new Path(
+  `char3Join`,
+  [
+    `"okay, why not?"`,
+    `"Nice!"Exclaims roman and hands you the last slice of pizza.`,
+    `You guys get up and start walking. Roman takes the lead and you follow him.`,
+    `"My group is staying at an abandoned house, but we constantly move places. We are looking for a safe place to stay permanently," he explains.`
+  ],
+  `url(images/backgrounds/lucia-bored.jpg)`,
+  [[`Keep walking`, `charMeetGroup`]]
+)
+const charMeetGroup = new Path(
+  `charMeetGroup`,
+  [
+    `You arrive at Roman's camp. Its an old shabby house far away from the rest of the houses, close to the woods. The windows are covered with pieces of paper glued to it.`,
+    `Roman knocks three times on the door. There is a long pause before the door is opened. A man around his late 20s opens the door, he smiles at Roman but is surprised to see you.`,
+    `As you walk in you notice a guy and two girls sitting around the living room. `,
+    `Roman introduces you to them and they introduce themselves. The guy who opened the door is Elliot, there is also Victor, Leah, and Tessa who seems to be the youngest.`,
+    `"I didn't find anything but I met Lucia and she gave me some food," explained Roman.`,
+    `"Oh! So where is it?" Asked Elliot.`,
+    `"I kind of finished it..."`,
+    `There is a minute of silence before they laugh and keep talking. They don't seem to mind. Leah had also been searching, she said she found something at a supermarket nearby so she shared it with the rest of the group.`,
+    `You spent the rest of the afternoon talking until it was time to sleep.`
+  ],
+  `url(images/backgrounds/group-camp.jpg)`,
+  [[`Sleep on the couch`, `char3NextDay`]]
+);
+
+const char3NextDay = new Path(
+  `char3NextDay`,
+  [
+    `You wake up to the sound of a nock on the door.`,
+    `Before you could get up, Victor opens the door. It's Leah, she woke up early to go hunting and brought home a rabbit.`,
+    `Everyone heads outside and into the woods to start a fire. The house doesn't have any gas.`,
+    `While they start the fire Elliot starts talking. He tells you about a guy named George. He was also part of their group but got lost days ago.`,
+    `"We were planning on looking for him today," he said.`,
+    `"Tomorrow we were going to check out a potential safe place but we think a shrieker is staying there," added Leah.`,
+    `"The place is huge, like a mansion, but the shrieker is abnormally bigger than usual," says Victor.`,
+    `They call it the "Darkling."`,
+    `"Anyway would you help us look for George?" Asks Elliot.`
+  ],
+  `url(images/backgrounds/breakfast.jpg)`,
+  [
+    // [`Accept`, `char3LookForGeorge`],
+    [`Refuse`, `char3Refuse`]
   ]
 );
 
@@ -1607,9 +1730,17 @@ let paths = [
   char3FiredBecauseNoWork,
   char3CorrectLocation,
   char3FiredBecauseAddress,
+  char3SketchyGroup,
+  char3BeatUp,
+  char3LootThem,
+  char3FirstAidKit,
   char3ClientOrHomeless,
   givePizzaToClient,
   givePizzaToStranger,
+  char3Decline,
+  char3Join,
+  charMeetGroup,
+  char3NextDay,
   quickTimeStart,
   quickTimeEast,
   quickTimeNorth,
