@@ -373,6 +373,12 @@ button {
     transform: translate(0, 0);
     height: 7vh;
   }
+  #text{
+    font-size: 1.3rem;
+  }
+  #textInteract{
+    height: 28vh;
+  }
 }
 
 @media only screen and (max-width: 550px) {
