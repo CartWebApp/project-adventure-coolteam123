@@ -357,10 +357,10 @@ const whyIsThisStillAnOption = new Path(
     `Quickly, your lazy self manages to leave the world behind to the haze of sleep.`,
     `Forever.`,
     `You have an unfortunate stroke while sleeping and never wake up.`,
-    `Side Ending 1/4: Lazy`
+    `Side Ending 1/5: Lazy`
   ],
   `url(images/backgrounds/cabin-inside.jpg)`,
-  [["Accept you fate", "dead"]]
+  [["Accept your fate", "dead"]]
 );
 
 const char1EnterAgain = new Path(
@@ -1035,7 +1035,7 @@ const maxDead = new Path(
   [
     `Max runs on your command but the shrieker is too fast and strikes him.`,
     `Sadly Max doesn't make it. You have lost your life-long partner and eventually you die too, from sadness.`,
-    `Side Ending 2/4: How Could You?`
+    `Side Ending 2/5: How Could You?`
   ],
   `url(images/backgrounds/Max-dead.jpg)`,
   [[`Replay`, `start`]]
@@ -1086,7 +1086,7 @@ const char2Refuse = new Path(
     `"No," You say firmly.`,
     `"You should find a place to stay before it gets any darker," you tell him as you start walking away from him.`,
     `You leave him behind and don't look back. A few years pass and you find a safer place to set your camp. Max dies from his old age and you eventually do too.`,
-    `Side Ending 3/4: Loner`
+    `Side Ending 3/5: Loner`
   ],
   `url(images/backgrounds/abandoned-building-forest.jpg)`,
   [[`Replay`, `start`]]
@@ -1142,7 +1142,7 @@ const char2Together = new Path(
   `char2Together`,
   [
     `You never find Roman's group, years pass but you guys become a team and die in your sleep.`,
-    `Side Ending 4/4: At Least You Aren't Alone`
+    `Side Ending 4/5: At Least You Aren't Alone`
   ],
   `url(images/backgrounds/dead-graves.jpg)`,
   [[`Replay`, `start`]]
@@ -1821,6 +1821,19 @@ const startBossFight2 = new Path(
   [[`Perish`, `dead`]]
 );
 
+const fledTwice = new Path(
+  `fledTwice`,
+  [
+    `You turn and try to make a run for it.`,
+    `But this time... there's isn't anyone to distract the darkling as you run.`,
+    `It swiftly catches up to you, and with your back turned to it you stand no chance.`,
+    `Side Ending 5/5: Coward`
+  ],
+  `url(images/backgrounds/dead-graves.jpg)`,
+  [[`Replay`, `start`]]
+
+)
+
 // ***********Paths***********
 let paths = [
   start,
@@ -1957,6 +1970,7 @@ let paths = [
   quickTimeWest,
   wonQuickTime,
   quickTime,
+  fledTwice
 ];
 let history = [];
 
@@ -2417,7 +2431,7 @@ function beginBossFight(ranAway = false){
   playerDefense = 0;
   playerStamina = 100;
   darklingDefense = 0;
-  darklingHealth = 110;
+  darklingHealth = 200;
   darklingPhase = 0;
   darklingStamina = 100;
   titleScreen.className = "throughBlack";
@@ -2430,14 +2444,17 @@ function beginBossFight(ranAway = false){
     attackText.onclick = function (){useHatchet()};
     attackText.innerHTML = 'Attack with hatchet'
   }
-  if(doesInventoryHave('Sturdy Clothing')){
+  if(doesInventoryHave('Sturdy Clothing')||doesInventoryHave('Beanie')){
+    playerDefense = 3;
+  }
+  if(doesInventoryHave('First-Aid Kit')){
     playerHealth = 120;
   }
   updateStats(true);
 }
 
 function useHatchet(){
-  let atk = Math.round(Math.random()*18)+15;
+  let atk = Math.round(Math.random()*15)+12;
   doFightText(`You swing the hatchet! You dealt ${atk} damage!`);
   darklingHealth -= atk;
   playerStamina -= Math.round(Math.random()*6)+17;
@@ -2446,7 +2463,7 @@ function useHatchet(){
 }
 
 function attack(){
-  let atk = Math.round(Math.random()*15)+10;
+  let atk = Math.round(Math.random()*10)+10;
   doFightText(`You swing the knife! You dealt ${atk} damage!`);
   darklingHealth -= atk;
   playerStamina -= Math.round(Math.random()*6)+17;
@@ -2466,15 +2483,18 @@ function next(){
 
 function block(){
   doFightText(`You raise your guard in anticipation!`);
-  playerDefense = Math.round(Math.random()*5)+15;
+  playerDefense += Math.round(Math.random()*10)+45;
+  playerStamina -= Math.round(Math.random()*4)+1;
 
   updateStats();
 }
 
 function rest(){
-  let regen = Math.round(Math.random()*20)+10;
-  doFightText(`You take a moment to recover, for ${regen} stamina!`);
+  let regen = Math.round(Math.random()*15)+10;
+  let hRegen = Math.round(Math.random()*10)+2;
+  doFightText(`You take a moment to recover, for ${regen} stamina and ${hRegen} health!`);
   playerStamina += regen;
+  playerHealth += hRegen;
 
   updateStats();
 }
@@ -2486,65 +2506,84 @@ function doDarklingAction(){
       doFightText(`The darkling prepares to launch a strong attack!`);
       break;
     case 1:
-      atk = Math.round(Math.random()*15)+20;
+      atk = Math.round(Math.random()*20)+40;
       doFightText(`The darkling attacks with full force for ${Math.max(atk-playerDefense,0)} (${atk}-${playerDefense}) damage.`);
-      darklingStamina -= 20;
+      darklingStamina -= 30;
       playerHealth -= Math.max(atk-playerDefense,0);
       break;
     case 2:
-      atk = Math.round(Math.random()*10)+10;
+      atk = Math.round(Math.random()*8)+8;
       doFightText(`The darkling quickly attacks for ${Math.max(atk-playerDefense, 0)} (${atk}-${playerDefense}) damage.`);
-      darklingStamina -= 15;
+      darklingStamina -= 10;
       playerHealth -= Math.max(atk-playerDefense,0);
       break;
     case 3:
-      atk = Math.round(Math.random()*10)+10;
+      atk = Math.round(Math.random()*8)+8;
       doFightText(`The darkling quickly attacks for ${Math.max(atk-playerDefense,0)} (${atk}-${playerDefense}) damage.`);
-      darklingStamina -= 15;
+      darklingStamina -= 10;
       playerHealth -= Math.max(atk-playerDefense,0);
       break;
     case 4:
       doFightText(`The darkling prepares to launch a strong attack!`);
       break;
     case 5:
-      atk = Math.round(Math.random()*15)+20;
+      atk = Math.round(Math.random()*15)+40;
       doFightText(`The darkling attacks with full force for ${Math.max(atk-playerDefense,0)} (${atk}-${playerDefense}) damage.`);
-      darklingStamina -= 20;
+      darklingStamina -= 30;
       playerHealth -= Math.max(atk-playerDefense,0);
       break;
     case 6:
-      doFightText(`The darkling prepares to launch a strong attack!`);
+      atk = Math.round(Math.random()*8)+8;
+      doFightText(`The darkling quickly attacks for ${Math.max(atk-playerDefense, 0)} (${atk}-${playerDefense}) damage.`);
+      darklingStamina -= 10;
+      playerHealth -= Math.max(atk-playerDefense,0);
       break;
     case 7:
-      atk = Math.round(Math.random()*15)+20;
+      doFightText(`The darkling prepares to launch a strong attack!`);
+      break;
+    case 8:
+      atk = Math.round(Math.random()*15)+40;
       doFightText(`The darkling faked you out and instead takes time to rest.`);
       darklingStamina += 50;
       break;
-    case 8:
-      atk = Math.round(Math.random()*10)+10;
+    case 9:
+      atk = Math.round(Math.random()*8)+8;
       doFightText(`The darkling quickly attacks for ${Math.max(atk-playerDefense,0)} (${atk}-${playerDefense}) damage.`);
-      darklingStamina -= 15;
+      darklingStamina -= 10;
       playerHealth -= Math.max(atk-playerDefense,0);
       break;
     default:
       doFightText(`The darkling takes a moment to rest.`);
-      darklingStamina += 35;
+      darklingStamina += 50;
+      darklingHealth += 20;
       darklingPhase = -1;
       break;
   }
   updateStats(true);
-  playerDefense = 0;
+  if(doesInventoryHave('Sturdy Clothing')||doesInventoryHave('Beanie')){
+    playerDefense = 3;
+  } else {
+    playerDefense = 0;
+  }
   darklingPhase++;
 }
 
 function updateStats(darklingTurn = false){
   if(playerStamina <= 10){
-    playerStamina = 0;
+    if(playerStamina <= 0){
+      playerStamina = 0;
+    }
     attackText.style.backgroundColor = 'red';
     blockText.style.backgroundColor = 'red';
     blockText.onclick = '';
     attackText.onclick = '';
   } else {
+    if(playerStamina > 100){
+      playerStamina = 100;
+    }
+    if(playerHealth > 100){
+      playerHealth = 100;
+    }
     attackText.style.backgroundColor = 'white';
     blockText.style.backgroundColor = 'white';
     blockText.onclick = function (){block()};
@@ -2603,12 +2642,16 @@ function updateStats(darklingTurn = false){
 
 function flee(){
   hideBossFight()
-  if (doesHistoryHave('Play as Ezekiel')) {
-    story = getPath("char2GotAway");
-  } else if(doesHistoryHave('Play as Elena')){
-    story = getPath("charRunAway");
+  if(!coward){
+    if (doesHistoryHave('Play as Ezekiel')) {
+      story = getPath("charRunAway");
+    } else if(doesHistoryHave('Play as Elena')){
+      story = getPath("char1RunAway");
+    } else {
+      story = getPath("charRunAway");
+    }
   } else {
-    story = getPath("charRunAway");
+    story = getPath("fledTwice");
   }
 
   story.textNum = -1;
