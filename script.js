@@ -122,7 +122,7 @@ const char1Medicine = new Path(
   ],
   `url(images/backgrounds/firstaid.jpg)`,
   [[`Continue on your way`, `char1Continue`]],
-  new Item("FirstAid Kit", "")
+  new Item("First-Aid Kit", "")
 );
 
 const char1Weapon = new Path(
@@ -357,9 +357,10 @@ const whyIsThisStillAnOption = new Path(
     `Quickly, your lazy self manages to leave the world behind to the haze of sleep.`,
     `Forever.`,
     `You have an unfortunate stroke while sleeping and never wake up.`,
+    `Side Ending 1/5: Lazy`
   ],
   `url(images/backgrounds/cabin-inside.jpg)`,
-  [["Accept you fate", "dead"]]
+  [["Accept your fate", "dead"]]
 );
 
 const char1EnterAgain = new Path(
@@ -676,9 +677,9 @@ const char1Planning = new Path(
   `char1Planning`,
   [
     `Everyone gathers around at a nearby cornerstore.`,
-    `After hours of talking, a plan has been devised. Shriekers normally drift from place to place, but unlike it the darkling seems attached to something.`,
-    `While scouting the place Roman noticed a nest - destory it and the monster should have no attachment to the place.`,
-    `However, it requires a volunteer to risk themselves to distract the monster while the others destroy the nest.`,
+    `After hours of talking, a plan has been devised. Shriekers normally drift from place to place, and it seems unlikely the darkling has any particular attachment to the place.`,
+    `As such, you come up with a plan to drive it out.`,
+    `However, it requires a volunteer to risk themselves to distract the monster.`,
     `Currently Roman says he'll do it, but he seems nervous.`,
     `You're a better runner than him, so it'd be safer for you to take the chance... but are you willing to risk it?`
   ],
@@ -698,7 +699,7 @@ const char1BadPlan = new Path(
   ],
   `url(images/backgrounds/close-to-mansion2.jpg)`,
   [
-    [`It's time`, `char1DestroyNest`]
+    [`It's time`, `char1WorsePlan`]
   ]
 );
 
@@ -710,8 +711,160 @@ const char1GoodPlan = new Path(
   ],
   `url(images/backgrounds/close-to-mansion2.jpg)`,
   [
-    [`It's time`, `char1DistractDarkling`],
+    [`It's time`, `char1ContPlan`],
   ]
+);
+
+const char1DefeatDarkling1 = new Path(
+  `char1DefeatDarkling1`,
+  [
+    `You did it! You defeated it. That thing is not going to bother you anymore.`,
+    `You can finally live here in peace.`,
+    `You sit down and rest, closing your eyes and feeling the wind hit your face. You feel as if a great weight has been lifted off of you.`,
+    `You wait a few minutes outside before heading towards the mansion again.`
+  ],
+  `url(images/backgrounds/place-final-fight1.jpg)`,
+  [[`Go back`,`char1GreenEnding`]]
+)
+
+const char1GreenEnding = new Path(
+  `char1GreenEnding`,
+  [
+    `When you enter the living room, you see them stand up,they are relived to see you.`,
+    `You don't say anything and just smile, which surprises them and gets some laughs out of them.`,
+    `Finally you sit down on the sofa and rest.`,
+    `As the years pass, you guys reinforce the area with traps, cultivate crops near the backyard, and rarely encounter any shriekers.`,
+    `You get closer with your group and enjoy the mansion, having fun everyday until you die of old age.`,
+    `Main Ending 3/3: True Ending`
+  ],
+  `url(images/backgrounds/kitchen.jpg)`,
+  [[`Replay`,`start`]]
+)
+
+const char1ContPlan = new Path(
+  `char1ContPlan`,
+  [
+    `You go after the darkling. It'll be your job to try to try drive it out of the mansion.`,
+    `You stealthily sneak through the mansion until you see it - it seems to be resting.`,
+    `You careful line up your throw, and chuck a frying pan at it.`,
+    `Startled, the darkling takes off running. It's tired, and doesn't seem to desire conflict at the moment.`,
+    `Once he vanishes and all you see is trees and bushes you quickly run back inside.`
+  ],
+  `url(images/backgrounds/safe-area-back.jpg)`,
+  [[`Go check on the others`,`char1MoreLore`]]
+);
+
+const char1MoreLore = new Path(
+  `char1MoreLore`,
+  [
+    `You go outside and find the others already celebrating. Some are laying on the ground resting and catching their breaths.`,
+    `"There is no time to waste, let's examine the place," you tell them. They get up and head inside.`,
+    `Elliot and Leah volunteer to hunt for food while the rest of you decide to look around the rooms, verying that there is no other shrieker there.`,
+    `While searching the rooms Victor starts talking and starts sharing stories about a similar shriker they encountered once, "...although not as big." he says.`,
+    `They keep talking, about an hour goes by, and you finish clearing the place.`
+  ],
+  `url(images/backgrounds/kitchen.jpg)`,
+  [[`Go to the living room`, `char1LivingRoom`]],
+)
+
+const char1LivingRoom = new Path(
+  `char1LivingRoom`,
+  [
+    `You go to the living room and sit down on the sofas, waiting for Elliot and Leah to return.`,
+    `Leah comes back first holding a dead rabbit by the ears, with a grin on her first.`,
+    `She's about to say something when Elliot storms in.`,
+    `"It's coming back! I saw it, that thing is heading here again," he warns.`,
+    `You are going to have to fight this darkling if you want to keep this place.`
+  ],
+  `url(images/backgrounds/living-room.jpg)`,
+  [[`Go fight the "Darkling"`, `startBossFight`]]
+)
+
+const char1WorsePlan = new Path(
+  `char1WorsePlan`,
+  [
+    `You are posed outside the building, along with the others in the group.`,
+    `It's your job to ensure the darkling actually leaves.`,
+    `You wait for Roman - and wait, and wait, and wait.`,
+    `After far to long passes, Victor says he's going to look for Roman.`,
+    `Merely minutes later, he staggers through the door with a limp and blood running off his body, the darkling right behind him.`,
+    `He only makes it a few more steps before it catches, bursting through the wall. He clearly doesn't survive.`,
+    `It seems you'll have to fight.`
+  ],
+  `url(images/backgrounds/safe-area-inside2.jpg)`,
+  [
+    [`Fight!`, `startBossFight2`],
+  ]
+);
+
+const char1RunAway = new Path(
+  `char1RunAway`,
+  [
+    `You decide to run away. It is a hard decision to make but you do.`,
+    `You don't think anyone else is going to make it and this is your chance to run so you do.`,
+    `The rest of the group doesn't survive their injuries and they sadly pass away.`,
+    `You run back to your camp.`,
+  ],
+  `url(images/backgrounds/close-to-mansion2.jpg)`,
+  [[`Return to your camp`, `char1ReturnAlone`]]
+);
+
+const char1ReturnAlone = new Path(
+  `char1ReturnAlone`,
+  [
+    `You run back to your camp, exhausting your feet, but rarely stopping to take breaks.`,
+    `You can't belive you left everyone behind.`,
+    `Once you arrive you go immediately inside the cabin and sit down in a corner, trying to process everything.`,
+    `A few hours pass and you stay in the same corner, staring at the wall. The silence is suddenly interrupted when you hear your metal cans outside hitting against each other. Someone or something is here.`,
+    `You grab a metal teapot next to you and head outside. You find a stranger on the floor, he looks scared.`,
+    `"There is a huge shrieker coming this way, run! Get out of here!" He warns you as he gets up and continues running.`,
+    `It looks like you will have to confront the darkling one way or the other. You prepare yourself. You find yourself with regrets for leaving the others behind, but you put them away.`,
+    `You can deal with the price of you cowardice later.`
+  ],
+  `url(images/backgrounds/abandoned-cabin-in-woods.jpg)`,
+  [[`Go fight`, `startBossFight2`]]
+);
+
+const char1DefeatDarkling2 = new Path(
+  `char1DefeatDarkling2`,
+  [
+    `You did it! You defeated the monster that seemed undefeatable.`,
+    `You sit down and rest, closing your eyes and feeling the wind hit your face. You feel as if a great weight has been lifted off of you.`,
+    `You don't waste your time anymore and go back to your camp, you will move into the new safe area.`,
+    `You bring the majority of your things into the new building. You look for a room and spend the night there.`,
+    `You can enjoy this mansion by yourself or make it a sanctuary for other people.`,
+  ],
+  `url(images/backgrounds/ezekiel-room.jpg)`,
+  [
+    [`Live here alone`, `char1EndAlone`],
+    [`Make this place a sanctuary and help other travelers`, `char1Sanctuary`],
+  ]
+);
+
+const char1EndAlone = new Path(
+  `char1EndAlone`,
+  [
+    `You decide to live here by yourself.`,
+    `This mansion has many rooms and as the years pass you dedicate specific rooms for Elliot, Tessa, Victor, Leah, and Roman. You commemorate them by decorating the rooms with their belongings.`,
+    `Years pass and you cultivate crops in your backyard, reinforce your mansion with traps, and live alone until you die in your sleep peacefully.`,
+    `Main Ending 1/3: All Alone`
+  ],
+  `url(images/backgrounds/gravestones1.jpg)`,
+  [[`Replay`, `start`]]
+);
+
+const char1Sanctuary = new Path(
+  `char1Sanctuary`,
+  [
+    `You decide to live here by yourself.`,
+    `This mansion has many rooms and as the years pass you dedicate specific rooms for Elliot, Tessa, Victor, Leah, and Roman. You commemorate them by decorating the rooms with their belongings and you lock those rooms so no one can enter.`,
+    `Years pass and you cultivate crops in your backyard and reinforce your mansion with traps. You create signs to guide travelers to your mansion where you welcome them.`,
+    `You meet new people, create a community and help them stay alive. As the years pass and more people come, they build new houses next to your mansion.`,
+    `You visit your old group's graves every afternoon and tell stories about them to the new friends you meet.`,
+    `Main Ending 2/3: Repentance`
+  ],
+  `url(images/backgrounds/gravestones1.jpg)`,
+  [[`Replay`, `start`]]
 );
 
 // ***********Character 2(Ezekiel Valkyrie)-Path and choices***********
@@ -765,6 +918,7 @@ const char2Medicine = new Path(
   [[`Keep looking around`, `char2Continue`]],
   new Item("First-Aid Kit", "")
 );
+
 const char2Weapon = new Path(
   `char2Weapon`,
   [
@@ -881,6 +1035,7 @@ const maxDead = new Path(
   [
     `Max runs on your command but the shrieker is too fast and strikes him.`,
     `Sadly Max doesn't make it. You have lost your life-long partner and eventually you die too, from sadness.`,
+    `Side Ending 2/5: How Could You?`
   ],
   `url(images/backgrounds/Max-dead.jpg)`,
   [[`Replay`, `start`]]
@@ -931,6 +1086,7 @@ const char2Refuse = new Path(
     `"No," You say firmly.`,
     `"You should find a place to stay before it gets any darker," you tell him as you start walking away from him.`,
     `You leave him behind and don't look back. A few years pass and you find a safer place to set your camp. Max dies from his old age and you eventually do too.`,
+    `Side Ending 3/5: Loner`
   ],
   `url(images/backgrounds/abandoned-building-forest.jpg)`,
   [[`Replay`, `start`]]
@@ -986,6 +1142,7 @@ const char2Together = new Path(
   `char2Together`,
   [
     `You never find Roman's group, years pass but you guys become a team and die in your sleep.`,
+    `Side Ending 4/5: At Least You Aren't Alone`
   ],
   `url(images/backgrounds/dead-graves.jpg)`,
   [[`Replay`, `start`]]
@@ -1254,7 +1411,8 @@ const char2GreenEnding = new Path(
     `You don't say anything and just smile, which surprises them and gets some laughs out of them.`,
     `Finally you sit down on the sofa next to Max, someone had brought him in, and rest.`,
     `As the years pass, Max heals and is as happy as ever,you guys reinforce the area with traps, you cultivate crops near the backyard, and rarely encounter any shriekers.`,
-    `You get closer with your group and enjoy the mansions, having fun everyday until you die of old age.`
+    `You get closer with your group and enjoy the mansions, having fun everyday until you die of old age.`,
+    `Main Ending 3/3: True Ending`
   ],
   `url(images/backgrounds/green-ending.jpg)`,
   [[`Replay`,`start`]]
@@ -1325,7 +1483,8 @@ const char2EndAlone = new Path(
     `You decide to live here by yourself.`,
     `This mansion has many rooms and as the years pass you dedicate specific rooms for Elliot, Tessa, Victor, Leah, Roman, and Max. You commemorate them by decorating the rooms with their belongings.`,
     `Years pass and you cultivate crops in your backyard, reinforce your mansion with traps, and live alone until you die in your sleep peacefully.`,
-    `The las thing you dream of is Max as a puppy.`,
+    `The last thing you dream of is Max as a puppy.`,
+    `Main Ending 1/3: All Alone`
   ],
   `url(images/backgrounds/Ezekiel-dead.jpg)`,
   [[`Replay`, `start`]]
@@ -1339,6 +1498,7 @@ const char2Sanctuary = new Path(
     `Years pass and you cultivate crops in your backyard and reinforce your mansion with traps. You create signs to guide travelers to your mansion where you welcome them.`,
     `You meet new people, create a community and help them stay alive. As the years pass and more people come, they build new houses next to your mansion.`,
     `You visit your old group's graves every afternoon and tell stories about them to the new friends you meet.`,
+    `Main Ending 2/3: Repentance`
   ],
   `url(images/backgrounds/gravestones.jpg)`,
   [[`Replay`, `start`]]
@@ -1377,6 +1537,7 @@ const char3FiredBecauseNoWork = new Path(
     `You tell them you don't feel like doing delivery right now.`,
     `Instead, you tell them very politely to come to the pizzeria to pick it up.`,
     `You are fired!`,
+    `Main Ending 4/3: Fired`
   ],
   `url(images/backgrounds/LuciaG-at-wrong-location.jpg)`,
   [[`Replay`, `start`]]
@@ -1398,7 +1559,7 @@ const char3Delivery = new Path(
 
 const char3FiredBecauseAddress = new Path(
   `char3FiredBecauseAddress`,
-  [`You went to the the wrong address.`, `You are fired!`],
+  [`You went to the the wrong address.`, `You are fired!`, `Ending 4/3: Fired`],
   `url(images/backgrounds/LuciaG-at-wrong-location.jpg)`,
   [[`Replay`, `start`]]
 );
@@ -1434,7 +1595,8 @@ const char3SketchyGroup = new Path(
 const char3BeatUp = new Path(
   `char3BeatUp`,
   [
-    `They beat you up and steal the pizza. The worst thing is that you are FIRED!`
+    `They beat you up and steal the pizza. The worst thing is that you are FIRED!`,
+    `Ending 4/3: Fired`
   ],
   `url(images/backgrounds/sketchy-group.jpg)`,
   [[`Replay`, `start`]]
@@ -1461,7 +1623,7 @@ const char3FirstAidKit = new Path(
   ],
   `url(images/backgrounds/lucia-walking2.jpg)`,
   [[`Keep looking for client`, `char3ClientOrHomeless`]],
-  new Item("First Aid Kit", ""),
+  new Item("First-Aid Kit", ""),
   new Item("Beanie", "")
 )
 
@@ -1900,6 +2062,19 @@ const startBossFight2 = new Path(
   [[`Perish`, `dead`]]
 );
 
+const fledTwice = new Path(
+  `fledTwice`,
+  [
+    `You turn and try to make a run for it.`,
+    `But this time... there's isn't anyone to distract the darkling as you run.`,
+    `It swiftly catches up to you, and with your back turned to it you stand no chance.`,
+    `Side Ending 5/5: Coward`
+  ],
+  `url(images/backgrounds/dead-graves.jpg)`,
+  [[`Replay`, `start`]]
+
+)
+
 // ***********Paths***********
 let paths = [
   start,
@@ -1951,6 +2126,21 @@ let paths = [
   char1HeadInside,
   char1Slip,
   char1GotAway,
+  char1ReturnToGroup,
+  char1Planning,
+  char1BadPlan,
+  char1GoodPlan,
+  char1DefeatDarkling1,
+  char1GreenEnding,
+  char1ContPlan,
+  char1MoreLore,
+  char1LivingRoom,
+  char1WorsePlan,
+  char1RunAway,
+  char1ReturnAlone,
+  char1DefeatDarkling2,
+  char1EndAlone,
+  char1Sanctuary,
   char2Supermarket,
   char2Clothing,
   char2Medicine,
@@ -2039,6 +2229,7 @@ let paths = [
   quickTimeWest,
   wonQuickTime,
   quickTime,
+  fledTwice
 ];
 let history = [];
 
@@ -2499,7 +2690,7 @@ function beginBossFight(ranAway = false){
   playerDefense = 0;
   playerStamina = 100;
   darklingDefense = 0;
-  darklingHealth = 110;
+  darklingHealth = 200;
   darklingPhase = 0;
   darklingStamina = 100;
   titleScreen.className = "throughBlack";
@@ -2512,14 +2703,17 @@ function beginBossFight(ranAway = false){
     attackText.onclick = function (){useHatchet()};
     attackText.innerHTML = 'Attack with hatchet'
   }
-  if(doesInventoryHave('Sturdy Clothing')){
+  if(doesInventoryHave('Sturdy Clothing')||doesInventoryHave('Beanie')){
+    playerDefense = 3;
+  }
+  if(doesInventoryHave('First-Aid Kit')){
     playerHealth = 120;
   }
   updateStats(true);
 }
 
 function useHatchet(){
-  let atk = Math.round(Math.random()*18)+15;
+  let atk = Math.round(Math.random()*15)+12;
   doFightText(`You swing the hatchet! You dealt ${atk} damage!`);
   darklingHealth -= atk;
   playerStamina -= Math.round(Math.random()*6)+17;
@@ -2528,7 +2722,7 @@ function useHatchet(){
 }
 
 function attack(){
-  let atk = Math.round(Math.random()*15)+10;
+  let atk = Math.round(Math.random()*10)+10;
   doFightText(`You swing the knife! You dealt ${atk} damage!`);
   darklingHealth -= atk;
   playerStamina -= Math.round(Math.random()*6)+17;
@@ -2548,15 +2742,18 @@ function next(){
 
 function block(){
   doFightText(`You raise your guard in anticipation!`);
-  playerDefense = Math.round(Math.random()*5)+15;
+  playerDefense += Math.round(Math.random()*10)+45;
+  playerStamina -= Math.round(Math.random()*4)+1;
 
   updateStats();
 }
 
 function rest(){
-  let regen = Math.round(Math.random()*20)+10;
-  doFightText(`You take a moment to recover, for ${regen} stamina!`);
+  let regen = Math.round(Math.random()*15)+10;
+  let hRegen = Math.round(Math.random()*10)+2;
+  doFightText(`You take a moment to recover, for ${regen} stamina and ${hRegen} health!`);
   playerStamina += regen;
+  playerHealth += hRegen;
 
   updateStats();
 }
@@ -2568,65 +2765,84 @@ function doDarklingAction(){
       doFightText(`The darkling prepares to launch a strong attack!`);
       break;
     case 1:
-      atk = Math.round(Math.random()*15)+20;
+      atk = Math.round(Math.random()*20)+40;
       doFightText(`The darkling attacks with full force for ${Math.max(atk-playerDefense,0)} (${atk}-${playerDefense}) damage.`);
-      darklingStamina -= 20;
+      darklingStamina -= 30;
       playerHealth -= Math.max(atk-playerDefense,0);
       break;
     case 2:
-      atk = Math.round(Math.random()*10)+10;
+      atk = Math.round(Math.random()*8)+8;
       doFightText(`The darkling quickly attacks for ${Math.max(atk-playerDefense, 0)} (${atk}-${playerDefense}) damage.`);
-      darklingStamina -= 15;
+      darklingStamina -= 10;
       playerHealth -= Math.max(atk-playerDefense,0);
       break;
     case 3:
-      atk = Math.round(Math.random()*10)+10;
+      atk = Math.round(Math.random()*8)+8;
       doFightText(`The darkling quickly attacks for ${Math.max(atk-playerDefense,0)} (${atk}-${playerDefense}) damage.`);
-      darklingStamina -= 15;
+      darklingStamina -= 10;
       playerHealth -= Math.max(atk-playerDefense,0);
       break;
     case 4:
       doFightText(`The darkling prepares to launch a strong attack!`);
       break;
     case 5:
-      atk = Math.round(Math.random()*15)+20;
+      atk = Math.round(Math.random()*15)+40;
       doFightText(`The darkling attacks with full force for ${Math.max(atk-playerDefense,0)} (${atk}-${playerDefense}) damage.`);
-      darklingStamina -= 20;
+      darklingStamina -= 30;
       playerHealth -= Math.max(atk-playerDefense,0);
       break;
     case 6:
-      doFightText(`The darkling prepares to launch a strong attack!`);
+      atk = Math.round(Math.random()*8)+8;
+      doFightText(`The darkling quickly attacks for ${Math.max(atk-playerDefense, 0)} (${atk}-${playerDefense}) damage.`);
+      darklingStamina -= 10;
+      playerHealth -= Math.max(atk-playerDefense,0);
       break;
     case 7:
-      atk = Math.round(Math.random()*15)+20;
+      doFightText(`The darkling prepares to launch a strong attack!`);
+      break;
+    case 8:
+      atk = Math.round(Math.random()*15)+40;
       doFightText(`The darkling faked you out and instead takes time to rest.`);
       darklingStamina += 50;
       break;
-    case 8:
-      atk = Math.round(Math.random()*10)+10;
+    case 9:
+      atk = Math.round(Math.random()*8)+8;
       doFightText(`The darkling quickly attacks for ${Math.max(atk-playerDefense,0)} (${atk}-${playerDefense}) damage.`);
-      darklingStamina -= 15;
+      darklingStamina -= 10;
       playerHealth -= Math.max(atk-playerDefense,0);
       break;
     default:
       doFightText(`The darkling takes a moment to rest.`);
-      darklingStamina += 35;
+      darklingStamina += 50;
+      darklingHealth += 20;
       darklingPhase = -1;
       break;
   }
   updateStats(true);
-  playerDefense = 0;
+  if(doesInventoryHave('Sturdy Clothing')||doesInventoryHave('Beanie')){
+    playerDefense = 3;
+  } else {
+    playerDefense = 0;
+  }
   darklingPhase++;
 }
 
 function updateStats(darklingTurn = false){
   if(playerStamina <= 10){
-    playerStamina = 0;
+    if(playerStamina <= 0){
+      playerStamina = 0;
+    }
     attackText.style.backgroundColor = 'red';
     blockText.style.backgroundColor = 'red';
     blockText.onclick = '';
     attackText.onclick = '';
   } else {
+    if(playerStamina > 100){
+      playerStamina = 100;
+    }
+    if(playerHealth > 100){
+      playerHealth = 100;
+    }
     attackText.style.backgroundColor = 'white';
     blockText.style.backgroundColor = 'white';
     blockText.onclick = function (){block()};
@@ -2668,8 +2884,11 @@ function updateStats(darklingTurn = false){
         story = getPath("char2DefeatDarkling1");
       }
     } else if(doesHistoryHave('Play as Elena')){
-
-      story = getPath("char2DefeatDarkling1");
+      if(coward){
+        story = getPath("char1DefeatDarkling2");
+      } else {
+        story = getPath("char1DefeatDarkling1");
+      }
     } else {
       story = getPath("char2DefeatDarkling1");
     }
@@ -2682,12 +2901,16 @@ function updateStats(darklingTurn = false){
 
 function flee(){
   hideBossFight()
-  if (doesHistoryHave('Play as Ezekiel')) {
-    story = getPath("char2GotAway");
-  } else if(doesHistoryHave('Play as Elena')){
-    story = getPath("charRunAway");
+  if(!coward){
+    if (doesHistoryHave('Play as Ezekiel')) {
+      story = getPath("charRunAway");
+    } else if(doesHistoryHave('Play as Elena')){
+      story = getPath("char1RunAway");
+    } else {
+      story = getPath("charRunAway");
+    }
   } else {
-    story = getPath("charRunAway");
+    story = getPath("fledTwice");
   }
 
   story.textNum = -1;
