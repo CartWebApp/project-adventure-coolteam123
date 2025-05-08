@@ -2704,7 +2704,7 @@ function beginBossFight(ranAway = false){
     attackText.innerHTML = 'Attack with hatchet'
   }
   if(doesInventoryHave('Sturdy Clothing')||doesInventoryHave('Beanie')){
-    playerDefense = 3;
+    playerDefense = 2;
   }
   if(doesInventoryHave('First-Aid Kit')){
     playerHealth = 120;
@@ -2713,7 +2713,7 @@ function beginBossFight(ranAway = false){
 }
 
 function useHatchet(){
-  let atk = Math.round(Math.random()*15)+12;
+  let atk = Math.round(Math.random()*13)+12;
   doFightText(`You swing the hatchet! You dealt ${atk} damage!`);
   darklingHealth -= atk;
   playerStamina -= Math.round(Math.random()*6)+17;
@@ -2820,7 +2820,7 @@ function doDarklingAction(){
   }
   updateStats(true);
   if(doesInventoryHave('Sturdy Clothing')||doesInventoryHave('Beanie')){
-    playerDefense = 3;
+    playerDefense = 2;
   } else {
     playerDefense = 0;
   }
@@ -2840,8 +2840,11 @@ function updateStats(darklingTurn = false){
     if(playerStamina > 100){
       playerStamina = 100;
     }
-    if(playerHealth > 100){
+    if(playerHealth > 100 && !doesInventoryHave('First-Aid Kit')){
       playerHealth = 100;
+    }
+    if(playerHealth > 120){
+      playerHealth = 120;
     }
     attackText.style.backgroundColor = 'white';
     blockText.style.backgroundColor = 'white';
@@ -2889,6 +2892,12 @@ function updateStats(darklingTurn = false){
       } else {
         story = getPath("char1DefeatDarkling1");
       }
+    } else if(doesHistoryHave('Play as Lucia')){
+      if(coward){
+        story = getPath("char3DefeatDarkling2");
+      } else {
+        story = getPath("char3DefeatDarkling1");
+      }
     } else {
       story = getPath("char2DefeatDarkling1");
     }
@@ -2906,8 +2915,10 @@ function flee(){
       story = getPath("charRunAway");
     } else if(doesHistoryHave('Play as Elena')){
       story = getPath("char1RunAway");
+    } else if(doesHistoryHave('Play as Lucia')){
+      story = getPath("char3RunAway");
     } else {
-      story = getPath("charRunAway");
+      story = getPath("char1RunAway");
     }
   } else {
     story = getPath("fledTwice");
