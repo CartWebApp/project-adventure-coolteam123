@@ -152,9 +152,10 @@ const char1Continue = new Path(
   [
     `You continue on your way.`,
     `While walking you hear the faint buzz of talking, and quickly hide behind the shelves.`,
-    `It's been a while since you've met people. You want to investigate, but it isn't impossible that the strangers are thieves or even killers.`,
+    `It's been a while since you've met people. You want to investigate...`, 
+    `but it isn't impossible that the strangers are thieves or even killers.`,
     `In fact, it's likely.`,
-  ],
+  ], 
   `url(images/backgrounds/Abandoned-supermarket.jpg)`,
   [
     [`Investigate`, `char1Listen`],
@@ -166,7 +167,7 @@ const char1Listen = new Path(
   [
     `You creep closer to them to try and figure out what they are talking about.`,
     `You move quietly towards the direction of the voices and crouch behind some shelves. `,
-    `You can't make out some parts but hear them talking about setting up a camp. "A safe area", they called it.`,
+    `You can't hear everything but do hear something about a camp. "A safe area", they called it.`,
     `You've heard enough.`,
   ],
   `url(images/backgrounds/Abandoned-supermarket.jpg)`,
@@ -191,7 +192,7 @@ const char1Talk = new Path(
     `You slowly emerge from behind the shelves and see the group.`,
     `There's four of them - two male and two female.`,
     `They call out to you first.`,
-    `A man in a dark gray shirt and black jeans, seemingly the leader, says they mean no harm, and they offer you a sandwich.`,
+    `A man, seemingly the leader, says they mean no harm, and they offer you a sandwich.`,
   ],
   `url(images/backgrounds/peopleinstore.jpg)`,
   [
@@ -205,9 +206,9 @@ const char1Sandwich = new Path(
   [
     `You take a sandwich and sit down in a circle with them.`,
     `They introduce themselves - Elliot, the leader; Leah; Victor; and Tessa.`,
-    `They tell you their story - they've been traveling as a group of six, but two of them have gone missing.`,
+    `They've been traveling as a group of six, but two of them have gone missing.`,
     `The group tells you how they hope to set up a permanent shelter.`,
-    `You laugh to yourself at that. Nowhere was safe enough for a permanent residence, and small camps were easier to move.`,
+    `You laugh to yourself at that. Nowhere was safe enough for a permanent residence.`,
   ],
   `url(images/backgrounds/peopleinstore.jpg)`,
   [[`Bid them farewell.`, `char1Farewell`]]
@@ -219,7 +220,7 @@ const char1NoSandwich = new Path(
     `They introduce themselves - Elliot, the leader; Leah; Victor; and Tessa.`,
     `They tell you their story - they've been traveling as a group of six, but two of them have gone missing.`,
     `The group tells you how they hope to set up a permanent shelter.`,
-    `You laugh to yourself at that. Nowhere was safe enough for a permanent residence, and small camps were easier to move.`,
+    `You laugh to yourself at that. Nowhere was safe enough for a permanent residence.`,
   ],
   `url(images/backgrounds/peopleinstore.jpg)`,
   [[`Bid them farewell.`, `char1Farewell`]]
@@ -241,7 +242,7 @@ const char1NewDay = new Path(
   [
     `You wake up to a new day.`,
     `You want to stay sleeping, but you didn't get enough supplies yesterday.`,
-    `Slowly you gather your will to get out of your sleeping bag and prepare yourself to go back to the supermarket.`,
+    `Slowly you gather your will to get out of your sleeping bag and prepare yourself to go back.`,
   ],
   `url(images/backgrounds/abandoned-city-building.jpg)`,
   [
@@ -255,7 +256,7 @@ const notThisAgain = new Path(
   [
     `You wake up to a new day.`,
     `You want to stay sleeping, but you didn't get enough supplies yesterday.`,
-    `Slowly you gather your will to get out of your sleeping bag and prepare yourself to go back to the supermarket.`,
+    `Slowly you gather your will to get out of your sleeping bag and prepare yourself to go back.`,
   ],
   `url(images/backgrounds/abandoned-city-building.jpg)`,
   [
@@ -271,7 +272,7 @@ const notThisAgainAgain = new Path(
   [
     `You wake up to a new day.`,
     `You want to stay sleeping, but you didn't get enough supplies yesterday.`,
-    `Slowly you gather your will to get out of your sleeping bag and prepare yourself to go back to the supermarket.`,
+    `Slowly you gather your will to get out of your sleeping bag and prepare yourself to go back.`,
   ],
   `url(images/backgrounds/abandoned-city-building.jpg)`,
   [
@@ -290,7 +291,7 @@ const pleaseNotThisAgain = new Path(
   [
     `You wake up to a new day.`,
     `You want to stay sleeping, but you didn't get enough supplies yesterday.`,
-    `Slowly you gather your will to get out of your sleeping bag and prepare yourself to go back to the supermarket.`,
+    `Slowly you gather your will to get out of your sleeping bag and prepare yourself to go back.`,
   ],
   `url(images/backgrounds/abandoned-city-building.jpg)`,
   [
@@ -413,7 +414,8 @@ const char1TalkRomanYes = new Path(
   [
     `"That's good. These times are pretty stressful, you know?"`,
     `"Oh, almost forgot to introduce myself. The name's Roman. How about you?"`,
-    `"I'm with a group... well, I was. We got a little seperated a couple days back. You should join and help me find them! I'm sure being part of a group could be helpful to you as well."`
+    `"I'm with a group... well, I was. We got a little seperated a couple days back. You should join and help me find them!"`, 
+    `"I'm sure being part of a group could be helpful to you as well."`
   ],
   `url(images/backgrounds/unknown-people-in-forest.jpg)`,
   [
@@ -427,7 +429,8 @@ const char1TalkRomanNo = new Path(
     `He freezes, unprepared for such a frank response, but quickly shakes it off.`,
     `"I definetely feel that. Take as much time as you need, alright?`,
     `"Oh, almost forgot to introduce myself. The name's Roman. How about you?"`,
-    `"I'm with a group... well, I was. We got a little seperated a couple days back. You should join and help me find them! I'm sure being part of a group could be helpful to you as well."`
+    `"I'm with a group... well, I was. We got a little seperated a couple days back. You should join and help me find them!"`, 
+    `"I'm sure being part of a group could be helpful to you as well."`
   ],
   `url(images/backgrounds/unknown-people-in-forest.jpg)`,
   [
@@ -440,7 +443,8 @@ const char1TalkRomanRude = new Path(
   [
     `"He laughs. "Sorry, guess I forgot to introduce myself, huh?"`,
     `"He reaches out to shake your hand in greeting. "The name's Roman. How about you?"`,
-    `"I'm with a group... well, I was. We got a little seperated a couple days back. You should join and help me find them! I'm sure being part of a group could be helpful to you as well."`
+    `"I'm with a group... well, I was. We got a little seperated a couple days back. You should join and help me find them!"`, 
+    `"I'm sure being part of a group could be helpful to you as well."`
   ],
   `url(images/backgrounds/unknown-people-in-forest.jpg)`,
   [
@@ -452,7 +456,8 @@ const char1GoWithRoman = new Path(
   `char1GoWithRoman`,
   [
     `You stay silent for a few minutes, contemplating Roman's suggestion.`,
-    `"Okay," you say. Roman just smiles and nods. He offers you some food he had left. You take him to your camp and offer to look for his group in the morning.`,
+    `"Okay," you say. Roman just smiles and nods. He offers you some food he had left.`, 
+    `You take him to your camp and offer to look for his group in the morning.`,
     `So much has happened today. You should get some rest to help Roman find his group tomorrow morning.`,
   ],
   `url(images/backgrounds/abandoned-cabin-in-woods.jpg)`,
@@ -462,9 +467,10 @@ const char1GoWithRoman = new Path(
 const char1NextDay = new Path(
   `char1NextDay`,
   [
-    `You didn't get enough sleep. You stayed alert and kept waking up throughout the whole night. You had to make sure Roman hadn't tricked you and looted your supplies while you were asleep.`,
+    `You didn't get enough sleep. You stayed alert and kept waking up throughout the whole night.`, 
+    `You had to make sure Roman hadn't tricked you and looted your supplies while you were asleep.`,
     `You get out of your sleeping bag and get your supplies prepared. You then look at Roman who is on the other corner, still asleep.`,
-    `You wake him up and get your things ready to head out. Roman had mentioned "Foods", the supermarket you went to yesterday, as the last place he saw his group.`,
+    `You wake him up and get your things ready to head out. Roman had mentioned "Foods" as the last place he saw his group.`,
   ],
   `url(images/backgrounds/cabin-inside.jpg)`,
   [[`Go to the supermarket again`, `char1BackToFoods`]]
@@ -538,7 +544,7 @@ const char1SitDown = new Path(
     `"I invited her to join us," says Roman. "She can help us find George and help us form the safe area."`,
     `Elliot tells you about a place they heard about, guarded by a huge shrieker, but potentially safe enough to help you stay alive for years.`,
     `"The place is big and shriekers barely go there," says Leah.`,
-    `"We can plant crops there too," adds Victor. They keep telling you about the place when Elliot interupts. He suggests you guys head back and keep discussing tomorrow.`,
+    `"We can plant crops there too," adds Victor. They keep telling you about the place when Elliot interupts suggest discussing tomorrow instead.`,
     `He offers you to stay with them in their camp close to the supermarket - but your place would be safer.`,
   ],
   `url(images/backgrounds/encounter-group.jpg)`,
@@ -575,7 +581,8 @@ const char1ParkingLot = new Path(
     `You take the lead and the group follows you behind, talking to each other and still sharing stories.`,
     `Then Victor, the guy with the spiky short hair and the black long sleeve shirt with the red T-shirt layered on top, starts talking about some George again.`,
     `Roman notices your confused expression and tells you about George.`,
-    `"George has been missing for quite some time. We were in the woods and got separated. Tessa was with him when he left to chase a deer he apparently saw, but never came back. She was scared and came to look for us but we never found Geroge," explained Roman.`,
+    `"George has been missing for quite some time. We were in the woods and got separated."`,
+    `"Tessa was with him when he left to chase a deer he apparently saw, but never came back. She was scared and came to look for us but we never found Geroge," explained Roman.`,
     `"That's the last we saw of him," said Leah.`,
     `"Now that we have found Roman, we can look for George again," said Elliot.`,
     `You stayed silent. The group kept talking about George and the crazy and fun things they did together.`,
@@ -815,10 +822,10 @@ const char1ReturnAlone = new Path(
     `You run back to your camp, exhausting your feet, but rarely stopping to take breaks.`,
     `You can't belive you left everyone behind.`,
     `Once you arrive you go immediately inside the cabin and sit down in a corner, trying to process everything.`,
-    `A few hours pass and you stay in the same corner, staring at the wall. The silence is suddenly interrupted when you hear your metal cans outside hitting against each other. Someone or something is here.`,
+    `A few hours pass and you stay in the same corner, staring at the wall. The silence is suddenly interrupted when you hear the sound of someone outside.`,
     `You grab a metal teapot next to you and head outside. You find a stranger on the floor, he looks scared.`,
     `"There is a huge shrieker coming this way, run! Get out of here!" He warns you as he gets up and continues running.`,
-    `It looks like you will have to confront the darkling one way or the other. You prepare yourself. You find yourself with regrets for leaving the others behind, but you put them away.`,
+    `It looks like you will have to confront the darkling one way or the other. You prepare yourself. You have regrets for leaving the others behind, but you put them away.`,
     `You can deal with the price of you cowardice later.`
   ],
   `url(images/backgrounds/abandoned-cabin-in-woods.jpg)`,
@@ -845,7 +852,8 @@ const char1EndAlone = new Path(
   `char1EndAlone`,
   [
     `You decide to live here by yourself.`,
-    `This mansion has many rooms and as the years pass you dedicate specific rooms for Elliot, Tessa, Victor, Leah, and Roman. You commemorate them by decorating the rooms with their belongings.`,
+    `This mansion has many rooms and as the years pass you dedicate specific rooms for Elliot, Tessa, Victor, Leah, and Roman.`, 
+    `You commemorate them by decorating the rooms with their belongings.`,
     `Years pass and you cultivate crops in your backyard, reinforce your mansion with traps, and live alone until you die in your sleep peacefully.`,
     `Main Ending 1/3: All Alone`
   ],
@@ -857,7 +865,8 @@ const char1Sanctuary = new Path(
   `char1Sanctuary`,
   [
     `You decide to live here by yourself.`,
-    `This mansion has many rooms and as the years pass you dedicate specific rooms for Elliot, Tessa, Victor, Leah, and Roman. You commemorate them by decorating the rooms with their belongings and you lock those rooms so no one can enter.`,
+    `This mansion has many rooms and as the years pass you dedicate specific rooms for Elliot, Tessa, Victor, Leah, and Roman.`, 
+    `You commemorate them by decorating the rooms with their belongings and you lock those rooms so no one can enter.`,
     `Years pass and you cultivate crops in your backyard and reinforce your mansion with traps. You create signs to guide travelers to your mansion where you welcome them.`,
     `You meet new people, create a community and help them stay alive. As the years pass and more people come, they build new houses next to your mansion.`,
     `You visit your old group's graves every afternoon and tell stories about them to the new friends you meet.`,
@@ -1059,11 +1068,12 @@ const char2UseItem = new Path(
 const char2SaveAlly = new Path(
   `char2SaveAlly`,
   [
-    `You quickly run towards the man on the ground, grab him by the forearm, and start running away. You take him near your cabin and try to avoid showing your camp since he is a stranger afterall.`,
+    `You quickly run towards the man on the ground, grab him by the forearm, and start running away.`, 
+    `You take him near your cabin and try to avoid showing your camp since he is a stranger afterall.`,
     `"Thank you," he says once you guys stop to rest, while trying to catch his breath. You stay silent.`,
     `"My name is Roman," he says, extending his hand for a handshake.`,
     `You ignore him again and just stare at Max who lays on the ground, resting too. Roman retrieves his hand and wipes the sweat of his forehead instead.`,
-    `Roman starts talking once again. He says he was with a group but got lost a few days ago. He was looking for his group members today when he got attacked by the shrieker you saw.`,
+    `Roman starts talking once again. He says he was with a group but got lost a few days ago. He was looking for his group members today when he got attacked.`,
     `"You should join us," he suggests.`,
     `"They're probably already dead," you say not interested.`,
     `"You don't know that. They're smart and alive, I know it. If you help me find them we can set up a safe are together," Roman says.`,
@@ -1096,7 +1106,7 @@ const char2Join = new Path(
   `char2Join`,
   [
     `You stay silent for a few minutes, contemplating Roman's suggestion.`,
-    `"Okay," you say. Roman just smiles and nods. He offers you some food he had left and you give some to Max. You take him to your cabin and offer to look for his group in the morning.`,
+    `"Okay," you say. Roman just smiles and nods. He offers you some food he had left and you give some to Max. You offer to look for his group in the morning.`,
     `You will have to trust him.`,
     `So much has happened today. You should get some rest to help Roman find his group tomorrow morning.`,
   ],
@@ -1107,7 +1117,8 @@ const char2Join = new Path(
 const char2NextDay = new Path(
   `char2NextDay`,
   [
-    `You didn't get enough sleep. You stayed alert and kept waking up throughout the whole night. You had to make sure Roman hadn't tricked you and looted your supplies while you were asleep.`,
+    `You didn't get enough sleep. You stayed alert and kept waking up throughout the whole night.`, 
+    `You had to make sure Roman hadn't tricked you and looted your supplies while you were asleep.`,
     `You get out of your sleeping bag and turn your head to check on Max who is laying next to you. You then look at Roman who is on the other corner, still asleep.`,
     `You wake him up and get your things ready to head out. Roman had mentioned "Foods", the supermarket you went to yesterday, as the last place he saw his group.`,
   ],
@@ -1167,7 +1178,7 @@ const char2Split = new Path(
 const char2FindRoman = new Path(
   `char2FindRoman`,
   [
-    `You run with Max and head towards the "Cleaning Supplies" section. You grab a long piece of metal you found on the way, getting ready to hit anything that is attacking Roman.`,
+    `You run with Max and head towards the "Cleaning Supplies" section. You grab a long piece of metal you found on the way, getting ready to protect Roman.`,
     `You make a turn and are about to raise the weapon in your hand but you freeze. You don't see Roman getting attacked.`,
     `You see him hugging people. It's his group.`,
     `You drop your weapon.`,
@@ -1181,7 +1192,7 @@ const char2MeetGroup = new Path(
   [
     `As you walk closer to them you recognize the face of a man, around his late 20s.`,
     `It's the group from yesterday, the one discussing the possible safe area.`,
-    `Roman introduces you to Elliot, the man you recognized, Leah, a young woman around her 20s, Victor, a young man who is probably in his early 20s, and Tessa, who appears to be the youngest.`,
+    `Roman introduces you to Elliot, the man you recognized, Leah, a young woman around her 20s, Victor, a young man in his early 20s, and Tessa, who is the youngest.`,
     `They offer you to sit down and talk.`,
   ],
   `url(images/backgrounds/encounter-group.jpg)`,
@@ -1233,7 +1244,8 @@ const char2ParkingLot = new Path(
     `You take the lead and the group follows you behind, talking to each other and still sharing stories. You notice Max playing with Tessa.`,
     `Then Victor, the guy with the spiky short hair and the black long sleeve shirt with the red T-shirt layered on top, starts talking about some George again.`,
     `Roman notices your confused expression and tells you about George.`,
-    `"George has been missing for quite some time. We were in the woods and got separated. Tessa was with him when he left to chase a deer he apparently saw, but never came back. She was scared and came to look for us but we never found Geroge," explained Roman.`,
+    `"George has been missing for quite some time. We were in the woods and got separated.`, 
+    `Tessa was with him when he left to chase a deer he apparently saw, but never came back. She was scared and came to look for us but we never found Geroge," explained Roman.`,
     `"That's the last we saw of him," said Leah.`,
     `"Now that we have found Roman, we can look for George again," said Elliot.`,
     `You stayed silent. The group kept talking about George and the crazy and fun things they did together.`,
@@ -1359,7 +1371,8 @@ const char2ContPlan = new Path(
     `Just as you predicted, the darkling goes out the back door, it's probably tired and doesn't want to fight.`,
     `You chase him, making sure he doesn't take any unexpected turns, and lead him towards the back door that leads to the garden and into the woods.`,
     `Once he vanishes and all you see is trees and bushes you quickly run back inside. You need to help Max.`,
-    `You kneel down next to him and notice his paw is bleeding. Max whimperings but he is going to be okay. You grab some ointment and spread it over the wound, you are not sure if it will work but you do. You rip a pice of clothing and wrap it around Max's wound.`
+    `You kneel down next to him and notice his paw is bleeding. Max whimperings but he is going to be okay.`, 
+    `You grab some ointment and spread it over the wound, you are not sure if it will work but its all you have. You rip a pice of clothing and wrap it around Max's wound.`
   ],
   `url(images/backgrounds/safe-area-back.jpg)`,
   [[`Go check on the others`,`char2MoreLore`]]
@@ -1452,10 +1465,10 @@ const char2ReturnAlone = new Path(
     `You run back to your camp, exhausting your feet, but rarely stopping to take breaks.`,
     `You can't belive you lost your long-life best friend, Max.`,
     `Once you arrive home you go immediately inside your carbin and sit down in a corner, trying to process everything.`,
-    `A few hours pass and you stay in the same corner, staring at the wall. The silence is suddenly interrupted when you hear your metal cans outside hitting against each other. Someone or something is here.`,
+    `A few hours pass and you stay in the same corner, staring at the wall. The silence is suddenly interrupted when you hear someone outside.`,
     `You grab a metal tea pot next to you and head outside. You find a stranger on the floor, he looks scared.`,
     `"There is a huge shrieker coming this way, run! Get out of here!" He warns you as he gets up and continues running.`,
-    `It looks like you will have to confront this darkling one way or the other. You prepare yourself and go look for the darkling. You will have to fight it, for your friends and for Max.`,
+    `It looks like you will have to confront this darkling one way or the other. You prepare yourself and go look for the darkling. You will have to fight it.`,
   ],
   `url(images/backgrounds/abandoned-cabin-in-woods.jpg)`,
   [[`Go fight the "Darkling"`, `startBossFight2`]]
@@ -1481,7 +1494,8 @@ const char2EndAlone = new Path(
   `char2EndAlone`,
   [
     `You decide to live here by yourself.`,
-    `This mansion has many rooms and as the years pass you dedicate specific rooms for Elliot, Tessa, Victor, Leah, Roman, and Max. You commemorate them by decorating the rooms with their belongings.`,
+    `This mansion has many rooms and as the years pass you dedicate specific rooms for Elliot, Tessa, Victor, Leah, Roman, and Max.`, 
+    `You commemorate them by decorating the rooms with their belongings.`,
     `Years pass and you cultivate crops in your backyard, reinforce your mansion with traps, and live alone until you die in your sleep peacefully.`,
     `The last thing you dream of is Max as a puppy.`,
     `Main Ending 1/3: All Alone`
@@ -1494,7 +1508,8 @@ const char2Sanctuary = new Path(
   `char2Sanctuary`,
   [
     `You decide to live here by yourself.`,
-    `This mansion has many rooms and as the years pass you dedicate specific rooms for Elliot, Tessa, Victor, Leah, Roman, and Max. You commemorate them by decorating the rooms with their belongings and you lock those rooms so no one can enter.`,
+    `This mansion has many rooms and as the years pass you dedicate specific rooms for Elliot, Tessa, Victor, Leah, Roman, and Max.`, 
+    `You commemorate them by decorating the rooms with their belongings and you lock those rooms so no one can enter.`,
     `Years pass and you cultivate crops in your backyard and reinforce your mansion with traps. You create signs to guide travelers to your mansion where you welcome them.`,
     `You meet new people, create a community and help them stay alive. As the years pass and more people come, they build new houses next to your mansion.`,
     `You visit your old group's graves every afternoon and tell stories about them to the new friends you meet.`,
@@ -1617,7 +1632,8 @@ const char3LootThem = new Path(
 const char3FirstAidKit = new Path(
   `char3FirstAidKit`,
   [
-    `As the man starts walking you quickly run towards him and snatch the bag from him and make a run for it. You tightly hold the pizza box on one hand and the bag you stole on the other while running as fas as you can.`,
+    `As the man starts walking you quickly run towards him and snatch the bag from him and make a run for it.`, 
+    `You tightly hold the pizza box on one hand and the bag you stole on the other while running as fast as you can.`,
     `You keep running towards the direction you were heading and after a few minutes you stop and start walking again.`,
     `You open the bag and find a beanie, but you also notice a familiar looking container, it's a first aid kit!`
   ],
@@ -1661,7 +1677,8 @@ const givePizzaToStranger = new Path(
   `You sigh and sit down on the curb. The young man opens the pizza box and starts eating.`,
   `"My name is Roman. Thank you for the food," he says.`,
   `"I'm Lucia," you introduce yourself.`,
-  `After he finishes eating, Roman starts talking again. He tells you about his group of friends and how he was on his way back to his camp after looking for some food but got too tired from walking and decied to sit down.`,
+  `After he finishes eating, Roman starts talking again.`, 
+  `He tells you about his group of friends and how he was on his way back to his camp after looking for some food but got too tired from walking and decided to sit down.`,
   `He was disappointed becuase he didn't find anything to eat.`,
   `"You should join us," he suggests.`
   ],
@@ -1696,14 +1713,15 @@ const char3Join = new Path(
 const charMeetGroup = new Path(
   `charMeetGroup`,
   [
-    `You arrive at Roman's camp. Its an old shabby house far away from the rest of the houses, close to the woods. The windows are covered with pieces of paper glued to it.`,
-    `Roman knocks three times on the door. There is a long pause before the door is opened. A man around his late 20s opens the door, he smiles at Roman but is surprised to see you.`,
+    `You arrive at Roman's camp. Its an old shabby house far away from everything, close to the woods. The windows are covered with pieces of paper glued to it.`,
+    `Roman knocks three times on the door. There is a long pause before the door is opened. A man opens the door. He smiles at Roman but is surprised to see you.`,
     `As you walk in you notice a guy and two girls sitting around the living room. `,
     `Roman introduces you to them and they introduce themselves. The guy who opened the door is Elliot, there is also Victor, Leah, and Tessa who seems to be the youngest.`,
     `"I didn't find anything but I met Lucia and she gave me some food," explained Roman.`,
     `"Oh! So where is it?" Asked Elliot.`,
     `"I kind of finished it..."`,
-    `There is a minute of silence before they laugh and keep talking. They don't seem to mind. Leah had also been searching, she said she found something at a supermarket nearby so she shared it with the rest of the group.`,
+    `There is a minute of silence before they laugh and keep talking. They don't seem to mind.`, 
+    `Leah had also been searching for food - she said she found something at a supermarket nearby so she shared it with the rest of the group.`,
     `You spent the rest of the afternoon talking until it was time to sleep.`
   ],
   `url(images/backgrounds/group-camp.jpg)`,
@@ -1880,7 +1898,8 @@ const char3GreenEnding = new Path(
     `When you enter the living room, you see them stand up,they are relived to see you.`,
     `You don't say anything and just smile, which surprises them and gets some laughs out of them.`,
     `Finally you sit down on the sofa. Roman is sitting on the sofa across from you, resting`,
-    `As the years pass, Roman heals, he gets cramps on that leg sometimes, but is as happy as ever, you guys reinforce the area with traps, you cultivate crops near the backyard, and rarely encounter any shriekers.`,
+    `As the years pass, Roman heals, he gets cramps on that leg sometimes, but is as happy as ever.`, 
+    `You guys reinforce the area with traps, you cultivate crops near the backyard, and rarely encounter any shriekers.`,
     `You get closer with your group and enjoy the mansion, having fun everyday until you die of old age.`
   ],
   `url(images/backgrounds/green-ending.jpg)`,
@@ -1893,7 +1912,7 @@ const char3BadPlan = new Path(
     `You decide to confront the darkling together. You share the few weapons that you have with each other and get ready to go inside once again.`,
     `You enter quietly and send Elliot and Tessa to search for the darkling in a room to the left and send Victor and Leah to search the room to your right.`,
     `Roman and you head towards the stairs. Everything is going according to plan when out of nowhere a loud roar and screams startle you.`,
-    `You go back down the stairs and head to the room on your left. Elliot and Tessa are injured and the darkling is heading towards Leah and Victor who got there before you.`,
+    `You go back down the stairs and head to the room on your left. Elliot and Tessa are injured and the darkling is heading towards Leah and Victor.`,
     `Roman heads towards the darkling but he gets hit.`,
   ],
   `url(images/backgrounds/safe-area-inside2.jpg)`,
@@ -1922,9 +1941,10 @@ const char3ReturnAlone = new Path(
     `You can't belive what just happened.`,
     `After a few minutes you start walking again, you are still not there yet. You decide to sit down on a rock, you're still in the woods, by yourself.`,
     `Minutes later, the silence is suddenly interrupted when you hear running footsteps heading here. Someone or something is here.`,
-    `You grab a rock next to you and hide behind a tree. The footsepts are getting closer, they are only a few feet away from you, then you hear a thud and it stops. You poke your head out and find a stranger on the floor, he must've tripped,he looks scared.`,
+    `You grab a rock next to you and hide behind a tree. The footsepts are getting closer, they are only a few feet away from you, then you hear a thud and it stops.`, 
+    `You poke your head out and find a stranger on the floor, he must've tripped,he looks scared.`,
     `He notices you. "There's a huge shrieker coming this way, run! Get out of here!" He warns you as he gets up and continues running.`,
-    `It looks like you will have to confront this darkling one way or the other. You prepare yourself and go look for the darkling. You will have to fight it, for your friend.`,
+    `It looks like you will have to confront this darkling one way or the other. You prepare yourself and go look for the darkling. You will have to fight it.`,
   ],
   `url(images/backgrounds/green-bushes.jpg)`,
   [[`Go fight the "Darkling"`, `startBossFight2`]]
@@ -1950,7 +1970,8 @@ const char3EndAlone = new Path(
   `char3EndAlone`,
   [
     `You decide to live here by yourself.`,
-    `This mansion has many rooms and as the years pass you dedicate specific rooms for Elliot, Tessa, Victor, Leah, and Roman. You commemorate them by decorating the rooms with their belongings.`,
+    `This mansion has many rooms and as the years pass you dedicate specific rooms for Elliot, Tessa, Victor, Leah, and Roman.`, 
+    `You commemorate them by decorating the rooms with their belongings.`,
     `Years pass and you cultivate crops in your backyard, reinforce your mansion with traps, and live alone until you die in your sleep peacefully.`,
     `The last thing you dream of is eating a nice warm pepperoni pizza, straight out of the oven.`,
   ],
@@ -1962,7 +1983,8 @@ const char3Sanctuary = new Path(
   `char3Sanctuary`,
   [
     `You decide to live here by yourself.`,
-    `This mansion has many rooms and as the years pass you dedicate specific rooms for Elliot, Tessa, Victor, Leah, and Roman. You commemorate them by decorating the rooms with their belongings and you lock those rooms so no one can enter.`,
+    `This mansion has many rooms and as the years pass you dedicate specific rooms for Elliot, Tessa, Victor, Leah, and Roman.`, 
+    `You commemorate them by decorating the rooms with their belongings and you lock those rooms so no one can enter.`,
     `Years pass and you cultivate crops in your backyard and reinforce your mansion with traps. You create signs to guide travelers to your mansion where you welcome them.`,
     `You meet new people, create a community and help them stay alive. As the years pass and more people come, they build new houses next to your mansion.`,
     `You visit your old group's graves every afternoon and tell stories about them to the new friends you meet.`,
