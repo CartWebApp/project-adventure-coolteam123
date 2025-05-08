@@ -1284,6 +1284,8 @@ const char2Scout = new Path(
   `char2Scout`,
   [
     `The walk is long, but eventually, Roman recognizes the are and you arrive.`,
+    `"This is where that huge shrieker lives," Roman says.`,
+    `They call it the "Darkling."`,
     `You hide behind some bushes in front of the building.`,
     `"You guys stay here with Max and guard, I'll go check it out with Roman." You tell them.`,
     `You approach the front door.`,
@@ -1539,7 +1541,7 @@ const char3FiredBecauseNoWork = new Path(
     `You are fired!`,
     `Main Ending 4/3: Fired`
   ],
-  `url(images/backgrounds/LuciaG-at-wrong-location.jpg)`,
+  `url(images/backgrounds/fired-sign.jpg)`,
   [[`Replay`, `start`]]
 );
 
@@ -1927,7 +1929,8 @@ const char3ReturnAlone = new Path(
     `It looks like you will have to confront this darkling one way or the other. You prepare yourself and go look for the darkling. You will have to fight it, for your friend.`,
   ],
   `url(images/backgrounds/green-bushes.jpg)`,
-  [[`Go fight the "Darkling"`, `startBossFight2`]]
+  [[`Go fight the "Darkling"`, `startBossFight2`]],
+  new Item("Rock", "")
 );
 
 const char3DefeatDarkling2 = new Path(
