@@ -68,7 +68,7 @@ const start = new Path(
   [
     [`Play as Elena`, `PathChar1`],
     [`Play as Ezekiel`, `PathChar2`],
-    [`Play as char3`, `PathChar3`],
+    [`Play as Lucia`, `PathChar3`],
   ]
 );
 
@@ -1528,7 +1528,7 @@ const char3Join = new Path(
     `You guys get up and start walking. Roman takes the lead and you follow him.`,
     `"My group is staying at an abandoned house, but we constantly move places. We are looking for a safe place to stay permanently," he explains.`
   ],
-  `url(images/backgrounds/lucia-bored.jpg)`,
+  `url(images/backgrounds/homeless-man.jpg)`,
   [[`Keep walking`, `charMeetGroup`]]
 )
 const charMeetGroup = new Path(
@@ -1566,6 +1566,247 @@ const char3NextDay = new Path(
     // [`Accept`, `char3LookForGeorge`],
     [`Refuse`, `char3Refuse`]
   ]
+);
+
+const char3Refuse = new Path(
+  `char3Refuse`,
+  [
+    `"If he has been missing for days then he's probably already dead," you say.`,
+    `They just stare at each other in silence. A few minutes pass until someone starts talking again.`,
+    `"We should check out the other place you were talking about instead," you suggest.`,
+    `"Okay then, lets go later," agrees Leah.`,
+    `No one talks until it is time to leave.`
+  ],
+  `url(images/backgrounds/breakfast.jpg)`,
+  [
+    [`Go to check out the place`, `char3WalkToArea`]
+  ]
+);
+
+const char3WalkToArea = new Path(
+  `char3WalkToArea`,
+  [
+    `You adjust your sneakers and wait for the group to get ready. Once they do Elliot starts walking and everyone follows behind.`,
+    `The walk is long, but eventually, the recognizes the area and you arrive.`,
+    `You hide behind some bushes in front of the building.`,
+    `"Leah and I will go to the side and yous stay here," says Elliot.`,
+    `"We'll go through the front door," Roman says pointing at too.`,
+    `"Okay, we'll stay here and guard," says Victor.`,
+    `You approach the front door.`
+  ],
+  `url(images/backgrounds/abandoned-building-forest.jpg)`,
+  [
+    [`Open the door`, `char3HeadInside`]
+  ]
+);
+
+const char3HeadInside = new Path(
+  `char3HeadInside`,
+  [
+    `You cautiously open the door and head inside with Roman, walking silently.`,
+    `Everything is going smoothly. Then-bang! You hear something fall over and a shriek soon follows.`,
+  ],
+  `url(images/backgrounds/safe-place-entrance.jpg)`,
+  [[`Move`, `char3Slip`]]
+);
+
+const char3Slip = new Path(
+  `char3Slip`,
+  [
+    `You're about to take a step when you slip on a piece of glass on the floor`,
+  ],
+  `url(images/backgrounds/front-entrance.jpg)`,
+  [[`Run!`, `quickTimeStart`]]
+);
+
+const char3GotAway = new Path(
+  `char3GotAway`,
+  [
+    `You let out a sigh of relief as you look behind you.`,
+    `It seems like you've managed to get away safely.`,
+  ],
+  `url(images/backgrounds/safe-area-back.jpg)`,
+  [[`Go back to the group`, `char3TalkPlan`]]
+);
+
+const char3TalkPlan = new Path(
+  `char3TalkPlan`,
+  [
+    `You do a quick scan of the back and side of the place and go round it to meet with your group again. Elliot and Leah had already head back frist.`,
+    `After hours of talking, a plan has been devised. Shriekers normally drift from place to place, and its unlikely the darkling is particularly attached to the place.`,
+    `You could try to drive off the darkling, but that wouldn't end the threat for good.`,
+    `Or you could fight the darkling - as unmatched of a fight that seems.`
+  ],
+  `url(images/backgrounds/green-bushes.jpg)`,
+  [
+    [`Drive off the darkling`, `char3GoodPlan`],
+    [`Fight the darkling`, `char3BadPlan`],
+  ]
+);
+
+const char3GoodPlan = new Path(
+  `char3GoodPlan`,
+  [
+    `You decided to go in with Roman so that group can set traps around the area, leaving only one place open so that the darkling has no option but to leave from there.`,
+    `You will have to lead the darkling to the back entrace and corner it so it leaves, you will try to avoid fighting.`,
+    `You quickly teach some traps to the group and get ready to go isnide the building again.`,
+    `You enter the building and send Roman volunteers to search the room on the left. You decide to go search in another room when all of a sudden you hear a roar and a scream.`,
+    `You run towards the direction of where the sounds came from and find Roman on a corner, applying pressure to his leg. He is still alive but he is injured.`,
+  ],
+  `url(images/backgrounds/safe-area-inside2.jpg)`,
+  [
+    [`Stay and lead the darkling to the back entrance`, `char3ContPlan`],
+    [`Run away, Roman was a nice guy.`, `char3RunAway`],
+  ]
+);
+
+const char3ContPlan = new Path(
+  `char3ContPlan`,
+  [
+    `You quickly grab the frame to your right and throw it at the darkling. It won't do any damage but you hope it makes him leave through the door behind him.`,
+    `Just as you predicted, the darkling goes out the back door, it's probably tired and doesn't want to fight.`,
+    `You chase him, making sure he doesn't take any unexpected turns, and lead him towards the back door that leads to the garden and into the woods.`,
+    `Once he vanishes and all you see is trees and bushes you quickly run back inside. You need to help Roman.`,
+    `You kneel down next to him and notice his injured leg. Roman grunts in pain but he is going to be okay. You take out the first aid kit you had and attend to Roman's wound.`
+  ],
+  `url(images/backgrounds/safe-area-back.jpg)`,
+  [[`Go check on the others`,`char3MoreLore`]]
+);
+
+const char3MoreLore = new Path(
+  `char3MoreLore`,
+  [
+    `You go outside and find the others already celebrating. Some are laying on the ground resting and catching their breaths.`,
+    `"There is no time to waste, lets examine the place," you tell them. They get up and head inside.`,
+    `"Where's Roman?" Asks Victor. You tell him what happened and reassure him he is going to be fine.`,
+    `Elliot and Leah volunteer to hunt for food while the rest of you decide to look around the rooms, verying that there is no other shrieker there.`,
+    `While searching the rooms Victor starts talking and starts sharing stories about a similar shriker they encountered once, "...although not as big." he says.`,
+    `They keep talking, about and hour goes by, and you finish clearing the place.`
+  ],
+  `url(images/backgrounds/kitchen.jpg)`,
+  [[`Go to the living room`, `char3LivingRoom`]],
+)
+
+const char3LivingRoom = new Path(
+  `char3LivingRoom`,
+  [
+    `You go to the living room and sit down on the sofas, waiting for Elliot and Leah to return.`,
+    `Leah comes back first holding a dead rabbit by the ears, with a grin on her first.`,
+    `She's about to say something when Elliot storms in.`,
+    `"It's coming back! I saw it, that thing is heading here again," he warns.`,
+    `You are going to have to fight this darkling if you want to keep this place.`
+  ],
+  `url(images/backgrounds/living-room.jpg)`,
+  [[`Go fight the "Darkling"`, `startBossFight`]]
+)
+
+const char3DefeatDarkling1 = new Path(
+  `char3DefeatDarkling1`,
+  [
+    `You did it! You defeated it. That thing is not going to bother you anymore.`,
+    `You can finally live here in peace.`,
+    `You sit down and rest, closing your eyes and feeling the wind hit your face. You feel as if a great weight has been lifted off of you.`,
+    `You wait a few minutes outside before heading towards the mansion again.`
+  ],
+  `url(images/backgrounds/place-final-fight1.jpg)`,
+  [[`Go back`,`char3GreenEnding`]]
+)
+
+const char3GreenEnding = new Path(
+  `char3GreenEnding`,
+  [
+    `When you enter the living room, you see them stand up,they are relived to see you.`,
+    `You don't say anything and just smile, which surprises them and gets some laughs out of them.`,
+    `Finally you sit down on the sofa. Roman is sitting on the sofa across from you, resting`,
+    `As the years pass, Roman heals, he gets cramps on that leg sometimes, but is as happy as ever, you guys reinforce the area with traps, you cultivate crops near the backyard, and rarely encounter any shriekers.`,
+    `You get closer with your group and enjoy the mansion, having fun everyday until you die of old age.`
+  ],
+  `url(images/backgrounds/green-ending.jpg)`,
+  [[`Replay`,`start`]]
+)
+
+const char3BadPlan = new Path(
+  `char3BadPlan`,
+  [
+    `You decide to confront the darkling together. You share the few weapons that you have with each other and get ready to go inside once again.`,
+    `You enter quietly and send Elliot and Tessa to search for the darkling in a room to the left and send Victor and Leah to search the room to your right.`,
+    `Roman and you head towards the stairs. Everything is going according to plan when out of nowhere a loud roar and screams startle you.`,
+    `You go back down the stairs and head to the room on your left. Elliot and Tessa are injured and the darkling is heading towards Leah and Victor who got there before you.`,
+    `Roman heads towards the darkling but he gets hit.`,
+  ],
+  `url(images/backgrounds/safe-area-inside2.jpg)`,
+  [
+    [`Stay and fight`, `dead`],
+    [`Run away, they were good people`, `char3RunAway`],
+  ]
+);
+
+const char3RunAway = new Path(
+  `char3RunAway`,
+  [
+    `You decide to run away. It is a hard decision to make but you do.`,
+    `You don't think anyone else is going to make it and this is your chance to run so you do.`,
+    `The rest of the group and Roman don't survive their injuries and they sadly pass away.`,
+    `You run back to their camp.`,
+  ],
+  `url(images/backgrounds/close-to-mansion2.jpg)`,
+  [[`Return to their camp`, `char3ReturnAlone`]]
+);
+
+const char3ReturnAlone = new Path(
+  `char3ReturnAlone`,
+  [
+    `You start running back to their camp, exhausting your feet, but rarely stopping to take breaks.`,
+    `You can't belive what just happened.`,
+    `After a few minutes you start walking again, you are still not there yet. You decide to sit down on a rock, you're still in the woods, by yourself.`,
+    `Minutes later, the silence is suddenly interrupted when you hear running footsteps heading here. Someone or something is here.`,
+    `You grab a rock next to you and hide behind a tree. The footsepts are getting closer, they are only a few feet away from you, then you hear a thud and it stops. You poke your head out and find a stranger on the floor, he must've tripped,he looks scared.`,
+    `He notices you. "There's a huge shrieker coming this way, run! Get out of here!" He warns you as he gets up and continues running.`,
+    `It looks like you will have to confront this darkling one way or the other. You prepare yourself and go look for the darkling. You will have to fight it, for your friend.`,
+  ],
+  `url(images/backgrounds/green-bushes.jpg)`,
+  [[`Go fight the "Darkling"`, `startBossFight2`]]
+);
+
+const char3DefeatDarkling2 = new Path(
+  `char3DefeatDarkling2`,
+  [
+    `You did it! You defeated the monster that hurt your friends, the people you met like a few days ago.`,
+    `You sit down and rest, closing your eyes and feeling the wind hit your face. You feel as if a great weight has been lifted off of you.`,
+    `You don't waste your time anymore and head towards the now monsterless safe place.`,
+    `Once you get there, you look for a room and spend the night there.`,
+    `You can enjoy this mansion by yourself or make it a sanctuary for other people.`,
+  ],
+  `url(images/backgrounds/lucia-room.jpg)`,
+  [
+    [`Live here alone`, `char3EndAlone`],
+    [`Make this place a sanctuary and help other travelers`, `char3Sanctuary`],
+  ]
+);
+
+const char3EndAlone = new Path(
+  `char3EndAlone`,
+  [
+    `You decide to live here by yourself.`,
+    `This mansion has many rooms and as the years pass you dedicate specific rooms for Elliot, Tessa, Victor, Leah, and Roman. You commemorate them by decorating the rooms with their belongings.`,
+    `Years pass and you cultivate crops in your backyard, reinforce your mansion with traps, and live alone until you die in your sleep peacefully.`,
+    `The last thing you dream of is eating a nice warm pepperoni pizza, straight out of the oven.`,
+  ],
+  `url(images/backgrounds/lucia-dead.jpg)`,
+  [[`Replay`, `start`]]
+);
+
+const char3Sanctuary = new Path(
+  `char3Sanctuary`,
+  [
+    `You decide to live here by yourself.`,
+    `This mansion has many rooms and as the years pass you dedicate specific rooms for Elliot, Tessa, Victor, Leah, and Roman. You commemorate them by decorating the rooms with their belongings and you lock those rooms so no one can enter.`,
+    `Years pass and you cultivate crops in your backyard and reinforce your mansion with traps. You create signs to guide travelers to your mansion where you welcome them.`,
+    `You meet new people, create a community and help them stay alive. As the years pass and more people come, they build new houses next to your mansion.`,
+    `You visit your old group's graves every afternoon and tell stories about them to the new friends you meet.`,
+  ],
+  `url(images/backgrounds/gravestones3.jpg)`,
+  [[`Replay`, `start`]]
 );
 
 // ***********Quick time event***********
@@ -1773,6 +2014,24 @@ let paths = [
   char3Join,
   charMeetGroup,
   char3NextDay,
+  char3Refuse,
+  char3WalkToArea,
+  char3HeadInside,
+  char3Slip,
+  char3GotAway,
+  char3TalkPlan,
+  char3GoodPlan,
+  char3ContPlan,
+  char3MoreLore,
+  char3LivingRoom,
+  char3DefeatDarkling1,
+  char3GreenEnding,
+  char3BadPlan,
+  char3RunAway,
+  char3ReturnAlone,
+  char3DefeatDarkling2,
+  char3EndAlone,
+  char3Sanctuary,
   quickTimeStart,
   quickTimeEast,
   quickTimeNorth,
