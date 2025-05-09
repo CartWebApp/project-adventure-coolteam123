@@ -1587,7 +1587,7 @@ const char3CorrectLocation = new Path(
     `You wrote down the correct address.`,
     `As you keep walking you notice a sketchy group of people gathered around something.`,
   ],
-  `url(images/backgrounds/potential-pizzeria-outside.jpg)`,
+  `url(images/backgrounds/sketchy-group.jpg)`,
   [
     [`Avoid them`, `char3ClientOrHomeless`],
     [`Approach them`, `char3SketchyGroup`],
