@@ -1,3 +1,4 @@
+// Variables
 const text = document.getElementById("text");
 const saveName = document.getElementById("name");
 const background = document.getElementById("background");
@@ -21,6 +22,7 @@ const attackText = document.getElementById("attack");
 const blockText = document.getElementById("block");
 const playerActions = document.getElementsByClassName("playerAction");
 const nextButton = document.getElementsByClassName("next");
+
 let flickerBlur = 170;
 let flickerSpread = 30;
 let quickTimeCounter = 0;
@@ -43,6 +45,7 @@ let startTime = Date.now();
 
 let inventory = [];
 
+// The class for when making an item
 class Item {
   constructor(name, image) {
     this.name = name;
@@ -50,6 +53,7 @@ class Item {
   }
 }
 
+// The class for when making a new path segment
 class Path {
   constructor(name, text, image, options, item = null) {
     this.name = name;
@@ -61,10 +65,15 @@ class Path {
   }
 }
 
+// The starting path segment
 const start = new Path(
+  // The segment's name
   `start`,
+  // The text displayed to the user
   [`Choose your character.`],
+  // The background image
   `url(images/backgrounds/Abandoned-city.jpg)`,
+  // The available options to choose from when the filler text is done
   [
     [`Play as Elena`, `PathChar1`],
     [`Play as Ezekiel`, `PathChar2`],
@@ -144,7 +153,7 @@ const dead = new Path(
   `dead`,
   [`You died.`],
   `url(images/backgrounds/dead-graves.jpg)`,
-  [[`Replay`, `start`]]
+  [[`To home`, `home`]]
 );
 
 const char1Continue = new Path(
@@ -745,7 +754,7 @@ const char1GreenEnding = new Path(
     `Main Ending 3/3: True Ending`
   ],
   `url(images/backgrounds/kitchen.jpg)`,
-  [[`Replay`,`start`]]
+  [[`To home`,`home`]]
 )
 
 const char1ContPlan = new Path(
@@ -858,7 +867,7 @@ const char1EndAlone = new Path(
     `Main Ending 1/3: All Alone`
   ],
   `url(images/backgrounds/gravestones1.jpg)`,
-  [[`Replay`, `start`]]
+  [[`To home`, `home`]]
 );
 
 const char1Sanctuary = new Path(
@@ -873,7 +882,7 @@ const char1Sanctuary = new Path(
     `Main Ending 2/3: Repentance`
   ],
   `url(images/backgrounds/gravestones1.jpg)`,
-  [[`Replay`, `start`]]
+  [[`To home`, `home`]]
 );
 
 // ***********Character 2(Ezekiel Valkyrie)-Path and choices***********
@@ -1047,7 +1056,7 @@ const maxDead = new Path(
     `Side Ending 2/5: How Could You?`
   ],
   `url(images/backgrounds/Max-dead.jpg)`,
-  [[`Replay`, `start`]]
+  [[`To home`, `home`]]
 );
 
 const char2UseItem = new Path(
@@ -1099,7 +1108,7 @@ const char2Refuse = new Path(
     `Side Ending 3/5: Loner`
   ],
   `url(images/backgrounds/abandoned-building-forest.jpg)`,
-  [[`Replay`, `start`]]
+  [[`To home`, `home`]]
 );
 
 const char2Join = new Path(
@@ -1156,7 +1165,7 @@ const char2Together = new Path(
     `Side Ending 4/5: At Least You Aren't Alone`
   ],
   `url(images/backgrounds/dead-graves.jpg)`,
-  [[`Replay`, `start`]]
+  [[`To home`, `home`]]
 );
 
 const char2Split = new Path(
@@ -1430,7 +1439,7 @@ const char2GreenEnding = new Path(
     `Main Ending 3/3: True Ending`
   ],
   `url(images/backgrounds/green-ending.jpg)`,
-  [[`Replay`,`start`]]
+  [[`To home`,`home`]]
 )
 
 const char2BadPlan = new Path(
@@ -1503,7 +1512,7 @@ const char2EndAlone = new Path(
     `Main Ending 1/3: All Alone`
   ],
   `url(images/backgrounds/Ezekiel-dead.jpg)`,
-  [[`Replay`, `start`]]
+  [[`To home`, `home`]]
 );
 
 const char2Sanctuary = new Path(
@@ -1518,7 +1527,7 @@ const char2Sanctuary = new Path(
     `Main Ending 2/3: Repentance`
   ],
   `url(images/backgrounds/gravestones.jpg)`,
-  [[`Replay`, `start`]]
+  [[`To home`, `home`]]
 );
 // ***********Character 3(Lucia Graves)-Path and choices***********
 
@@ -1557,7 +1566,7 @@ const char3FiredBecauseNoWork = new Path(
     `Main Ending 4/3: Fired`
   ],
   `url(images/backgrounds/fired-sign.jpg)`,
-  [[`Replay`, `start`]]
+  [[`To home`, `home`]]
 );
 
 const char3Delivery = new Path(
@@ -1578,7 +1587,7 @@ const char3FiredBecauseAddress = new Path(
   `char3FiredBecauseAddress`,
   [`You went to the the wrong address.`, `You are fired!`, `Main Ending 4/3: Fired`],
   `url(images/backgrounds/LuciaG-at-wrong-location.jpg)`,
-  [[`Replay`, `start`]]
+  [[`To home`, `home`]]
 );
 
 const char3CorrectLocation = new Path(
@@ -1616,7 +1625,7 @@ const char3BeatUp = new Path(
     `Main Ending 4/3: Fired`
   ],
   `url(images/backgrounds/sketchy-group.jpg)`,
-  [[`Replay`, `start`]]
+  [[`To home`, `home`]]
 )
 
 const char3LootThem = new Path(
@@ -1667,7 +1676,7 @@ const givePizzaToClient = new Path(
     `Your mission is complete and you live your whole life working at the pizzeria until you die from eating too much pizzas.`,
   ],
   `url(images/backgrounds/pizza-to-client.jpg)`,
-  [[`Replay`, `start`]]
+  [[`To home`, `home`]]
 );
 
 const givePizzaToStranger = new Path(
@@ -1698,7 +1707,7 @@ const char3Decline = new Path(
     `You live the rest of your life trying to look for a job until you die of boredom.`
   ],
   `url(images/backgrounds/lucia-bored.jpg)`,
-  [[`Replay`, `start`]]
+  [[`To home`, `home`]]
 )
 
 const char3Join = new Path(
@@ -1906,7 +1915,7 @@ const char3GreenEnding = new Path(
     `Main Ending 3/3: True Ending`
   ],
   `url(images/backgrounds/green-ending.jpg)`,
-  [[`Replay`,`start`]]
+  [[`To home`,`home`]]
 )
 
 const char3BadPlan = new Path(
@@ -1950,8 +1959,7 @@ const char3ReturnAlone = new Path(
     `It looks like you will have to confront this darkling one way or the other. You prepare yourself and go look for the darkling. You will have to fight it.`,
   ],
   `url(images/backgrounds/green-bushes.jpg)`,
-  [[`Go fight the "Darkling"`, `startBossFight2`]],
-  new Item("Rock", "")
+  [[`Go fight the "Darkling"`, `startBossFight2`]]
 );
 
 const char3DefeatDarkling2 = new Path(
@@ -1981,7 +1989,7 @@ const char3EndAlone = new Path(
     `Main Ending 1/3: All Alone`
   ],
   `url(images/backgrounds/lucia-dead.jpg)`,
-  [[`Replay`, `start`]]
+  [[`To home`, `home`]]
 );
 
 const char3Sanctuary = new Path(
@@ -1996,7 +2004,7 @@ const char3Sanctuary = new Path(
     `Main Ending 2/3: Repentance`
   ],
   `url(images/backgrounds/gravestones3.jpg)`,
-  [[`Replay`, `start`]]
+  [[`To home`, `home`]]
 );
 
 // ***********Quick time event***********
@@ -2099,11 +2107,12 @@ const fledTwice = new Path(
     `Side Ending 5/5: Coward`
   ],
   `url(images/backgrounds/dead-graves.jpg)`,
-  [[`Replay`, `start`]]
+  [[`To home`, `home`]]
 
 )
 
 // ***********Paths***********
+// Used to switch between paths
 let paths = [
   start,
   PathChar1,
@@ -2261,17 +2270,20 @@ let paths = [
 ];
 let history = [];
 
+// Moves the custom cursor to the actual cursor's location
 document.addEventListener("mousemove", (e) => {
   const cursor = document.getElementById("cursor");
   cursor.style.left = `${e.clientX}px`;
   cursor.style.top = `${e.clientY}px`;
 });
 
+// The title shadow flicker
 function titleShadow() {
   titleSpread();
   titleBlur();
 }
 
+// Animates the title screen's shadow blur
 function titleBlur() {
   timeoutID = setTimeout(function () {
     flickerBlur += Math.sin(performance.now()) * 2;
@@ -2280,6 +2292,7 @@ function titleBlur() {
   }, 10);
 }
 
+// Animates the title screen's shadow spread
 function titleSpread() {
   timeoutID2 = setTimeout(function () {
     flickerSpread += Math.sin(performance.now()) * 2;
@@ -2288,6 +2301,7 @@ function titleSpread() {
   }, 5);
 }
 
+// Starts the game after a fade to black transition
 function leaveMenu() {
   quickTimeCounter = 0;
   titleScreen.className = "throughBlack";
@@ -2296,9 +2310,11 @@ function leaveMenu() {
   }, 2500);
 }
 
+// Starts the game
 function startGame() {
   clearTimeout(timeoutID);
   clearTimeout(timeoutID2);
+  // If starting from load, don't go to the next text segment if already on the last
   if (story.textNum < 900) {
     typeWriter(story.text[story.textNum], text, 40);
     history.push([story.text[story.textNum], 0]);
@@ -2306,13 +2322,16 @@ function startGame() {
   }
 }
 
+// Goes from a piece of text to the next piece on click
 function nextText() {
+  // If dead, make sure the quicktime game's counter isn't still running
   if (story.name == "dead") {
     if (intervalId) {
       clearInterval(intervalId);
       timeBar.style.display = "none";
     }
   }
+  // If there is more text in the segment, display it
   if (story.textNum < 0) {
     story.textNum++;
     text.innerHTML = "";
@@ -2336,13 +2355,16 @@ function nextText() {
       text.innerText = story.text[story.text.length - 1];
     }
   }
+  //If on the last text piece in the segment, show the options to go on to other segments
   if (story.textNum == story.text.length - 1) {
     story.textNum = 999;
     makeOptions();
   }
 }
 
+// Makes the options on the middle of the screen for the user to choose from
 function makeOptions() {
+  // Removes the already existing options
   clearOptions();
   for (let element of story.options) {
     if (!element[2] || eval(element[2]) === true) {
@@ -2353,12 +2375,18 @@ function makeOptions() {
 
       link.appendChild(text);
 
+      // If quickstart or bossfight, don't treat it like a story element
       if (element[0] == "quickTimeStart") {
         story.textNum = -1;
         quickTimeCounter = 0;
       }
 
-      if (element[1] == "quickTime") {
+      console.log(element);
+      if (element[0] == "To home") {
+        link.onclick = function () {
+          returnHomeAnyway();
+        };
+      } else if (element[1] == "quickTime") {
         link.onclick = function () {
           randomQuickTimeEvent();
         };
@@ -2389,6 +2417,7 @@ function makeOptions() {
   options.style.visibility = `visible`;
 }
 
+// Opens / closes the history pop-up
 function showHistory() {
   if (historySection.style.zIndex == 2) {
     historySection.style.zIndex = -2;
@@ -2418,6 +2447,7 @@ function showHistory() {
   }
 }
 
+// Opens / closes the inventory pop-up
 function showInventory() {
   if (inventorySection.style.zIndex == 2) {
     inventorySection.style.zIndex = -2;
@@ -2435,10 +2465,12 @@ function showInventory() {
   }
 }
 
+// Hides all options
 function hideOptions() {
   options.style.visibility = `hidden`;
 }
 
+// Removes all text elements in the inventory pop-up
 function clearInventory() {
   let sections = document.querySelectorAll("#inventorySection p");
   for (each of sections) {
@@ -2446,6 +2478,7 @@ function clearInventory() {
   }
 }
 
+// Removes all text elements in the history pop-up
 function clearHistory() {
   let sections = document.querySelectorAll("#historySection p");
   for (each of sections) {
@@ -2453,6 +2486,7 @@ function clearHistory() {
   }
 }
 
+// Removes all text elements in the options pop-up
 function clearOptions() {
   let sections = document.querySelectorAll("#options button");
   for (each of sections) {
@@ -2460,6 +2494,7 @@ function clearOptions() {
   }
 }
 
+// Removes all text elements in the load pop-up
 function clearLoadOptions() {
   let sections = document.querySelectorAll("#loadOptions button");
   for (each of sections) {
@@ -2467,7 +2502,9 @@ function clearLoadOptions() {
   }
 }
 
+// Switches the current path segment the game is on to a new one
 function changePath(newPath, optionText, item) {
+  // If the option chosen includes getting an item, at it to the inventory
   if (item) {
     inventory.push(item);
   }
@@ -2477,6 +2514,7 @@ function changePath(newPath, optionText, item) {
   nextText();
 }
 
+// Returns a path segment from the name of said path segment
 function getPath(PathName) {
   for (each of paths) {
     if (each.name == PathName) {
@@ -2485,6 +2523,7 @@ function getPath(PathName) {
   }
 }
 
+// Goes through a string and, one character at a time recursively, displays said string in the textbox
 function typeWriter(messageToShow, targetElement, timeBetween, currentPos = 0) {
   clearTimeout(timeoutID);
   if (currentPos < messageToShow.length) {
@@ -2496,10 +2535,12 @@ function typeWriter(messageToShow, targetElement, timeBetween, currentPos = 0) {
   }
 }
 
+// Once HTML has loaded, start the shadow flicker and blur
 function onLoad() {
   titleShadow();
 }
 
+// Hides all of the pop-ups
 function hideAllOptions(section) {
   saveSection.style.zIndex = -2;
   loadSection.style.zIndex = -2;
@@ -2511,6 +2552,7 @@ function hideAllOptions(section) {
   }
 }
 
+// Saves the current story, history, and inventory to localStorage
 function createNewSave() {
   if (saveName.value) {
     localStorage.setItem(
@@ -2524,6 +2566,7 @@ function createNewSave() {
   }
 }
 
+// Toggles the save pop-up
 function saveToLocalStorage() {
   saveName.ariaPlaceholder = "";
   if (saveSection.style.zIndex == 2) {
@@ -2534,10 +2577,12 @@ function saveToLocalStorage() {
   }
 }
 
+// Toggles the load pop-up
 function loadFromLocalStorage() {
   if (loadSection.style.zIndex == 2) {
     loadSection.style.zIndex = -2;
   } else {
+    // Loads all save files into buttons that when clicked restore the save
     hideAllOptions(loadSection);
     loadSection.style.zIndex = 2;
     let search = "game_";
@@ -2563,6 +2608,7 @@ function loadFromLocalStorage() {
   }
 }
 
+// Toggles the return home pop-up
 function returnHome() {
   if (homeSection.style.zIndex == 2) {
     homeSection.style.zIndex = -2;
@@ -2572,6 +2618,7 @@ function returnHome() {
   }
 }
 
+// Returns home
 function returnHomeAnyway() {
   titleScreen.className = "backFromBlack";
   inventory = [];
@@ -2585,6 +2632,7 @@ function returnHomeAnyway() {
   titleShadow();
 }
 
+// Pick a random quicktime event and loads it into the story
 function randomQuickTimeEvent() {
   if (intervalId) {
     clearInterval(intervalId);
@@ -2618,6 +2666,7 @@ function randomQuickTimeEvent() {
     nextText();
     background.style.backgroundImage = story.image;
   } else {
+    // Returns to the original story based on what character you are
     quickTimeCounter = 0;
     timeBar.style.display = "none";
     text.innerHTML = "";
@@ -2638,6 +2687,7 @@ function randomQuickTimeEvent() {
   }
 }
 
+// Checks if a value is in the user's game history
 function doesHistoryHave(string) {
   for (each of history) {
     if (each[0] == string) {
@@ -2647,6 +2697,7 @@ function doesHistoryHave(string) {
   return false;
 }
 
+// Checks if a value is in the user's inventory
 function doesInventoryHave(string) {
   for (each of inventory) {
     if (each.name == string) {
@@ -2656,11 +2707,13 @@ function doesInventoryHave(string) {
   return false;
 }
 
+//Starts a timer based on current time
 function doTimer() {
   startTime = Date.now();
   intervalId = setInterval(updateTimer, 100);
 }
 
+//Updates the quicktime event countdown bar
 function updateTimer() {
   const elapsedTime = Date.now() / 1000.0 - startTime / 1000.0;
   timeBar.style.width = `${(quickTimer - elapsedTime) * (100 / quickTimer)}%`;
@@ -2677,11 +2730,13 @@ function updateTimer() {
   }
 }
 
+//Starts the quicktime event
 function beginQuickTime() {
   story = getPath("quickTimeStart");
   background.style.backgroundImage = story.image;
 }
 
+// Starts the quicktime event with a slight animation
 function quickTimeEvent() {
   beginQuickTime();
   setTimeout(() => {
@@ -2689,6 +2744,7 @@ function quickTimeEvent() {
   }, 200);
 }
 
+// Loads from local storage the save file
 function restoreFromLocalStorage(load) {
   story = JSON.parse(localStorage.getItem(`game_${load}`))[0];
   history = JSON.parse(localStorage.getItem(`game_${load}`))[1];
@@ -2708,12 +2764,14 @@ function restoreFromLocalStorage(load) {
   loadSection.style.zIndex = -2;
 }
 
+// Starts the boss fight transition
 function doFightText(text){
   bossText.innerHTML = '';
   clearTimeout(timeoutID3);
   timeoutID3 = typeWriter(text, bossText, 20);
 }
 
+// Starts the actual boss fight
 function beginBossFight(ranAway = false){
   coward = ranAway;
   playerHealth = 100;
@@ -2729,6 +2787,7 @@ function beginBossFight(ranAway = false){
   setTimeout(() => {
     doFightText(`It's time!`);
   }, 300);
+  // Sets starting stats based on items in inventory
   if(doesInventoryHave('Hatchet')){
     attackText.onclick = function (){useHatchet()};
     attackText.innerHTML = 'Attack with hatchet'
@@ -2742,15 +2801,17 @@ function beginBossFight(ranAway = false){
   updateStats(true);
 }
 
+// The attack function if the user has a hatchet. Does a range of damage
 function useHatchet(){
   let atk = Math.round(Math.random()*13)+12;
   doFightText(`You swing the hatchet! You dealt ${atk} damage!`);
   darklingHealth -= atk;
   playerStamina -= Math.round(Math.random()*6)+17;
-
+  
   updateStats();
 }
 
+// The attack function if the user doesn't have a hatchet. Does a range of damage
 function attack(){
   let atk = Math.round(Math.random()*10)+10;
   doFightText(`You swing the knife! You dealt ${atk} damage!`);
@@ -2760,6 +2821,7 @@ function attack(){
   updateStats();
 }
 
+// The continue function, for after the boss has done its action
 function next(){
   for (each of nextButton){
     each.style.display = 'none';
@@ -2770,6 +2832,7 @@ function next(){
   doDarklingAction();
 }
 
+// The block function, for blocking the boss' attack
 function block(){
   doFightText(`You raise your guard in anticipation!`);
   playerDefense += Math.round(Math.random()*10)+45;
@@ -2778,6 +2841,7 @@ function block(){
   updateStats();
 }
 
+// The rest function, for recovering stmaina and health
 function rest(){
   let regen = Math.round(Math.random()*15)+10;
   let hRegen = Math.round(Math.random()*10)+2;
@@ -2788,8 +2852,10 @@ function rest(){
   updateStats();
 }
 
+// Does the boss' action
 function doDarklingAction(){
   let atk;
+  // Cycles through a list of actions to simulate randomness.
   switch (darklingPhase) {
     case 0:
       doFightText(`The darkling prepares to launch a strong attack!`);
@@ -2857,6 +2923,7 @@ function doDarklingAction(){
   darklingPhase++;
 }
 
+// Updates the boss' and player's visible stats for the user based on what they are after a round of actions
 function updateStats(darklingTurn = false){
   if(playerStamina <= 10){
     if(playerStamina <= 0){
@@ -2898,6 +2965,7 @@ function updateStats(darklingTurn = false){
     }
   }
   if(playerHealth<=0){
+    // If the player is dead, switch to the death storyline.
     hideBossFight();
     text.innerHTML = "";
     clearOptions();
@@ -2907,6 +2975,7 @@ function updateStats(darklingTurn = false){
     nextText();
     background.style.backgroundImage = story.image;
   } else if(darklingHealth<=0){
+    // If the darkling is dead, switch to either the victory or coward storylines.
     hideBossFight();
     text.innerHTML = "";
     clearOptions();
@@ -2938,6 +3007,7 @@ function updateStats(darklingTurn = false){
   }
 }
 
+// The flee function for the boss fight. Triggers the coward endings
 function flee(){
   hideBossFight()
   if(!coward){
@@ -2959,10 +3029,12 @@ function flee(){
   background.style.backgroundImage = story.image;
 }
 
+// Hides the boss fight 
 function hideBossFight(){
   bossFight.style.display = 'none';
 }
 
+// Hides all the pop-ups if not the user clicks somehwere not on them
 document.addEventListener("click", function (event) {
   if (
     !homeSection.contains(event.target) &&

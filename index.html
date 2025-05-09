@@ -17,34 +17,41 @@
     />
   </head>
   <body onload="onLoad()">
+    <!-- The home page -->
     <section id="titleScreen">
       <div id="buttonHolder">
         <h1 id="title">The Darkling</h1>
         <button id="startGame" class="hover" onclick="leaveMenu()">Play</button>
-        <!-- <button id="quickMinigame" class="hover" onclick="beginBossFight()">BossFight</button> -->
       </div>
     </section>
+    <!-- The custom cursor -->
     <div id="cursor"></div>
     <div id="background"></div>
     <section id="options"></section>
+    <!-- The interactable section at the bottom -->
     <section id="textInteract" class="hover" onclick="nextText()">
       <div id="loadingBar"></div>
       <p id="text"></p>
     </section>
+    <!-- The history pop-up -->
     <div id="historySection">
       <h2>History:</h2>
     </div>
+    <!-- The inventory pop-up -->
     <div id="inventorySection">
       <h2>Inventory:</h2>
     </div>
+    <!-- The load pop-up -->
     <div id="loadSection">
       <h2>Load:</h2>
       <div id="loadOptions"></div>
     </div>
+    <!-- The return home pop-up -->
     <div id="homeSection">
       <h2>If you return home without saving your progress will be lost.</h2>
       <button onclick="returnHomeAnyway()">Return home anyway</button>
     </div>
+    <!-- The save pop-up -->
     <div id="saveSection">
       <h2>Save:</h2>
       <form>
@@ -53,6 +60,8 @@
         <button type="button" onclick="createNewSave()">Save</button>
       </form>
     </div>
+    
+    <!-- The settings at the bottom of the page -->
     <section id="settings">
       <button id="home" onclick="returnHome()">Home</button>
       <button id="history" onclick="showHistory()">History</button>
@@ -60,6 +69,8 @@
       <button id="save" onclick="saveToLocalStorage()">Save</button>
       <button id="load" onclick="loadFromLocalStorage()">Load</button>
     </section>
+
+    <!-- The boss fight container -->
     <section id="bossFight">
       <img src="images/backgrounds/Potential-finalboss-monster.jpg">
       <div class="fightOptions">
