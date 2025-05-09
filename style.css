@@ -75,6 +75,7 @@ body {
 }
 
 button {
+  color: black;
   padding: 5px;
 }
 
@@ -107,6 +108,7 @@ button {
   backdrop-filter: blur(1px);
   font-size: 1.5rem;
   transition: box-shadow 500ms;
+  min-height: 150px;
 }
 
 #textInteract:hover {
@@ -190,6 +192,7 @@ html:has(.hover:hover) #cursor {
   background: black;
   bottom: 0;
   position: absolute;
+  min-height: 170px;
 }
 
 .fightOptions > button{
@@ -371,7 +374,7 @@ button {
   }
   #fightTextbox{
     transform: translate(0, 0);
-    height: 7vh;
+    height: 9vh;
   }
   #text{
     font-size: 1.3rem;
@@ -402,5 +405,17 @@ button {
     margin: 0 5%;
     top: 5vh;
     font-size: 3rem;
+  }
+}
+
+@media only screen and (max-height: 750px) {
+  #options {
+    top: 35%;
+  }
+}
+
+@media (pointer: none) {
+  #cursor{
+    display: none;
   }
 }
